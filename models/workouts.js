@@ -8,7 +8,8 @@ const workouts = [
         "price": "100",
         "category": "Court",
         "supplier": "Yuval",
-        "calories": "400"
+        "calories": "400",
+        "coordinates": "31,32"
     },
     {
         "id" : 1,
@@ -19,7 +20,8 @@ const workouts = [
         "price": "150",
         "category": "Water",
         "supplier": "Fem",
-        "calories": "300"
+        "calories": "300",
+        "coordinates": "32.07260539828965,34.76606537988191"
     }
 ]   
 
