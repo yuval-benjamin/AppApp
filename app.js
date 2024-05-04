@@ -5,7 +5,7 @@ const customersController = require('./controllers/customers')
 
 server.use(express.static('public'))
 
-server.get("/homepage", workoutsController.GetHomePage)
+server.get("/home", workoutsController.GetHomePage)
 server.get("/nearme", workoutsController.GetNearMePage)
 
 server.set("view engine", "ejs");
