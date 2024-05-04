@@ -1,24 +1,28 @@
-// import { getAllWorkouts } from '../../models/workouts';
-
 async function generateMap() {
-  // const workouts = getAllWorkouts()
-  // workout_location = workouts[1].coordinates
-
-  var mapProp= {
+  
+  // This is how it will open the map
+  var mapProp = {
     center: new google.maps.LatLng(32.090232, 34.781800),
     zoom: 13
   };
-  
-  const location = { lat: 32.07260539828965, lng: 34.76606537988191 };
-  
-  var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  var marker = new google.maps.Marker({position:location});
 
-  var infowindow = new google.maps.InfoWindow({
-    content:"Fem"
-    // workouts[1].name
+  var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+  // Create a marker and info window per workout
+  workouts.forEach(workout => {
+    const [lat, lng] = workout.coordinates.split(',').map(Number);
+
+    var marker = new google.maps.Marker({
+      position: { lat, lng },
+      map: map
+    });
+
+    var infowindow = new google.maps.InfoWindow({
+      content: workout.name
+    });
+
+    marker.addListener("click", () => {
+      infowindow.open(map, marker);
+    });
   });
-  
-  marker.setMap(map);
-  infowindow.open(map,marker);
 }

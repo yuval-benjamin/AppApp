@@ -1,15 +1,14 @@
 const workoutsModel = require('../models/workouts')
 
-function GetHomePage(req,res){
+function GetHomePage(req, res){
     const workouts = workoutsModel.getAllWorkouts()
-    res.render('homePage.ejs', {workouts})
+    res.render('home', {workouts})
 }
 
-function GetNearMePage(req,res){
+function GetNearMePage(req, res){
     const workouts = workoutsModel.getAllWorkouts()
-    res.render('nearMe.ejs', {workouts}, )
+    res.render('nearme', {workouts})
 }
-
 
 module.exports = {
     GetHomePage,
