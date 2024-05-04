@@ -1,11 +1,12 @@
-function getLoginPage(req,res){
-    res.render('signin.ejs')
-}
+// function getLoginPage(req,res){
+//     res.render('signin.ejs')
+// }
 
-function getSignUpPage(req,res){
-    res.render('signup.ejs')
-}
+// function getSignUpPage(req,res){
+//     res.render('signup.ejs')
+// }
 
-module.exports = {
-    getLoginPage, getSignUpPage
-}
+// module.exports = {
+//     getLoginPage, 
+//     getSignUpPage, maayan
+// }
