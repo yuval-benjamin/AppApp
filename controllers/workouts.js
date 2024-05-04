@@ -7,7 +7,7 @@ function GetHomePage(req,res){
 
 function GetNearMePage(req,res){
     const workouts = workoutsModel.getAllWorkouts()
-    res.render('nearMe.ejs', {workouts}, )
+    res.render('nearMe.ejs', {workouts})
 }
 
 

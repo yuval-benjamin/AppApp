@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NearMe</title>
+    <link rel="stylesheet" text="text/css" href="styles/maps.css">
+</head>
 <body>
+    <div id="googleMap""></div>
 
-<div id="googleMap" style="width:100%;height:400px;"></div>
+    <script>
+        // Make the coordinates globally accessible
+        const workouts = <%- JSON.stringify(workouts) %>;
+        window.coordinates = workouts;
+    </script>
 
-<script src="js/maps.js"></script>
-<!-- <script type="module" src="js/maps.js"></script> -->
+    <script src="js/maps.js"></script>
 
-<script loading=async src="https://maps.googleapis.com/maps/api/js?key=INSERT_API_KEY&callback=generateMap"></script>
-
+    <script loading=async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARuPP3P9xt7lbaL1-HG03KKgW886ajskk&callback=generateMap"></script>
+    
 </body>
 </html>
