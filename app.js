@@ -5,10 +5,8 @@ const customersController = require('./controllers/customers')
 
 server.use(express.static('public'))
 
-// server.get("/", customersController.getLoginPage)
 server.get("/home", workoutsController.GetHomePage)
 server.get("/nearme", workoutsController.GetNearMePage)
-// server.get("/signup", workoutsController.getSignUpPage)
 
 server.set("view engine", "ejs");
 server.use("/", require("./routes/login"));
