@@ -9,7 +9,7 @@ const workouts = [
         "category": "Court",
         "supplier": "Yuval",
         "calories": "400",
-        "coordinates": "31,32"
+        "image": "tennis.jpg"
     },
     {
         "id" : 1,
@@ -21,9 +21,10 @@ const workouts = [
         "category": "Water",
         "supplier": "Fem",
         "calories": "300",
-        "coordinates": "32.07260539828965,34.76606537988191"
+        "image": "surf.jpg"
+        
     }
-]   
+]  
 
 function getAllWorkouts(){
     return workouts

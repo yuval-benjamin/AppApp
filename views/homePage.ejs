@@ -1,12 +1,140 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>This is a second try</h1>
-    <h2>This is the first workout: <%= workouts[0].name %></h2>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+    
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <title>AppApp Workout Store</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">AppApp Workout</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Near Me</a></li>
+          <li><a href="#">My Orders</a></li>
+          <li><a href="#">Personl Info</a></li>
+          <li><a href="#">Cart</a></li>
+        </ul>
+        <form class="navbar-form navbar-left" action="/action_page.php">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search"
+              name="search"
+            />
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </nav>
+
+    <div class="jumbotron text-center">
+      <h1>Welcome To Our AppApp Workouts Shop</h1>
+      <p>
+        Your go-to online shop for home fitness! Whether you're starting your
+        fitness journey or stepping up your routine, we offer a wide range of
+        workouts tailored to all levels and goals. Explore and order the perfect
+        workout with ease. Start your wellness journey with AppApp Workouts
+        today, where achieving your fitness goals is just a click away!
+      </p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3><%= workouts[0].name %></h3>
+          <p><%= workouts[0].description %></p>
+          <img src="./imagess/<%= workouts[0.].image %>" alt="<%= workouts[0].name %>">
+        </div>
+        <div class="col-sm-4">
+          <h3><%= workouts[1].name %></h3>
+          <p><%= workouts[1].description %></p>
+          <img src="./imagess/<%= workouts[1].image %>" alt="<%= workouts[1].name %>">
+        </div>
+        <div class="col-sm-4">
+            <div class="card" style="width:400px">
+                <div class="card-body">
+                  <h4 class="card-title"><%= workouts[1].name %></h4>
+                  <p class="card-text"><%= workouts[1].description %></p>
+                  <img class="card-img-bottom" src="/images/<%= workouts[1].image %>" alt="Card image" style="width:100%">
+                  <a href="#" class="btn btn-primary">Buy</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card" style="width:400px">
+                <div class="card-body">
+                  <h4 class="card-title"><%= workouts[0].name %></h4>
+                  <p class="card-text"><%= workouts[0].description %></p>
+                  <img class="card-img-bottom" src="/images/<%= workouts[0].image %>" alt="Card image" style="width:100%">
+                  <a href="#" class="btn btn-primary">Buy</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+          <h3><%= workouts[0].name %></h3>
+          <p><%= workouts[0].description %></p>
+        </div>
+        <div class="col-sm-4">
+          <h3><%= workouts[0].name %></h3>
+          <p><%= workouts[0].description %></p>
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="bg-primary text-white text-center text-lg-start">
+      <!-- Grid container -->
+      <div class="container p-4">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Talk To Us</h5>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
+              atque ea quis molestias. Fugiat pariatur maxime quis culpa
+              corporis vitae repudiandae aliquam voluptatem veniam, est atque
+              cumque eum delectus sint!
+            </p>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+            <h5 class="text-uppercase">About Us</h5>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
+              atque ea quis molestias. Fugiat pariatur maxime quis culpa
+              corporis vitae repudiandae aliquam voluptatem veniam, est atque
+              cumque eum delectus sint!
+            </p>
+          </div>
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div
+        class="text-center p-3"
+        style="background-color: rgba(0, 0, 0, 0.2);"
+      >
+        © 2024 Copyright: Us
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </body>
 </html>
