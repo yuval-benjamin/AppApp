@@ -8,6 +8,7 @@ server.use(express.static('public'))
 server.get("/", customersController.getLoginPage)
 server.get("/home", workoutsController.GetHomePage)
 server.get("/nearme", workoutsController.GetNearMePage)
+// server.get("/signup", workoutsController.getSignUpPage)
 
 
 server.listen(80)
