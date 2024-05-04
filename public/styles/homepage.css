@@ -1,0 +1,155 @@
+
+/* Navbar */
+.nav-link {
+    font-size: 18px; /* You can increase this value for larger text */
+}
+
+/* General Navbar Styling */
+.navbar {
+    background: linear-gradient(to right, #ff4f78, #ff6c8e);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    /*background-color: #f8f9fa; /* Light gray background, adjust color as needed */
+    z-index: 1020; /* Higher z-index ensures navbar stays on top of other content */
+}
+
+/* Navbar Brand Image */
+.navbar-brand img {
+    height: 50px; /* Logo height, ensures consistency */
+}
+
+/* Navbar Links */
+.nav-link {
+    color: #007bff; /* Blue links, adjust color as needed */
+    font-size: 16px; /* Larger font size for better readability */
+    padding: 8px 15px; /* Padding for better touch targets */
+}
+
+/* Dropdown Styling */
+.dropdown {
+    position: static; /* Default static position for better mobile responsiveness */
+}
+
+.dropdown-toggle {
+    cursor: pointer; /* Ensures the dropdown can be identified as clickable */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Aligns the dropdown menu right below the toggle button */
+    right: 0; /* Aligns the dropdown menu to the right side of the toggle */
+    left: auto; /* Resets any left positioning */
+    transform: translateX(-50%); /* Centers the dropdown under the toggle button */
+    z-index: 1050; /* Ensures the dropdown menu appears above other content */
+    background-color: #ffffff; /* White background for the dropdown menu */
+    border: 1px solid #ddd; /* Adds a subtle border */
+    border-radius: 0.25rem; /* Rounded corners for the dropdown menu */
+}
+
+/* Ensures the dropdown menu text is not too close to the edges */
+.dropdown-item {
+    padding: 8px 20px;
+}
+
+/* Adjusting the icons within the navbar for better visibility */
+.navbar .fas {
+    font-size: 1.5em; /* Larger icons for better visibility */
+}
+
+/* Media queries for responsive adjustments */
+@media (max-width: 991px) {
+    .navbar {
+        flex-direction: column; /* Stacks navbar content vertically on smaller screens */
+    }
+
+    .dropdown-menu {
+        right: 10px; /* Adjusts position slightly on smaller screens */
+        left: 10px; /* Ensures dropdown menu does not overflow the screen edges */
+        width: calc(100% - 20px); /* Makes dropdown menu width responsive */
+    }
+}
+/* Larger text and more padding for dropdown items */
+.dropdown-menu .dropdown-item {
+    font-size: 18px; /* Increase font size */
+    padding: 12px 20px; /* Increase padding */
+}
+
+/* Adjusting the width of the dropdown menu if necessary */
+.dropdown-menu {
+    width: auto; /* Adjust width to fit content or set a specific width */
+    min-width: 200px; /* Minimum width to ensure consistency */
+}
+
+/* Optional: Adjusting the overall dropdown menu for better spacing and visibility */
+.dropdown-menu {
+    border-radius: 0.375rem; /* Rounded corners for aesthetic */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+}
+
+/* Serach */
+/* Center and style the search container */
+.search-container {
+    display: flex;
+    justify-content: center; /* Centers the search bar horizontally */
+    margin-top: 20px; /* Adds some space at the top */
+}
+
+/* Control the width of the input group, adjusting for different screens */
+.input-group {
+    width: 50%; /* Adjust this to control the width of the search bar */
+    max-width: 600px; /* Ensures the search bar doesn't get too wide on larger screens */
+}
+
+/* Style the form control for better visibility and usability */
+.form-control {
+    height: 50px; /* Increases the height of the input for better visibility */
+    font-size: 18px; /* Makes the text larger */
+    border-radius: 5px 0 0 5px; /* Rounds the left corners of the input field */
+    border: 1px solid #ccc; /* Adds a border to the input */
+    padding-left: 10px; /* Adds padding inside the input */
+}
+
+/* Style the primary button for visual consistency */
+.btn-primary {
+    height: 50px; /* Matches the height of the search input */
+    border-radius: 0 5px 5px 0; /* Rounds the right corners of the button */
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color */
+    border: none; /* No border for the button */
+    cursor: pointer; /* Cursor changes to pointer when hovered */
+}
+
+/* Adjusts the size of the search icon inside the button */
+.fas {
+    font-size: 24px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .input-group {
+        width: 80%; /* Makes the search bar wider on smaller screens */
+    }
+}
+
+
+/* Cards */
+.card {
+    flex: 1 0 21%; /* Adjust this percentage based on desired number of cards per row */
+    margin: 15px; /* Consistent margin for symmetry */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Optional for better visibility */
+}
+.uniform-card {
+    width: 300px; /* Set the width of the cards */
+    height: 400px; /* Set the height of the cards */
+  }
+  .card-img-custom {
+    width: 100%;  /* Make image fill the card width */
+    height: 300px; /* Fixed height for all images */
+    object-fit: cover; /* Ensures the image covers the set area without stretching */
+  }
+  .card-body {
+    padding: 10px; /* Adjust padding as needed */
+    overflow: hidden; /* Prevents overflow of content outside the card */
+  }
