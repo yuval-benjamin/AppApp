@@ -32,12 +32,6 @@ function getAllWorkouts(){
     return workouts
 }
 
-// function getAllWorkoutCoordinates(){
-//     const coordinates = workouts.map(workout => workout.coordinates);
-//     return coordinates
-// }
-
 module.exports = {
-    getAllWorkouts,
-    // getAllWorkoutCoordinates
+    getAllWorkouts
 }

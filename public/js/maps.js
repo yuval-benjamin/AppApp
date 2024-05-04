@@ -1,4 +1,5 @@
 async function generateMap() {
+  
   // This is how it will open the map
   var mapProp = {
     center: new google.maps.LatLng(32.090232, 34.781800),
