@@ -1,3 +1,4 @@
+// require('dotenv').config({ path: './config/.env.local' });
 const express = require('express')
 const server = express()
 const workoutsController = require('./controllers/workouts')
@@ -13,7 +14,8 @@ server.use("/", require("./routes/login"));
 server.use("/signup", require("./routes/login"));
 server.use(express.urlencoded({ extended: false }));  
 
-server.listen(80)
+// server.listen(80)
+server.listen(process.env.PORT);
 
 // LOGIN CODE ##########
 // require("dotenv").config();
@@ -30,6 +32,3 @@ server.listen(80)
 //     saveUninitialized: false,
 //     resave: false
 // }))
-
-
-// app.listen(process.env.PORT);
