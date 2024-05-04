@@ -9,7 +9,7 @@ const workouts = [
         "category": "Court",
         "supplier": "Yuval",
         "calories": "400",
-        "coordinates": "31,32",
+        "coordinates": "32.072272706625505, 34.7888754788972",
         "image": "tennis.jpg"
     },
     {
