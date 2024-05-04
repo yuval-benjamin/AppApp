@@ -1,54 +1,15 @@
-const workouts = [
-    {
-        "id" : 1,
-        "name": "Tennis class with yuval",
-        "description": "An hour and a half with the best instructor in town.",
-        "time": "10:30",
-        "location": "Tel Aviv",
-        "price": "100",
-        "category": "Court",
-        "supplier": "Yuval",
-        "calories": "400",
-        "coordinates": "32.072272706625505, 34.7888754788972",
-        "image": "tennis.jpg"
+const mongoose = require('mongoose')
+
+const workoutSchema = new mongoose.Schema({
+    name : {
+        type: String,
+        required: true
     },
-    {
-        "id" : 1,
-        "name": "Surf lesson",
-        "description": "Surfboard rental for 2 hours",
-        "time": "7:00",
-        "location": "Tel Aviv",
-        "price": "150",
-        "category": "Water",
-        "supplier": "Fem",
-        "calories": "300",
-        "coordinates": "32.07260539828965,34.76606537988191",
-        "image": "surf.jpg"
-        
+    coordinates: {
+        type: String,
+        required: true
     }
-]  
+});
 
-function getAllWorkouts(){
-    return workouts
-}
-
-module.exports = {
-    getAllWorkouts
-}
-
-
-// const mongoose = require('mongoose');
-// const Schema = mongoose.Schema;
-
-// const Workout = new Schema({
-//     title : {
-//         type: String,
-//         required: true
-//     },
-//     published: {
-//         type: Date,
-//         default: Date.now
-//     }
-// });
-
-// module.exports = mongoose.model('Workout', Workout);
+const Workout = mongoose.model('Workout', workoutSchema, 'workouts');
+module.exports = Workout; // Export the Workout model

@@ -1,13 +1,15 @@
 const Workout = require('../models/workouts');
+const mongoose = require('mongoose')
 
-const getAllWorkouts = async () => {
-    return await Workout.find({});
+async function getAllWorkouts() {
+    const workouts = await Workout.find()
+    return workouts
 };
 
 module.exports = {
-    createWorkout,
-    getWorkoutById,
+    // createWorkout,
+    // getWorkoutById,
     getAllWorkouts,
-    updateWorkout,
-    deleteWorkout
+    // updateWorkout,
+    // deleteWorkout
 }
