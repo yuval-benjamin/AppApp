@@ -14,24 +14,11 @@
    </head>
    <body>
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-         <!-- Container wrapper -->
-         <div class="container-fluid">
-            <!-- Toggle button -->
-            <button
-               data-mdb-collapse-init
-               class="navbar-toggler"
-               type="button"
-               data-mdb-target="#navbarSupportedContent"
-               aria-controls="navbarSupportedContent"
-               aria-expanded="false"
-               aria-label="Toggle navigation"
-               >
-            <i class="fas fa-bars"></i>
-            </button>
-            <!-- Collapsible wrapper -->
+      <header class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+         <nav class="container-fluid">
+            <!-- Left elements -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               <!-- Navbar brand -->
+               <!-- Logo -->
                <a class="navbar-brand mt-2 mt-lg-0" href="#">
                <img
                   src="/images/logo.png"
@@ -51,12 +38,10 @@
                      <a class="nav-link" href="#">Gal</a>
                   </li>
                </ul>
-               <!-- Left links -->
             </div>
-            <!-- Collapsible wrapper -->
             <!-- Right elements -->
             <div class="d-flex align-items-center position-relative">
-               <!-- Icon -->
+               <!-- Cart -->
                <a class="link-secondary me-3" href="#">
                <i class="fas fa-shopping-cart fa-2x"></i>
                </a>
@@ -74,10 +59,9 @@
                   </ul>
                </div>
             </div>
-            <!-- Right elements -->
-         </div>
-         <!-- Container wrapper -->
-      </nav>
+         </nav>
+      </header>
+
       <!-- Welcome section -->
       <div class="jumbotron text-center">
          <h1>Welcome To Our AppApp Workouts Shop</h1>
@@ -89,87 +73,99 @@
             today, where achieving your fitness goals is just a click away!
          </p>
       </div>
+
       <!-- Search -->
       <div class="search-container">
         <div class="input-group">
             <input type="search" id="search-input" class="form-control" placeholder="Search" />
-            <button id="search-button" type="button" class="btn btn-primary">
-                <i class="fas fa-search"></i>
+            <button id="search-button" type="button" class="btn">
+                <i class="fas fa-search"></i>   
             </button>
         </div>
       </div>
+
       <!-- Cards -->
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="card uniform-card" style="width:400px">
-                  <div class="card-body">
-                     <h4 class="card-title"><%= workouts[1].name %></h4>
-                     <p class="card-text"><%= workouts[1].description %></p>
-                     <img class="card-img-bottom card-img-custom" src="/images/<%= workouts[1].image %>" alt="Card image" style="width:100%">
-                     <a href="#" class="btn btn-primary">Buy</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="card uniform-card" style="width:400px">
-                  <div class="card-body">
-                     <h4 class="card-title"><%= workouts[0].name %></h4>
-                     <p class="card-text"><%= workouts[0].description %></p>
-                     <img class="card-img-bottom card-img-custom" src="/images/<%= workouts[0].image %>" alt="Card image" style="width:100%">
-                     <a href="#" class="btn btn-primary">Buy</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="card uniform-card" style="width:400px">
-                  <div class="card-body">
-                     <h4 class="card-title"><%= workouts[0].name %></h4>
-                     <p class="card-text"><%= workouts[0].description %></p>
-                     <img class="card-img-bottom card-img-custom" src="/images/<%= workouts[0].image %>" alt="Card image" style="width:100%">
-                     <a href="#" class="btn btn-primary">Buy</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="card uniform-card" style="width:400px">
-                  <div class="card-body">
-                     <h4 class="card-title"><%= workouts[0].name %></h4>
-                     <p class="card-text"><%= workouts[0].description %></p>
-                     <img class="card-img-bottom card-img-custom" src="/images/<%= workouts[0].image %>" alt="Card image" style="width:100%">
-                     <a href="#" class="btn btn-primary">Buy</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="card uniform-card" style="width:400px">
-                  <div class="card-body">
-                     <h4 class="card-title"><%= workouts[0].name %></h4>
-                     <p class="card-text"><%= workouts[0].description %></p>
-                     <img class="card-img-bottom card-img-custom" src="/images/<%= workouts[0].image %>" alt="Card image" style="width:100%">
-                     <a href="#" class="btn btn-primary">Buy</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-               <div class="card uniform-card" style="width:400px">
-                  <div class="card-body">
-                     <h4 class="card-title"><%= workouts[0].name %></h4>
-                     <p class="card-text"><%= workouts[0].description %></p>
-                     <img class="card-img-bottom card-img-custom" src="/images/<%= workouts[0].image %>" alt="Card image" style="width:100%">
-                     <a href="#" class="btn btn-primary">Buy</a>
-                  </div>
-               </div>
-            </div>
+      <div class="row row-cols-1 row-cols-md-5 g-4">
+         <div class="col">
+           <div class="card h-100">
+             <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
+             <div class="card-body">
+               <h5 class="card-title"><%= workouts[0].name %></h5>
+               <p class="card-text"><%= workouts[0].description %> <%= workouts[0].description %> <%= workouts[0].description %></p>
+             </div>
+             <div class="card-footer">
+               <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
+             </div>
+           </div>
          </div>
-      </div>
+         <div class="col">
+            <div class="card h-100">
+              <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
+              <div class="card-body">
+                <h5 class="card-title"><%= workouts[0].name %></h5>
+                <p class="card-text"><%= workouts[0].description %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
+              <div class="card-body">
+                <h5 class="card-title"><%= workouts[0].name %></h5>
+                <p class="card-text"><%= workouts[0].description %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
+              <div class="card-body">
+                <h5 class="card-title"><%= workouts[0].name %></h5>
+                <p class="card-text"><%= workouts[0].description %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
+              <div class="card-body">
+                <h5 class="card-title"><%= workouts[0].name %></h5>
+                <p class="card-text"><%= workouts[0].description %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="/images/<%= workouts[1].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
+              <div class="card-body">
+                <h5 class="card-title"><%= workouts[1].name %></h5>
+                <p class="card-text"><%= workouts[1].description %></p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
+              </div>
+            </div>
+          </div>
+         </div>
+       </div>
+
       <!-- Footer -->
-      <footer class="bg-primary text-white text-center text-lg-start">
-         <!-- Grid container -->
-         <div class="container p-4">
-            <!--Grid row-->
+      <footer class="text-white text-center text-lg-start">
+         <!-- Info -->
+         <div id="first-footer" class="container p-4">
             <div class="row">
-               <!--Grid column-->
                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
                   <h5 class="text-uppercase">Talk To Us</h5>
                   <p>
@@ -189,17 +185,11 @@
                   </p>
                </div>
             </div>
-            <!--Grid row-->
          </div>
-         <!-- Grid container -->
          <!-- Copyright -->
-         <div
-            class="text-center p-3"
-            style="background-color: rgba(0, 0, 0, 0.2);"
-            >
+         <div id="second-footer" class="text-center p-3">
             © 2024 Copyright: Us
          </div>
-         <!-- Copyright -->
       </footer>
    </body>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
