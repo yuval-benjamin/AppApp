@@ -6,13 +6,24 @@ async function getAllWorkouts() {
     return workouts
 };
 
-const getWorkoutById = async (id) => {
+async function getWorkoutById(id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return null
     }
-    
-    return await Workout.findById(id);
-};
+
+    return await Workout.findById(id)
+}
+
+async function GetWorkoutIfContains(searchString) {
+    const regexPattern = new RegExp(searchString, 'i')
+
+    try {
+      const workouts = await Workout.find({ name: { $regex: regexPattern } })
+      return workouts
+    } catch (error) {
+      return null
+    }
+}
 
 // const deleteWorkout = async (id) => {
 //     const workouts = await getWorkoutById(id);
@@ -23,9 +34,10 @@ const getWorkoutById = async (id) => {
 // };
 
 module.exports = {
-    // createWorkout,
     getWorkoutById,
     getAllWorkouts,
+    GetWorkoutIfContains,
+    // createWorkout,
     // updateWorkout,
     // deleteWorkout
 }
