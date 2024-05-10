@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
+
 const workoutsController  = require("../controllers/workouts");
 
-router.get("/home", workoutsController.GetHomePage)
+router.get("/", workoutsController.GetHomePage)
 router.get("/nearme", workoutsController.GetNearMePage)
 
 router.route('/:name')
-    // .get(workoutsController.getWorkoutByName)
+    .get(workoutsController.GetWorkout)
     // .patch(workoutsController.updateWorkout)
     // .delete(workoutsController.deleteWorkout);
 
