@@ -1,0 +1,62 @@
+/* Search */
+.search-container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1%;
+}
+.input-group {
+    width: 70%;
+}
+.form-control {
+    font-size: 2rem;
+}
+
+#search-input {
+    height: 50px;
+    width: 50%;
+}
+
+#search-button {
+    height: 50px;
+    padding: 0 20px; 
+}
+
+
+/* Button for Serach and Buy */
+.btn {
+    background-color: #dc4c64;
+    color: #fff;
+    box-shadow: 0 4px 9px -4px #dc4c64;
+}
+.btn:hover {
+    background-color: #c0435b; 
+    color: #fff;
+    box-shadow: 0 6px 12px -2px #c0435b; 
+}
+.btn:active {
+    background-color: #af3a4f; 
+    color: #fff;
+    box-shadow: 0 2px 5px -1px #af3a4f; 
+}
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(220, 76, 100, 0.5); 
+}
+
+
+/* Cards */
+.card-img-top {
+    height: 200px; 
+    object-fit: cover; 
+  }
+.row {
+    --mdb-gutter-x: 1.5rem;
+    --mdb-gutter-y: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--mdb-gutter-y)* -1);
+    margin-bottom: calc(var(--mdb-gutter-y)* 1);
+    margin-right: calc(var(--mdb-gutter-x)* 5);
+    margin-left: calc(var(--mdb-gutter-x)* 5);
+}
