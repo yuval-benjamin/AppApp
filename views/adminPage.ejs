@@ -9,7 +9,8 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
       <link rel="stylesheet" href="/styles/homepage.css">
       <link rel="stylesheet" href="/styles/header-footer.css">
-      <title>AppApp Workout</title>
+      <link rel="stylesheet" href="/styles/admin-page.css">
+      <title>Admin Page</title>
    </head>
    <body>
       <!-- Navbar -->
@@ -61,45 +62,15 @@
          </nav>
       </header>
 
-      <!-- Welcome section -->
-      <div class="jumbotron text-center">
-         <h1>Welcome To Our AppApp Workouts Shop</h1>
-         <p>
-            Your go-to online shop for home fitness! Whether you're starting your
-            fitness journey or stepping up your routine, we offer a wide range of
-            workouts tailored to all levels and goals. Explore and order the perfect
-            workout with ease. Start your wellness journey with AppApp Workouts
-            today, where achieving your fitness goals is just a click away!
-         </p>
-      </div>
-
-      <!-- Search -->
-      <div class="search-container">
-        <div class="input-group">
-            <input type="search" id="search-input" class="form-control" placeholder="Search" />
-            <button id="search-button" type="button" class="btn">
-                <i class="fas fa-search"></i>   
-            </button>
-        </div>
-      </div>
-
-      <!-- Cards -->
-      <div class="row row-cols-1 row-cols-md-5 g-4">
-         <% workouts.forEach(function(workout) { %>
-         <div class="col">
-           <div class="card h-100">
-             <img src="/images/<%= workout.image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
-             <div class="card-body">
-               <h5 class="card-title"><%= workout.name %></h5>
-               <p class="card-text"><%= workout.description %></p>
-             </div>
-             <div class="card-footer">
-               <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
-             </div>
-           </div>
-         </div>
-         <% }); %>
-       </div>
+      <aside class="sidebar">
+         <ul>
+            <li><a href="#" onclick="openTab('workouts')" ><i class="fas fa-dumbbell"></i> Workouts</a></li>
+            <li><a href="#" onclick="openTab('users')"><i class="fas fa-running"></i>Users</a></li>
+            <li><a href="#" onclick="openTab('suppliers')"><i class="fas fa-truck"></i> Suppliers</a></li>
+            <li><a href="#" onclick="openTab('statistics')"><i class="fas fa-chart-bar"></i> Statistics</a></li>
+            <li><a href="#" onclick="openTab('facebook')"><i class="fab fa-facebook fa-2x" style="color: rgb(99, 98, 98);"></i> Facebook</a></li>
+        </ul>
+      </aside class="sidebar">
 
       <!-- Footer -->
       <footer class="text-white text-center text-lg-start">

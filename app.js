@@ -1,16 +1,16 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const workoutsController = require('./controllers/workouts')
-const customersController = require('./controllers/customers')
 const server = express()
 const login = require('./routes/login')
 const workouts = require('./routes/workouts')
+const admin = require('./routes/Admin')
 
 server.use(express.static('public'))
 server.set("view engine", "ejs");
 
 server.use('/login', login)
 server.use("/", workouts);
+server.use("/adminPage", admin);
 
 server.use(express.urlencoded({ extended: false }))
 

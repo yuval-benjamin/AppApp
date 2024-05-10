@@ -1,0 +1,64 @@
+/* input, select, label, a {
+    font-family: Verdana;
+    color: #333;
+    font-size: 15px; 
+} */
+
+body {
+    margin: 0;
+    font-family: Verdana;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    /* top: 50; */
+    /* left: 50; */
+    background-color: #c2bcbc;
+    padding-top: 5px;
+    margin-left: 15px;
+}
+
+.sidebar ul {
+    padding: 0;
+    /* margin: 30; */
+}
+
+.sidebar ul li {
+    padding: 40px;
+    border-bottom: 2px solid #999999;
+    /* text-align: center; */
+    display: flex;
+    /* align-items: center; */
+}
+
+.sidebar ul li:last-child {
+    border-bottom: none;
+}
+
+.sidebar ul li a {
+    color: white;
+    display: block;
+    font-size: 22px; 
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 100%;
+}
+
+.sidebar ul li a i {
+    text-decoration: none; /* Remove underline only from the icon */
+}
+
+.sidebar ul li a:hover {
+    background-color: #fee4ff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+}
