@@ -6,9 +6,21 @@ async function getAllWorkouts() {
     return workouts
 };
 
+const getWorkoutByName = async (name) => {
+    return await Workout.findById(name);
+};
+
+// const deleteWorkout = async (name) => {
+//     const workouts = await getWorkoutByName(name);
+//     if (!workouts)
+//         return null;
+//     await workouts.remove();
+//     return workouts;
+// };
+
 module.exports = {
     // createWorkout,
-    // getWorkoutById,
+    getWorkoutByName,
     getAllWorkouts,
     // updateWorkout,
     // deleteWorkout

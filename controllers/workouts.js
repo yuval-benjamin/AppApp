@@ -10,7 +10,17 @@ async function GetNearMePage(req, res){
     res.render('nearme', {workouts})
 }
 
+
+async function GetWorkout(req, res){
+    const workout = await workoutsService.getWorkoutByName(req.params.name);
+    if (!workout) {
+        return res.status(404).json({ errors: ['Workout not found'] });
+    }
+    res.json(workout);
+}
+
 module.exports = {
     GetHomePage,
-    GetNearMePage
+    GetNearMePage,
+    GetWorkout
 }
