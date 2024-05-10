@@ -85,79 +85,20 @@
 
       <!-- Cards -->
       <div class="row row-cols-1 row-cols-md-5 g-4">
+         <% workouts.forEach(function(workout) { %>
          <div class="col">
            <div class="card h-100">
              <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
              <div class="card-body">
                <h5 class="card-title"><%= workouts[0].name %></h5>
-               <p class="card-text"><%= workouts[0].description %> <%= workouts[0].description %> <%= workouts[0].description %></p>
+               <p class="card-text"><%= workouts[0].description %></p>
              </div>
              <div class="card-footer">
                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
              </div>
            </div>
          </div>
-         <div class="col">
-            <div class="card h-100">
-              <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
-              <div class="card-body">
-                <h5 class="card-title"><%= workouts[0].name %></h5>
-                <p class="card-text"><%= workouts[0].description %></p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
-              <div class="card-body">
-                <h5 class="card-title"><%= workouts[0].name %></h5>
-                <p class="card-text"><%= workouts[0].description %></p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
-              <div class="card-body">
-                <h5 class="card-title"><%= workouts[0].name %></h5>
-                <p class="card-text"><%= workouts[0].description %></p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
-              <div class="card-body">
-                <h5 class="card-title"><%= workouts[0].name %></h5>
-                <p class="card-text"><%= workouts[0].description %></p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100">
-              <img src="/images/<%= workouts[1].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
-              <div class="card-body">
-                <h5 class="card-title"><%= workouts[1].name %></h5>
-                <p class="card-text"><%= workouts[1].description %></p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
-              </div>
-            </div>
-          </div>
-         </div>
+         <% }); %>
        </div>
 
       <!-- Footer -->
