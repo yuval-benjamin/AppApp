@@ -43,4 +43,10 @@ const workoutSchema = new mongoose.Schema({
 });
 
 const Workout = mongoose.model('Workout', workoutSchema, 'workouts');
+
+// function getSearchWorkout(){
+//     const serachWorkout = document.getElementById("search-input");
+// }
+
 module.exports = Workout; // Export the Workout model
+
