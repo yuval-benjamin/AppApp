@@ -5,7 +5,38 @@ const workoutSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    description : {
+        type: String
+    },
+    time : {
+        type: Date,
+        required: true
+    },
+    location : {
+        type: String,
+        required: true
+    },
+    price : {
+        type: Number,
+        required: true
+    },
+    category : {
+        type: String,
+        required: true
+    },
+    supplier : {
+        type: String,
+        required: true
+    },
+    calories : {
+        type: String,
+        required: true
+    },
     coordinates: {
+        type: String,
+        required: true
+    },
+    image: {
         type: String,
         required: true
     }

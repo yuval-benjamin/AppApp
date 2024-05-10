@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require("../models/customers");
 
 async function login(username, password) {
     const user = await User.findOne({ _id: username, password });
