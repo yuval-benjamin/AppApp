@@ -40,9 +40,7 @@ h3 {
 .wrapper {
   min-height: 100vh;
   background-size: cover;
-  /* background-repeat: no-repeat; */
   display: flex;
-  /* align-items: center; */
 }
 
 .background-image {
