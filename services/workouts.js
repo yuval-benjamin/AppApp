@@ -7,6 +7,10 @@ async function getAllWorkouts() {
 };
 
 const getWorkoutById = async (id) => {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return null
+    }
+    
     return await Workout.findById(id);
 };
 
