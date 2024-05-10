@@ -72,6 +72,7 @@
             today, where achieving your fitness goals is just a click away!
          </p>
       </div>
+
       <!-- Search -->
       <div class="search-container">
         <div class="input-group">
@@ -87,10 +88,10 @@
          <% workouts.forEach(function(workout) { %>
          <div class="col">
            <div class="card h-100">
-             <img src="/images/<%= workouts[0].image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
+             <img src="/images/<%= workout.image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
              <div class="card-body">
-               <h5 class="card-title"><%= workouts[0].name %></h5>
-               <p class="card-text"><%= workouts[0].description %></p>
+               <h5 class="card-title"><%= workout.name %></h5>
+               <p class="card-text"><%= workout.description %></p>
              </div>
              <div class="card-footer">
                <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
