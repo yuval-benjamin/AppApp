@@ -1,7 +1,8 @@
 const express = require('express')
-const server = express()
+const mongoose = require('mongoose')
 const workoutsController = require('./controllers/workouts')
 const customersController = require('./controllers/customers')
+const server = express()
 
 server.use(express.static('public'))
 
@@ -10,26 +11,22 @@ server.get("/nearme", workoutsController.GetNearMePage)
 
 server.set("view engine", "ejs");
 server.use("/", require("./routes/login"));
-server.use("/signup", require("./routes/login"));
-server.use(express.urlencoded({ extended: false }));  
+server.use("/signup", require("./routes/login"))
+server.use(express.urlencoded({ extended: false }))
 
-server.listen(80)
+
+mongoose.connect(process.env.MONGO_URL, { 
+    useUnifiedTopology: true, 
+    useNewUrlParser: true 
+});
+
+server.listen(process.env.PORT);
+
 
 // LOGIN CODE ##########
-// require("dotenv").config();
-
-// const mongoose = require("mongoose");
-// mongoose.connect(process.env.DB_CONNECTION_STRING, { 
-//     useUnifiedTopology: true, 
-//     useNewUrlParser: true 
-// });
-
 // const session = require('express-session');
 // app.use(session({
 //     secret: 'foo',    
 //     saveUninitialized: false,
 //     resave: false
 // }))
-
-
-// app.listen(process.env.PORT);
