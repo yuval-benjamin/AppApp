@@ -4,7 +4,7 @@ input, select, label, a {
   font-size: 15px; 
 }
 
-.signup-link {
+.register-link {
   display: inline-block;
   padding: 10px;
   width: 280px;
@@ -20,7 +20,7 @@ input, select, label, a {
   font-size: 17px;
 }
 
-.signup-link:hover {
+.register-link:hover {
   background-color: #f7b1d6;
 }
 
