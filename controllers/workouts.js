@@ -1,12 +1,12 @@
-const workoutsModel = require('../models/workouts')
+const workoutsService = require('../services/workouts')
 
-function GetHomePage(req, res){
-    const workouts = workoutsModel.getAllWorkouts()
+async function GetHomePage(req, res){
+    const workouts = await workoutsService.getAllWorkouts()
     res.render('home', {workouts})
 }
 
-function GetNearMePage(req, res){
-    const workouts = workoutsModel.getAllWorkouts()
+async function GetNearMePage(req, res){
+    const workouts = await workoutsService.getAllWorkouts()
     res.render('nearme', {workouts})
 }
 
