@@ -6,12 +6,12 @@ async function getAllWorkouts() {
     return workouts
 };
 
-const getWorkoutByName = async (name) => {
-    return await Workout.findById(name);
+const getWorkoutById = async (id) => {
+    return await Workout.findById(id);
 };
 
-// const deleteWorkout = async (name) => {
-//     const workouts = await getWorkoutByName(name);
+// const deleteWorkout = async (id) => {
+//     const workouts = await getWorkoutById(id);
 //     if (!workouts)
 //         return null;
 //     await workouts.remove();
@@ -20,7 +20,7 @@ const getWorkoutByName = async (name) => {
 
 module.exports = {
     // createWorkout,
-    getWorkoutByName,
+    getWorkoutById,
     getAllWorkouts,
     // updateWorkout,
     // deleteWorkout
