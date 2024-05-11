@@ -4,6 +4,7 @@
   "main": "app.js",
   "scripts": {
     "start": "dotenv -e ./config/.env.local node app.js",
+    "prod": "dotenv -e ./config/.env.prod node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
