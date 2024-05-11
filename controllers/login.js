@@ -16,7 +16,7 @@ function loginForm(req, res) {
 }
 
 function registerForm(req, res) {
-  res.render("signup", {}) 
+  res.render("register", {}) 
 }
 
 // function logout(req, res) {

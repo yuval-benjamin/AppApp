@@ -39,6 +39,10 @@ const workoutSchema = new mongoose.Schema({
     image: {
         type: String,
         required: true
+    },
+    weather: {
+        type: String,
+        required: true
     }
 });
 

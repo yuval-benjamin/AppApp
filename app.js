@@ -3,18 +3,21 @@ const mongoose = require('mongoose')
 const workoutsController = require('./controllers/workouts')
 const customersController = require('./controllers/customers')
 const server = express()
+const login = require('./routes/login')
+const workouts = require('./routes/workouts')
+const search = require('./routes/search')
 
 server.use(express.static('public'))
+server.set("view engine", "ejs")
 
-server.get("/home", workoutsController.GetHomePage)
-server.get("/nearme", workoutsController.GetNearMePage)
+// Redirects to all route files
+server.use("/", workouts)
+server.use('/login', login)
+server.use('/search', search)
 
-server.set("view engine", "ejs");
-server.use("/", require("./routes/login"));
-server.use("/signup", require("./routes/login"))
 server.use(express.urlencoded({ extended: false }))
 
-
+// Connecting to the mongoDB
 mongoose.connect(process.env.MONGO_URL, { 
     useUnifiedTopology: true, 
     useNewUrlParser: true 
