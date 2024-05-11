@@ -1,15 +1,19 @@
-const Workout = require('../models/workouts');
+const Customer = require('../models/customers');
 const mongoose = require('mongoose')
 
-async function getAllWorkouts() {
-    const workouts = await Workout.find()
-    return workouts
+async function getAllCustomers() {
+    const customers = await Customer.find()
+    return customers
+}
+
+async function getCustomerById(id) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return null
+    }
+    return await Customer.findById(id)
 }
 
 module.exports = {
-    // createWorkout,
-    // getWorkoutById,
-    getAllWorkouts,
-    // updateWorkout,
-    // deleteWorkout
+    getAllCustomers,
+    getCustomerById
 }

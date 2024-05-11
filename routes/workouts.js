@@ -6,7 +6,6 @@ const customersController  = require("../controllers/customers")
 
 router.get("/", workoutsController.GetHomePage)
 router.get("/nearme", workoutsController.GetNearMePage)
-router.get("/cart", customersController.GetCartPage)
 
 router.route('/:id')
     .get(workoutsController.GetWorkout)

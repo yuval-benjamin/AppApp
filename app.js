@@ -6,6 +6,7 @@ const server = express()
 const login = require('./routes/login')
 const workouts = require('./routes/workouts')
 const search = require('./routes/search')
+const customers = require('./routes/customers')
 
 server.use(express.static('public'))
 server.set("view engine", "ejs")
@@ -14,6 +15,7 @@ server.set("view engine", "ejs")
 server.use("/", workouts)
 server.use('/login', login)
 server.use('/search', search)
+server.use('/cart', customers)
 
 server.use(express.urlencoded({ extended: false }))
 
