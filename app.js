@@ -4,16 +4,21 @@ const server = express()
 const login = require('./routes/login')
 const workouts = require('./routes/workouts')
 const admin = require('./routes/Admin')
+const search = require('./routes/search') // search change
 
 server.use(express.static('public'))
-server.set("view engine", "ejs");
+server.set("view engine", "ejs")
 
+// Redirects to all route files
+server.use("/", workouts)
 server.use('/login', login)
 server.use("/", workouts);
 server.use("/adminPage", admin);
+server.use('/search', search) // search change
 
 server.use(express.urlencoded({ extended: false }))
 
+// Connecting to the mongoDB
 mongoose.connect(process.env.MONGO_URL, { 
     useUnifiedTopology: true, 
     useNewUrlParser: true 
