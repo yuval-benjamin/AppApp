@@ -8,4 +8,9 @@ router.get("/", workoutsController.GetHomePage)
 router.get("/nearme", workoutsController.GetNearMePage)
 router.get("/cart", customersController.GetCartPage)
 
+router.route('/:id')
+    .get(workoutsController.GetWorkout)
+    // .patch(workoutsController.updateWorkout)
+    // .delete(workoutsController.deleteWorkout);
+
 module.exports = router;
