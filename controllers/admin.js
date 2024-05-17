@@ -2,7 +2,7 @@
 const AdminService = require("../services/admin")
 
 async function GetAdminPage(req, res){
-    res.render("adminpage", {})
+    res.render("adminPage", {})
 }
 
 module.exports = {
