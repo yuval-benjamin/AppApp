@@ -1,8 +1,8 @@
 
-const AdminService = require("../services/Admin")
+const AdminService = require("../services/admin")
 
 async function GetAdminPage(req, res){
-    res.render("adminPage", {})
+    res.render("adminpage", {})
 }
 
 module.exports = {

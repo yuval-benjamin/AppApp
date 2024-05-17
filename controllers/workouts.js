@@ -13,7 +13,7 @@ async function GetNearMePage(req, res){
 
 async function GetAllWorkouts(req, res){
     const workout = await workoutsService.getAllWorkouts()
-    res.render("adminpage", {workout})
+    res.render("adminPage", {workout})
 }
 
 // This function is only to show the use of the getWorkoutById function - CAN DELETE
@@ -37,5 +37,6 @@ module.exports = {
     GetHomePage,
     GetNearMePage,
     GetWorkout,
-    SearchWorkout
+    SearchWorkout,
+    GetAllWorkouts
 }
