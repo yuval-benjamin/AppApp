@@ -30,7 +30,11 @@
 .dropdown-toggle {
     cursor: pointer; 
     display: flex;
+<<<<<<< HEAD
     justify-content: center; /* Centers content horizontally */
+=======
+    justify-content: center; 
+>>>>>>> main
     align-items: center; 
 }
 
