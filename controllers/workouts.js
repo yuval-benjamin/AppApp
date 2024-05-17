@@ -11,6 +11,11 @@ async function GetNearMePage(req, res){
     res.render("nearme", {workouts})
 }
 
+async function GetAllWorkouts(req, res){
+    const workout = await workoutsService.getAllWorkouts()
+    res.render("adminpage", {workout})
+}
+
 // This function is only to show the use of the getWorkoutById function - CAN DELETE
 async function GetWorkout(req, res){
     const workout = await workoutsService.getWorkoutById(req.params.id)

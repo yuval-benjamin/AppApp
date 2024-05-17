@@ -19,7 +19,18 @@ body {
 .form-control {
     font-size: 2rem;
 }
-
+.weather {
+    font-size: 2rem;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    width: 80%;
+}
 #search-input {
     height: 50px;
     width: 50%;
