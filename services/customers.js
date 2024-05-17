@@ -14,7 +14,19 @@ async function getCustomerById(id) {
     return await Customer.findById(id)
 }
 
+async function deleteFromCart(customerId, workoutId) {
+    try {
+        const customer = await Customer.findById(customerId)
+        customer.cart = customer.cart.filter(item => item.workout_id.toString() !== workoutId);
+        await customer.save();
+        return customer;
+    } catch (error) {
+        throw new Error('Failed to delete item from cart: ' + error.message);
+    }
+}
+
 module.exports = {
     getAllCustomers,
-    getCustomerById
+    getCustomerById,
+    deleteFromCart
 }
