@@ -28,29 +28,40 @@
     width: 50%;
 }
 
-#search-button {
+#search-button ,.dropdown-toggle {
     height: 50px;
     padding: 0 20px; 
 }
 
+.glyphicon {
+    font-size: 18px; 
+    justify-content: center;
+    align-items: center;
+}
+
+#filterDropdown {
+    margin-left: 10px;
+}
+
+
 
 /* Button for Serach and Buy */
-.btn {
+.btn, #filterDropdown{
     background-color: #dc4c64;
     color: #fff;
     box-shadow: 0 4px 9px -4px #dc4c64;
 }
-.btn:hover {
+.btn:hover, #filterDropdown:hover {
     background-color: #c0435b; 
     color: #fff;
     box-shadow: 0 6px 12px -2px #c0435b; 
 }
-.btn:active {
+.btn:active, #filterDropdown:active {
     background-color: #af3a4f; 
     color: #fff;
     box-shadow: 0 2px 5px -1px #af3a4f; 
 }
-.btn:focus {
+.btn:focus, #filterDropdown:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(220, 76, 100, 0.5); 
 }

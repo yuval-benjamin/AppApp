@@ -52,7 +52,7 @@
                      data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fas fa-user-circle fa-2x"></i>
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar" style="position: absolute; top: 100%; left: 0;">
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
                      <li><a class="dropdown-item" href="#">My profile</a></li>
                      <li><a class="dropdown-item" href="#">My orders</a></li>
                      <li><a class="dropdown-item" href="#">Logout</a></li>
@@ -82,14 +82,46 @@
       <script src="js/weather.js"></script>
 
       <!-- Search -->
-      <div class="search-container">
-        <div class="input-group">
-            <input type="search" id="search-input" class="form-control" placeholder="Search" />
-            <button id="search-button" type="button" class="btn">
-                <i class="fas fa-search"></i>   
-            </button>
-        </div>
-      </div>
+      <form class="search-container">
+         <div class="input-group">
+             <input type="search" id="search-input" class="form-control" placeholder="Search" />
+             <button id="search-button" type="submit" class="btn">
+                 <i class="fas fa-search"></i>   
+             </button>
+             <div class="dropdown">
+               <a class="dropdown-toggle btn btn-info btn-lg"
+                  href="#" id="filterDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                     <span class="glyphicon glyphicon-sort-by-attributes-alt"></span> 
+               </a>
+               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
+                  <li><a class="dropdown-item" href="#">Price</a></li>
+                  <li><a class="dropdown-item" href="#">Calories</a></li>
+               </ul>
+            </div>
+             <div class="dropdown">
+                 <button class="btn btn-info btn-lg dropdown-toggle" type="button"
+                         id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                     <i class="glyphicon glyphicon-filter"></i>
+                 </button>
+                 <ul class="dropdown-menu" aria-labelledby="filterDropdown">
+                     <li><a class="dropdown-item" href="#">
+                         <input type="checkbox" class="form-check-input" id="categoryCheck">
+                         <label class="form-check-label" for="categoryCheck">Category</label>
+                     </a></li>
+                     <li><a class="dropdown-item" href="#">
+                         <input type="checkbox" class="form-check-input" id="caloriesCheck">
+                         <label class="form-check-label" for="caloriesCheck">Calories</label>
+                     </a></li>
+                     <li><a class="dropdown-item" href="#">
+                         <input type="checkbox" class="form-check-input" id="indoorCheck">
+                         <label class="form-check-label" for="indoorCheck">Indoor</label>
+                     </a></li>
+                 </ul>
+             </div>
+         </div>
+     </form>
+     
 
       <!-- Cards -->
       <div class="row row-cols-1 row-cols-md-5 g-4">
