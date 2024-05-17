@@ -31,13 +31,10 @@ body {
     font-weight: 400;
 }
 
-.buttons {
+.delete-btn {
     position: relative;
     padding-top: 30px;
     margin-right: 60px;
-}
-
-.delete-btn {
     display: inline-block;
     Cursor: pointer;
     width: 18px;
@@ -52,10 +49,6 @@ body {
     animation-fill-mode: forwards;
 }
 
-.image {
-    margin-right: 50px;
-}
-   
 .description {
     padding-top: 10px;
     margin-right: 60px;
@@ -79,35 +72,19 @@ body {
     color: #86939E;
 }
 
-.quantity {
-    padding-top: 20px;
-    margin-right: 60px;
+.image {
+    width: 100px; 
+    height: 100px;
+    overflow: hidden;
+    margin-right: 50px;
 }
 
-.quantity input {
-    border: none;
-    text-align: center;
-    width: 32px;
-    font-size: 16px;
-    color: #43484D;
-    font-weight: 300;
-}
-   
-button[class*=btn] {
-    width: 30px;
-    height: 30px;
-    background-color: #E1E8EE;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-}
-
-.minus-btn img, .plus-btn img {
+.image img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
     margin-bottom: 3px;
-}
-   
-button:focus, input:focus {
-    outline:0;
+    margin: auto;
 }
 
 .total-price {
@@ -129,7 +106,7 @@ button:focus, input:focus {
 
 .delete-btn {
     display: inline-flex;
-    align-items: center; /* Align icon in the center */
+    align-items: center;
 }
   
 .delete-btn button {
@@ -142,7 +119,7 @@ button:focus, input:focus {
     align-items: center;
     width: 30px;
     height: 30px;
-  }
+}
   
 .delete-btn button i {
     font-size: 18px;

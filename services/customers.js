@@ -8,7 +8,8 @@ async function getAllCustomers() {
 
 async function getCustomerById(id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return null
+        console.log("ObjectID is not valid")
+        return null
     }
     return await Customer.findById(id)
 }
