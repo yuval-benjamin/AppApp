@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 async function getAllWorkouts() {
     const workouts = await Workout.find()
     return workouts
-};
+}
 
 async function getWorkoutById(id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
