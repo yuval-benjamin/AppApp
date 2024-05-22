@@ -1,22 +1,40 @@
 .legend {
-    margin-left: 20px; /* Adjust margin as needed */
+    margin-left: 20px;
 }
 .legend-item {
     display: flex;
     align-items: center;
 }
 .legend-item span {
-    margin-left: 5px; /* Adjust margin as needed */
+    margin-left: 5px;
 }
 
 .Female {
     width: 10px; 
     height: 10px; 
-    background-color: #ff7f0e;
+    background-color: #ff0ed352;
 }
 
 .Male {
     width: 10px;
     height: 10px;
-    background-color: #1f77b4;
+    background-color: #62b4ee;
+}
+
+.pie-label {
+    text-anchor: middle;
+    font-size: 16px;
+    fill: #595959;
+}
+
+.bar-chart-container {
+    width: 80%; /* Adjust width as needed */
+    height: 80%; /* Adjust height as needed */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.bar-chart-container svg {
+    display: block;
 }

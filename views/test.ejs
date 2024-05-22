@@ -3,25 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pie Chart of Female vs. Male</title>
+    <title>Customer Charts</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <link rel="stylesheet" text="text/css" href="../styles/charts.css">
+    <link rel="stylesheet" href="/styles/charts.css">
 </head>
 <body>
+    <!-- Pie Chart -->
+    <h2>Male Vs. Female customers amount</h2>
     <div id="pie-chart"></div>
-    
     <!-- Legend -->
     <div class="legend">
         <div class="legend-item">
             <div class="Female"></div>
-            <span>Female</span>
+            <span>Female Count</span>
         </div>
         <div class="legend-item">
             <div class="Male"></div>
-            <span>Male</span>
+            <span>Male Count</span>
         </div>
     </div>
+    <script>
+        // Make the customers globally accessible
+        const customers = <%- JSON.stringify(customers) %>;
+        const filteredCustomers = customers.map(customer => ({
+            gender: customer.gender,
+            birthDate: customer.birthDate
+        }));
+        window.customers = filteredCustomers;
+    </script>
+    <script src="/js/chart1.js"></script>
 
-    <script src="js/chart1.js"></script>
+    <!-- Bar Chart -->
+    <div class="bar-chart-container" id="bar-chart-container"></div>
+    <script src="/js/chart2.js"></script>
 </body>
 </html>

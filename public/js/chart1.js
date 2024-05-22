@@ -1,10 +1,21 @@
-// Sample data (replace with your actual data)
+let female_count = 0
+let male_count = 0
+
+// Get male and female amount from DB
+customers.forEach(customer => {
+    if (customer.gender == "Female") {
+        female_count = female_count + 1 
+    } else {
+        male_count = male_count + 1
+    }
+});
+
 const data = [
-    { gender: "Female", count: 40 },
-    { gender: "Male", count: 20 }
+    { gender: "Female", count: female_count },
+    { gender: "Male", count: male_count }
 ];
 
-// Set up SVG dimensions
+// Set SVG dimensions
 const width = 400;
 const height = 400;
 const radius = Math.min(width, height) / 2;
@@ -14,8 +25,8 @@ const svg = d3.select("#pie-chart")
     .append("svg")
     .attr("width", width)
     .attr("height", height)
-    .append("g")
-    .attr("transform", `translate(${width / 2}, ${height / 2})`);
+    .append("g") // This means to group all chart elements together 
+    .attr("transform", `translate(${width / 2}, ${height / 2})`); //Move the group around the screen
 
 // Create a pie generator
 const pie = d3.pie()
@@ -30,7 +41,7 @@ const arc = d3.arc()
 // Define colors for pie segments
 const color = d3.scaleOrdinal()
     .domain(data.map(d => d.gender))
-    .range(["#ff7f0e", "#1f77b4"]); // Example colors (replace with your own)
+    .range(["#ff0ed352", "#62b4ee"]); 
 
 // Create pie chart
 const arcs = svg.selectAll("arc")
@@ -42,3 +53,9 @@ const arcs = svg.selectAll("arc")
 arcs.append("path")
     .attr("d", arc)
     .attr("fill", d => color(d.data.gender));
+
+// Add labels with the count on the pie
+arcs.append("text")
+    .attr("transform", d => `translate(${arc.centroid(d)})`)
+    .attr("class", "pie-label")
+    .text(d => d.data.count);
