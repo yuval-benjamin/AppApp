@@ -1,5 +1,3 @@
-// barChartRace.js
-
 document.addEventListener("DOMContentLoaded", function() {
     // Function to calculate ages from birth dates
     function calculateAges(birthDates) {
@@ -59,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const xAxis = g => g
             .attr("transform", `translate(0,${chart_height})`)
-            .call(d3.axisBottom(x).ticks(chart_width / 80))
+            .call(d3.axisBottom(x).ticks(d3.max(data, d => d.count)).tickFormat(d3.format("d")))
             .call(g => g.select(".domain").remove());
 
         const yAxis = g => g
@@ -81,6 +79,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
         svg.append("g")
             .call(yAxis);
+
+        // Add labels for the x and y axes
+        svg.append("text")
+            .attr("class", "x-axis-label")
+            .attr("text-anchor", "end")
+            .attr("x", chart_width)
+            .attr("y", chart_height + margin.bottom - 10)
+            .text("Count");
+
+        svg.append("text")
+            .attr("class", "y-axis-label")
+            .attr("text-anchor", "end")
+            .attr("x", -margin.top + 20)
+            .attr("y", -margin.left + 30)
+            .attr("dy", ".75em")
+            .text("Age");
     }
 
     // Get filtered customers data from the global window object

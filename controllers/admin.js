@@ -9,7 +9,7 @@ async function GetAdminPage(req, res){
 
 async function GetChartsPage(req, res){
     const customers = await customersService.getAllCustomers()
-    res.render("test", { customers })
+    res.render("charts", { customers })
 }
 
 module.exports = {

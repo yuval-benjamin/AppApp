@@ -26,7 +26,7 @@ const svg = d3.select("#pie-chart")
     .attr("width", width)
     .attr("height", height)
     .append("g") // This means to group all chart elements together 
-    .attr("transform", `translate(${width / 2}, ${height / 2})`); //Move the group around the screen
+    .attr("transform", `translate(${width / 1.12}, ${height / 2})`); //Move the group around the screen
 
 // Create a pie generator
 const pie = d3.pie()

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts Display</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" text="text/css" href="/styles/charts.css">
+</head>
+<body>
+
+    <!-- Script to pass filtered customer data to the window object -->
+    <script>
+        const customers = <%- JSON.stringify(customers) %>;
+        const filteredCustomers = customers.map(customer => ({
+            gender: customer.gender,
+            birthDate: customer.birthDate
+        }));
+        window.customers = filteredCustomers;
+    </script>
+
+    <!-- Pie chart -->
+    <div class="pie-chart-container">
+        <h2>Male Vs. Female Customers Amount</h2>
+        <div class="chart-container" id="pie-chart"></div>
+        
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="Female"></div>
+                <span>Female Count</span>
+            </div>
+            <div class="legend-item">
+                <div class="Male"></div>
+                <span>Male Count</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bar chart -->
+    <br>
+    <div class="bar-chart-container">
+        <h2>Customer Age Distribution</h2>
+        <div class="chart-container" id="bar-chart-container"></div>
+    </div>
+
+
+    <!-- Include the JavaScript files for the charts -->
+    <script src="/js/pieChart.js"></script>
+    <script src="/js/barChart.js"></script>
+    
+</body>
+</html>

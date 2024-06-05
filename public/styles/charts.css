@@ -1,10 +1,13 @@
+/* Legend styles */
 .legend {
     margin-left: 20px;
 }
+
 .legend-item {
     display: flex;
     align-items: center;
 }
+
 .legend-item span {
     margin-left: 5px;
 }
@@ -27,14 +30,29 @@
     fill: #595959;
 }
 
-.bar-chart-container {
-    width: 80%; /* Adjust width as needed */
-    height: 80%; /* Adjust height as needed */
+.pie-chart-container {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-.bar-chart-container svg {
-    display: block;
+.bar-chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    width: 100%;
+}
+
+.chart-container {
+    width: 50%; 
+    height: 55vh;
+    margin: 20px 0;
+}
+
+.chart-container svg {
+    width: 100%;
+    height: 100%;
 }
