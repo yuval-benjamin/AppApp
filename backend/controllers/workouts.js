@@ -28,9 +28,15 @@ async function SearchWorkout(req, res){
     res.render("home", {workouts})
 }
 
+const getAllWorkouts = async (req, res) => {
+    const workouts = await workoutsService.getAllWorkouts();
+    res.json(workouts);
+};
+
 module.exports = {
     GetHomePage,
     GetNearMePage,
     GetWorkout,
-    SearchWorkout
+    SearchWorkout,
+    getAllWorkouts
 }

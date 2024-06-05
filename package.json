@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "dotenv -e ./config/.env.local node app.js",
+    "front": "dotenv -e ./config/.env.local node frontend/app.js",
+    "back": "dotenv -e ./config/.env.local node backend/app.js",
     "prod": "dotenv -e ./config/.env.prod node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

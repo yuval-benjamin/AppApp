@@ -123,6 +123,11 @@
      </form>
      
 
+      <script type="text/html" id="articleTemplate">
+         <li>{title} <b>{published}</b><img src="{img}"></li>
+      </script>
+
+
       <!-- Cards -->
       <div class="row row-cols-1 row-cols-md-5 g-4">
          <% workouts.forEach(function(workout) { %>
@@ -139,7 +144,7 @@
            </div>
          </div>
          <% }); %>
-       </div>
+      </div>
 
       <!-- Footer -->
       <footer class="text-white text-center text-lg-start">
