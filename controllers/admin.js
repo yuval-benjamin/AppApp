@@ -12,7 +12,12 @@ async function GetChartsPage(req, res){
     res.render("charts", { customers })
 }
 
+async function GetFacebookPage(req, res){
+    res.render("facebook", {})
+}
+
 module.exports = {
     GetAdminPage,
     GetChartsPage,
+    GetFacebookPage
 }
