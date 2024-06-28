@@ -1,21 +1,22 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const workoutsController = require('./controllers/workouts')
-const customersController = require('./controllers/customers')
 const server = express()
 const login = require('./routes/login')
 const workouts = require('./routes/workouts')
-const search = require('./routes/search')
 const customers = require('./routes/customers')
+const admin = require('./routes/admin')
+const search = require('./routes/search') // search change
 
 server.use(express.static('public'))
 server.set("view engine", "ejs")
 
 // Redirects to all route files
-server.use("/", workouts)
+
 server.use('/login', login)
 server.use('/search', search)
 server.use('/cart', customers)
+server.use("/adminPage", admin);
+server.use("/", workouts)
 
 server.use(express.urlencoded({ extended: false }))
 
