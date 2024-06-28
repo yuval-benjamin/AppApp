@@ -9,8 +9,8 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
       <link rel="stylesheet" href="/styles/homepage.css">
       <link rel="stylesheet" href="/styles/header-footer.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-      <title>AppApp Workout</title>
+      <link rel="stylesheet" href="/styles/admin-page.css">
+      <title>Admin Page</title>
    </head>
    <body>
       <!-- Navbar -->
@@ -52,7 +52,7 @@
                      data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fas fa-user-circle fa-2x"></i>
                   </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar" style="position: absolute; top: 100%; left: 0;">
                      <li><a class="dropdown-item" href="#">My profile</a></li>
                      <li><a class="dropdown-item" href="#">My orders</a></li>
                      <li><a class="dropdown-item" href="#">Logout</a></li>
@@ -62,84 +62,15 @@
          </nav>
       </header>
 
-      <!-- Welcome section -->
-      <div class="jumbotron text-center welcome">
-         <h1>Welcome To Our AppApp Workouts Shop</h1>
-         <p>
-            Your go-to online shop for home fitness! Whether you're starting your
-            fitness journey or stepping up your routine, we offer a wide range of
-            workouts tailored to all levels and goals. Explore and order the perfect
-            workout with ease. Start your wellness journey with AppApp Workouts
-            today, where achieving your fitness goals is just a click away!
-         </p>
-      </div>
-
-      <!-- Weather info-->
-      <div class="weather">
-         <p id="weather-info">Fetching weather information...</p>
-      </div>
-
-      <script src="js/weather.js"></script>
-
-      <!-- Search -->
-      <div class="search-container">
-         <form class="input-group" action="/search" method="post">
-             <input type="search" id="search-input" name="query" class="form-control" placeholder="Search"/>
-             <button id="search-button" type="submit" class="btn">
-                 <i class="fas fa-search"></i>   
-             </button>
-             <div class="dropdown">
-               <a class="dropdown-toggle btn btn-info btn-lg"
-                  href="#" id="filterDropdown" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                     <span class="glyphicon glyphicon-sort-by-attributes-alt"></span> 
-               </a>
-               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
-                  <li><a class="dropdown-item" href="#">Price</a></li>
-                  <li><a class="dropdown-item" href="#">Calories</a></li>
-               </ul>
-            </div>
-             <div class="dropdown">
-                 <button class="btn btn-info btn-lg dropdown-toggle" type="button"
-                         id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                     <i class="glyphicon glyphicon-filter"></i>
-                 </button>
-                 <ul class="dropdown-menu" aria-labelledby="filterDropdown">
-                     <li><a class="dropdown-item" href="#">
-                         <input type="checkbox" class="form-check-input" id="categoryCheck">
-                         <label class="form-check-label" for="categoryCheck">Category</label>
-                     </a></li>
-                     <li><a class="dropdown-item" href="#">
-                         <input type="checkbox" class="form-check-input" id="caloriesCheck">
-                         <label class="form-check-label" for="caloriesCheck">Calories</label>
-                     </a></li>
-                     <li><a class="dropdown-item" href="#">
-                         <input type="checkbox" class="form-check-input" id="indoorCheck">
-                         <label class="form-check-label" for="indoorCheck">Indoor</label>
-                     </a></li>
-                 </ul>
-             </div>
-         </form>
-      </div>
-     
-
-      <!-- Cards -->
-      <div class="row row-cols-1 row-cols-md-5 g-4">
-         <% workouts.forEach(function(workout) { %>
-         <div class="col">
-           <div class="card h-100">
-             <img src="/images/<%= workout.image %>" class="card-img-top img-fluid" alt="Skyscrapers" />
-             <div class="card-body">
-               <h5 class="card-title"><%= workout.name %></h5>
-               <p class="card-text"><%= workout.description %></p>
-             </div>
-             <div class="card-footer">
-               <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
-             </div>
-           </div>
-         </div>
-         <% }); %>
-       </div>
+      <aside class="sidebar">
+         <ul>
+            <li><a href="#" onclick="openTab('workouts')" ><i class="fas fa-dumbbell"></i> Workouts</a></li>
+            <li><a href="#" onclick="openTab('users')"><i class="fas fa-running"></i>Users</a></li>
+            <li><a href="#" onclick="openTab('suppliers')"><i class="fas fa-truck"></i> Suppliers</a></li>
+            <li><a href="#" onclick="openTab('statistics')"><i class="fas fa-chart-bar"></i> Statistics</a></li>
+            <li><a href="#" onclick="openTab('facebook')"><i class="fab fa-facebook fa-2x" style="color: rgb(99, 98, 98);"></i> Facebook</a></li>
+        </ul>
+      </aside class="sidebar">
 
       <!-- Footer -->
       <footer class="text-white text-center text-lg-start">
