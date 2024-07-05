@@ -1,14 +1,21 @@
 const express = require("express");
+const path = require('path').resolve(__dirname, '..')
 const router = express.Router();
 
 const workoutsController  = require("../controllers/workouts")
 const customersController  = require("../controllers/customers")
 
-router.get("/", workoutsController.GetHomePage)
+router.get("/", function(req, res) {
+    res.sendFile("public/home.html", { root: path });
+});
+
 router.get("/nearme", workoutsController.GetNearMePage)
 
-router.route('/:id')
-    .get(workoutsController.GetWorkout)
+router.get("/workouts", workoutsController.GetAllWorkouts)
+
+router.get("/:workout", workoutsController.SearchWorkout)
+// router.route('/:id')
+//     .get(workoutsController.GetWorkout)
     // .patch(workoutsController.updateWorkout)
     // .delete(workoutsController.deleteWorkout);
 
