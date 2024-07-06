@@ -2,9 +2,10 @@
 const AdminService = require("../services/admin")
 const customersService = require('../services/customers')
 const workoutsService = require('../services/workouts')
+const path = require('path').resolve(__dirname, '..')
 
 async function GetAdminPage(req, res){
-    res.render("adminPage", {})
+    res.sendFile("public/views/adminPage.html", { root: path });
 }
 
 async function GetChartsPage(req, res){
@@ -13,7 +14,8 @@ async function GetChartsPage(req, res){
 }
 
 async function GetFacebookPage(req, res){
-    res.render("facebook", {})
+    // res.render("facebook", {})
+    res.sendFile("public/views/facebook.html", { root: path });
 }
 
 module.exports = {

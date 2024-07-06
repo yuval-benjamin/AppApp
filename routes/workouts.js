@@ -6,10 +6,8 @@ const workoutsController  = require("../controllers/workouts")
 const customersController  = require("../controllers/customers")
 
 router.get("/", function(req, res) {
-    res.sendFile("public/home.html", { root: path });
+    res.sendFile("public/views/home.html", { root: path });
 });
-
-router.get("/nearme", workoutsController.GetNearMePage)
 
 router.get("/workouts", workoutsController.GetAllWorkouts)
 

@@ -1,12 +1,6 @@
 const workoutsService = require('../services/workouts')
 const mongoose = require('mongoose')
 
-
-async function GetNearMePage(req, res){
-    const workouts = await workoutsService.getAllWorkouts()
-    res.render("nearme", {workouts})
-}
-
 async function GetAllWorkouts(req, res){
     const workouts = await workoutsService.getAllWorkouts()
     res.json(workouts);
@@ -27,7 +21,6 @@ async function SearchWorkout(req, res){
 }
 
 module.exports = {
-    GetNearMePage,
     GetWorkout,
     SearchWorkout,
     GetAllWorkouts

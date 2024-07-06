@@ -3,7 +3,7 @@ document.getElementById('postButton').addEventListener('click', function() {
     fetch('https://graph.facebook.com/v12.0/335781382944543/feed', {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer {ACCESS_TOKEN}'
+            'Authorization': 'Bearer ' + process.env.FACEBOOK_TOKEN
         },
         body: JSON.stringify({ message: message })
     })

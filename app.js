@@ -7,10 +7,9 @@ const login = require('./routes/login')
 const workouts = require('./routes/workouts')
 const customers = require('./routes/customers')
 const admin = require('./routes/admin')
-const search = require('./routes/search') // search change
+const nearMe = require('./routes/nearMe')
 
 server.use(express.static('public'))
-// server.set("view engine", "ejs")
 server.use(cors());
 server.use(bodyParser.urlencoded({extended : true}));
 server.use(express.json());
@@ -19,9 +18,9 @@ server.use(express.json());
 // Redirects to all route files
 
 server.use('/login', login)
-server.use('/search', search)
 server.use('/cart', customers)
 server.use("/adminPage", admin);
+server.use("/nearMe", nearMe);
 server.use("/", workouts)
 
 server.use(express.urlencoded({ extended: false }))
