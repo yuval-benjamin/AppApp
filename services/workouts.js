@@ -25,6 +25,11 @@ async function GetWorkoutIfContains(searchString) {
     }
 }
 
+// async function createWorkout() {
+//   const workouts = await Workout.find()
+//   return workouts
+// }
+
 // const deleteWorkout = async (id) => {
 //     const workouts = await getWorkoutById(id);
 //     if (!workouts)
@@ -40,4 +45,6 @@ module.exports = {
     // createWorkout,
     // updateWorkout,
     // deleteWorkout
+    // Searchworkout
+    // listWorkouts
 }
