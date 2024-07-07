@@ -77,11 +77,14 @@
  
  
  /* Footer */
-  footer {
+footer {
     padding-top: 20px;
-    margin-top: 1%;
     background: linear-gradient(to right, #cf2f54, #ff6c8e);
+    position: fixed; /* Fixed position to keep it at the bottom */
+    bottom: 0;
+    width: 100%;
 }
-  #second-footer {
-    background-color: #cf2f54
-  }
+
+#second-footer {
+    background-color: #cf2f54;
+}
