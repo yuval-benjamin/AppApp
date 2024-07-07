@@ -77,10 +77,9 @@
  
  
  /* Footer */
-footer {
+  footer {
     padding-top: 20px;
     background: linear-gradient(to right, #cf2f54, #ff6c8e);
-    position: fixed; /* Fixed position to keep it at the bottom */
     bottom: 0;
     width: 100%;
 }
