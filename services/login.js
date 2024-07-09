@@ -1,14 +1,19 @@
 const User = require("../models/customers");
 
 async function login(username, password) {
-    const user = await User.findOne({ _id: username, password });
+    const user = await User.findOne({ username, password });
     return user != null
 }
 
-async function register(username, password) {
+async function register(firstName , lastName , username , email , gender , birthDate , password) {
 
     const user = new User({
-        _id: username,
+        firstName,
+        lastName,
+        username,
+        email,
+        gender,
+        birthDate,
         password
     });
 

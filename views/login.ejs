@@ -9,14 +9,15 @@
 		<div class="wrapper">
 			<img src="images/workout-background.png" class="background-image" alt="background image">
 			<div class="inner">
-				<form action="">
+				<form action="/login" method="post">
 					<h3>Sign In</h3>
-					<input type="text" placeholder="Username" class="form-control">
-					<input type="password" placeholder="Password" class="form-control">
-					<a href="/" class="button">Sign In</a>
-					<a href="/login/register" class="register-link">Not our friend yet? Sign up</a>	
+					<input name="username" type="text" placeholder="Username" class="form-control">
+					<input name="password" type="password" placeholder="Password" class="form-control">
+					<button type="submit" class="button">Sign In</button>
+					<a href="/register" class="register-link">Not our friend yet? Register</a>	
 				</form>
 			</div>
 		</div>
 	</body>
 </html>
+
