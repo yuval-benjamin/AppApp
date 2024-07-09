@@ -31,6 +31,9 @@ const customerSchema = new mongoose.Schema({
     },
     cart: {
         type: Array
+    },
+    isAdmin: {
+        type: Boolean
     }
 });
 

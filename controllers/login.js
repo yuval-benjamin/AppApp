@@ -11,7 +11,8 @@ function isLoggedIn(req, res, next) {
 
 async function GetHomePage(req, res){
   const workouts = await workoutsService.getAllWorkouts()
-  res.render("home", {workouts , username: req.session.username, firstName: req.session.firstName})
+  const isAdmin = await customersService.isAdmin(req.session.username);
+  res.render("home", {workouts , username: req.session.username, firstName: req.session.firstName, isAdmin})
 }
 
 function loginForm(req, res) { res.render("login", {}) }

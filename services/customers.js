@@ -29,9 +29,16 @@ async function deleteFromCart(customerId, workoutId) {
     }
 }
 
+async function isAdmin(username) {
+    const customer = await Customer.findOne({ username });
+    return customer.isAdmin; // Return the value of isAdmin
+}
+
+
 module.exports = {
     getAllCustomers,
     getCustomerById,
     deleteFromCart,
-    getCustomerByUsername
+    getCustomerByUsername,
+    isAdmin
 }
