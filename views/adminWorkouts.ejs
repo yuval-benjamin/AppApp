@@ -59,7 +59,7 @@
         </nav>
     </header>
 
-    <!-- Main content area -->
+    <!-- Main content -->
     <div class="container-flex">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -74,12 +74,12 @@
 
         <!-- Workouts container -->
         <div class="workouts-container">
-            <h2>These are all the workouts:</h2>
+            <h2 class="head">These are all the workouts:</h2>
             <% workouts.forEach(function(workout) { %>
                <div class="card">
                    <div class="card-body">
-                       <h5 class="card-title"><%= workout.name %></h5>
-                       <p class="card-text"><%= workout.description %></p>
+                       <h4 class="card-title"><%= workout.name %></h4>
+                       <h5 class="card-text"><%= workout.description %></h5>
                        <a href="#" class="btn btn-primary">Edit</a>
                        <a href="#" class="btn btn-danger">Delete</a>
                    </div>

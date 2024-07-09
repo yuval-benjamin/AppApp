@@ -30,13 +30,13 @@ async function GetWorkoutIfContains(searchString) {
 //   return workouts
 // }
 
-// const deleteWorkout = async (id) => {
-//     const workouts = await getWorkoutById(id);
-//     if (!workouts)
-//         return null;
-//     await workouts.remove();
-//     return workouts;
-// };
+const deleteWorkout = async (id) => {
+    const workouts = await getWorkoutById(id);
+    if (!workouts)
+        return null;
+    await workouts.remove();
+    return workouts;
+};
 
 module.exports = {
     getWorkoutById,
@@ -44,7 +44,7 @@ module.exports = {
     GetWorkoutIfContains,
     // createWorkout,
     // updateWorkout,
-    // deleteWorkout
+    deleteWorkout
     // Searchworkout
     // listWorkouts
 }

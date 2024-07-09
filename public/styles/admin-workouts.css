@@ -1,0 +1,13 @@
+.container-flex {
+    display: flex;
+}
+
+.head {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.workouts-container {
+    flex-grow: 1;
+    padding: 20px;
+}
