@@ -30,7 +30,7 @@ app.use('/search', search)
 app.use('/cart', customers)
 app.use("/adminPage", admin)
 app.use("/", login)
-// app.use("/", home)
+app.use("/home", home)
 app.use("/workouts", workouts)
 
 app.listen(process.env.PORT);
