@@ -14,6 +14,10 @@ async function getCustomerById(id) {
     return await Customer.findById(id)
 }
 
+async function getCustomerByUsername(username) {
+    return await Customer.findOne({ username });
+}
+
 async function deleteFromCart(customerId, workoutId) {
     try {
         const customer = await Customer.findById(customerId)
@@ -28,5 +32,6 @@ async function deleteFromCart(customerId, workoutId) {
 module.exports = {
     getAllCustomers,
     getCustomerById,
-    deleteFromCart
+    deleteFromCart,
+    getCustomerByUsername
 }

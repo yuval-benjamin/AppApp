@@ -1,5 +1,6 @@
 const loginService = require("../services/login")
 const workoutsService = require('../services/workouts')
+const customersService = require('../services/customers')
 
 function isLoggedIn(req, res, next) {
   if (req.session.username != null)
@@ -10,7 +11,7 @@ function isLoggedIn(req, res, next) {
 
 async function GetHomePage(req, res){
   const workouts = await workoutsService.getAllWorkouts()
-  res.render("home", {workouts , username: req.session.username})
+  res.render("home", {workouts , username: req.session.username, firstName: req.session.firstName})
 }
 
 function loginForm(req, res) { res.render("login", {}) }
@@ -29,6 +30,8 @@ async function login(req, res) {
   const result = await loginService.login(username, password)
   if (result) {
     req.session.username = username
+    const customer = await customersService.getCustomerByUsername(username)
+    req.session.firstName = customer.firstName;
     res.redirect('/')
   }
   else
@@ -37,14 +40,16 @@ async function login(req, res) {
 
 async function register(req, res) {
   const { firstName , lastName , username , email , gender , birthDate , password } = req.body
-  // try {
+  try {
     await loginService.register(firstName , lastName , username , email , gender , birthDate , password)    
     req.session.username = username
+    const customer = await customersService.getCustomerByUsername()
+    req.session.firstName = customer.firstName
     res.redirect('/')
-  // }
-  // catch (e) { 
-  //   res.redirect('/register?error=1')
-  // }    
+  }
+  catch (e) { 
+    res.redirect('/register?error=1')
+  }    
 }
 
 module.exports = {
