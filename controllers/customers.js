@@ -10,6 +10,15 @@ async function GetCartPage(req, res){
     res.render("cart", { workouts , customer })
 }
 
+async function isAdmin(req, res, next) {
+    const isAdmin = await customersService.isAdmin(req.session.username);
+    if (isAdmin)
+      return next()
+    else
+      res.redirect('/')
+  }
+
 module.exports = {
     GetCartPage,
+    isAdmin
 }
