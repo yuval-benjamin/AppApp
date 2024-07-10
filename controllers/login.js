@@ -6,7 +6,7 @@ function isLoggedIn(req, res, next) {
   if (req.session.username != null)
     return next()
   else
-    res.redirect('/login')
+  res.render('login', { error: false })
 }
 
 async function GetHomePage(req, res){
@@ -15,13 +15,13 @@ async function GetHomePage(req, res){
   res.render("home", {workouts , username: req.session.username, firstName: req.session.firstName, isAdmin})
 }
 
-function loginForm(req, res) { res.render("login", {}) }
+function loginForm(req, res) { res.render('login', { error: false }) }
 
 function registerForm(req, res) { res.render("register", {}) }
 
 function logout(req, res) {
   req.session.destroy(() => {
-    res.redirect('/login');
+    res.render('login', { error: false })
   });
 }
 
@@ -36,7 +36,7 @@ async function login(req, res) {
     res.redirect('/')
   }
   else
-    res.redirect('/login?error=1')
+    res.render('login', { error: true })
 }
 
 async function register(req, res) {
