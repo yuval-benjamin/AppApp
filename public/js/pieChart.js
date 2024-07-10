@@ -3,7 +3,7 @@ let male_count = 0
 
 // Get male and female amount from DB
 customers.forEach(customer => {
-    if (customer.gender == "Female") {
+    if (customer.gender == "female") {
         female_count = female_count + 1 
     } else {
         male_count = male_count + 1

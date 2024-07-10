@@ -44,7 +44,7 @@ async function register(req, res) {
   try {
     await loginService.register(firstName , lastName , username , email , gender , birthDate , password)    
     req.session.username = username
-    const customer = await customersService.getCustomerByUsername()
+    const customer = await customersService.getCustomerByUsername(username)
     req.session.firstName = customer.firstName
     res.redirect('/')
   }
