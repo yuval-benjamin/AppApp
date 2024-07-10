@@ -17,7 +17,7 @@ async function GetHomePage(req, res){
 
 function loginForm(req, res) { res.render('login', { error: false }) }
 
-function registerForm(req, res) { res.render("register", {}) }
+function registerForm(req, res) { res.render('register', { error: null }) }
 
 function logout(req, res) {
   req.session.destroy(() => {
@@ -42,6 +42,12 @@ async function login(req, res) {
 async function register(req, res) {
   const { firstName , lastName , username , email , gender , birthDate , password } = req.body
   try {
+    
+    // If username exists, redirect back to register and show error
+    if(customersService.getCustomerByUsername(username)) {
+      return res.render('register', { error: 'Username already taken' })
+    }
+
     await loginService.register(firstName , lastName , username , email , gender , birthDate , password)    
     req.session.username = username
     const customer = await customersService.getCustomerByUsername(username)

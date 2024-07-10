@@ -24,6 +24,9 @@
                     <label for="birthday">Date of Birth</label>
                     <input name="birthDate" type="date" id="birthday" class="form-control">
                     <input name="password" type="password" placeholder="Password" class="form-control">
+                    <% if (error) { %>
+                        <h4 class="error-message"><%= error %></h4>
+                      <% } %>
                     <button type="submit" class="button">Register</button>
                     <a href="/login" class="register-link login">Back To Login</a>
                 </form>

@@ -27,7 +27,11 @@ async function deleteFromCart(customerId, workoutId) {
 
 async function isAdmin(username) {
     const customer = await Customer.findById(username);
-    return customer.isAdmin; // Return the value of isAdmin
+    try {
+        return customer.isAdmin; // Return the value of isAdmin
+    } catch (error) {
+        return false
+    }
 }
 
 
