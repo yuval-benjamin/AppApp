@@ -3,7 +3,7 @@ const workoutsService = require('../services/workouts')
 
 async function GetCartPage(req, res){
     const workouts = await workoutsService.getAllWorkouts()
-    const customer = await customersService.getCustomerById(req.params.id)
+    const customer = await customersService.getCustomerByUsername(req.params.id)
     if (!customer) {
         return res.status(404).json({ errors: ['Customer not found'] })
     }
