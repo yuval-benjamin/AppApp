@@ -25,6 +25,16 @@ async function GetWorkoutIfContains(searchString) {
     }
 }
 
+async function createWorkout(workoutData) {
+  const workout = new Workout(workoutData);
+  try {
+      await workout.save();
+      return workout;
+  } catch (error) {
+      throw new Error('Error creating workout: ' + error.message);
+  }
+}
+
 // const deleteWorkout = async (id) => {
 //     const workouts = await getWorkoutById(id);
 //     if (!workouts)
@@ -37,7 +47,7 @@ module.exports = {
     getWorkoutById,
     getAllWorkouts,
     GetWorkoutIfContains,
-    // createWorkout,
+    createWorkout,
     // updateWorkout,
     // deleteWorkout
 }

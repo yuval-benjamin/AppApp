@@ -33,6 +33,8 @@ async function SearchWorkout(req, res){
     res.render("home", {workouts})
 }
 
+
+
 module.exports = {
     GetHomePage,
     GetNearMePage,
