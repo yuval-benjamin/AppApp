@@ -6,6 +6,7 @@ const workouts = require('./routes/workouts')
 const customers = require('./routes/customers')
 const admin = require('./routes/admin')
 const search = require('./routes/search') // search change
+const orders = require('./routes/customers')
 
 server.use(express.static('public'))
 server.set("view engine", "ejs")
@@ -16,6 +17,7 @@ server.use('/login', login)
 server.use('/search', search)
 server.use('/cart', customers)
 server.use("/adminPage", admin);
+server.use('/orders', orders);
 server.use("/", workouts)
 
 server.use(express.urlencoded({ extended: false }))

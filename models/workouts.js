@@ -1,34 +1,34 @@
 const mongoose = require('mongoose')
 
 const workoutSchema = new mongoose.Schema({
-    name : {
+    name: {
         type: String,
         required: true
     },
-    description : {
+    description: {
         type: String
     },
-    time : {
+    time: {
         type: Date,
         required: true
     },
-    location : {
+    location: {
         type: String,
         required: true
     },
-    price : {
+    price: {
         type: Number,
         required: true
     },
-    category : {
+    category: {
         type: String,
         required: true
     },
-    supplier : {
+    supplier: {
         type: String,
         required: true
     },
-    calories : {
+    calories: {
         type: String,
         required: true
     },
@@ -42,6 +42,10 @@ const workoutSchema = new mongoose.Schema({
     },
     weather: {
         type: String,
+        required: true
+    },
+    duration: {
+        type: Number,
         required: true
     }
 });

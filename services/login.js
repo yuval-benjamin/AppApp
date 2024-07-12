@@ -12,7 +12,7 @@ async function register(username, password) {
         password
     });
 
-    await user.save()        
+    await user.save()
 }
 
 module.exports = { login, register }

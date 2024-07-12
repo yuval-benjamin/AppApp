@@ -31,7 +31,11 @@ const customerSchema = new mongoose.Schema({
     },
     cart: {
         type: Array
-    }
+    },
+    orders: [{ 
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order'
+    }]
 });
 
 const Customer = mongoose.model('Customer', customerSchema, 'customers');
