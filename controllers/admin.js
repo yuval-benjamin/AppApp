@@ -18,8 +18,23 @@ async function GetFacebookPage(req, res){
     res.sendFile("public/views/facebook.html", { root: path });
 }
 
+async function GetFollowers(req, res){
+    const response = await fetch('https://graph.facebook.com/v12.0/335781382944543?fields=followers_count', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + process.env.FACEBOOK_TOKEN
+        }
+    })
+    console.log("------ res --------------")
+    console.log(response.json)
+    console.log("------ res --------------")
+    res.json(response.json)
+
+}
+
 module.exports = {
     GetAdminPage,
     GetChartsPage,
-    GetFacebookPage
+    GetFacebookPage,
+    GetFollowers
 }
