@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ordersController  = require("../controllers/orders");
 
-router.get('/', ordersController.list);
+router.get('/', ordersController.getAllOrders);
 router.get('/create', ordersController.create);
 router.post('/', ordersController.store);
 router.get('/:id/edit', ordersController.edit);

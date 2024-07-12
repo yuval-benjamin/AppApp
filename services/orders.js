@@ -1,38 +1,74 @@
 const Order = require('../models/orders');
+const Customer = require('../models/customer');
+const Workout = require('../models/workout');
 const mongoose = require('mongoose')
 
 async function getAllOrders() {
-    const customers = await Customer.find()
-    return customers
-}
-
-exports.list = async (req, res) => {
     try {
         const orders = await Order.find({ customer: req.userId }).populate('items');
         res.render('orders/index', { orders });
     } catch (error) {
         res.status(500).send('Error retrieving orders');
     }
-};
-async function getCustomerById(id) {
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        console.log("ObjectID is not valid")
-        return null
-    }
-    return await Customer.findById(id)
 }
 
-async function deleteFromCart(customerId, workoutId) {
+async function createOrder() {
     try {
-        const customer = await Customer.findById(customerId)
-        customer.cart = customer.cart.filter(item => item.workout_id.toString() !== workoutId);
-        await customer.save();
-        return customer;
+        const workouts = await Workout.find();
+        res.render('orders/create', { workouts });
     } catch (error) {
-        throw new Error('Failed to delete item from cart: ' + error.message);
+        res.status(500).send('Error loading create order page');
     }
 }
 
+exports.store = async (req, res) => {
+    try {
+        const { items, total } = req.body;
+        const order = new Order({ customer: req.userId, items, total });
+        await order.save();
+        res.redirect('/orders');
+    } catch (error) {
+        res.status(500).send('Error creating order');
+    }
+};
+
+exports.edit = async (req, res) => {
+    try {
+        const order = await Order.findById(req.params.id).populate('items');
+        const workouts = await Workout.find();
+        res.render('orders/edit', { order, workouts });
+    } catch (error) {
+        res.status(500).send('Error loading edit order page');
+    }
+};
+
+exports.update = async (req, res) => {
+    try {
+        const { items, total } = req.body;
+        await Order.findByIdAndUpdate(req.params.id, { items, total });
+        res.redirect('/orders');
+    } catch (error) {
+        res.status(500).send('Error updating order');
+    }
+};
+
+exports.delete = async (req, res) => {
+    try {
+        await Order.findByIdAndDelete(req.params.id);
+        res.redirect('/orders');
+    } catch (error) {
+        res.status(500).send('Error deleting order');
+    }
+};
+
+exports.search = async (req, res) => {
+    try {
+        const orders = await Order.find({ customer: req.userId, date: { $regex: req.query.q, $options: 'i' } }).populate('items');
+        res.render('orders/search', { orders });
+    } catch (error) {
+        res.status(500).send('Error searching orders');
+    }
+};
 module.exports = {
     getAllCustomers,
     getCustomerById,
