@@ -15,13 +15,30 @@ async function GetWorkout(req, res){
     res.render("test", {workout})
 }
 
+async function GetNearMePage(req, res){
+    const workouts = await workoutsService.getAllWorkouts()
+    res.render("nearme", {workouts})
+}
+
 async function SearchWorkout(req, res){
     const foundworkouts = await workoutsService.GetWorkoutIfContains(req.params.workout)
     res.json(foundworkouts)
 }
 
+async function GetSelectedWorkouts(req, res){
+    console.log("------------ selected workout -----------------")
+    console.log(req.query)
+    const selectedWorkouts = await workoutsService.GetSelectedWorkouts(req.query)
+    console.log("------------ selected workout -----------------")
+    console.log(selectedWorkouts)
+    console.log("------------ selected workout -----------------")
+    res.json(selectedWorkouts)
+}
+
 module.exports = {
     GetWorkout,
     SearchWorkout,
-    GetAllWorkouts
+    GetNearMePage,
+    GetAllWorkouts,
+    GetSelectedWorkouts
 }

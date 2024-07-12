@@ -9,7 +9,10 @@ router.get("/", function(req, res) {
     res.sendFile("public/views/home.html", { root: path });
 });
 
+router.get("/nearme", workoutsController.GetNearMePage)
+
 router.get("/workouts", workoutsController.GetAllWorkouts)
+router.get("/selectedWorkouts", workoutsController.GetSelectedWorkouts)
 
 router.get("/:workout", workoutsController.SearchWorkout)
 // router.route('/:id')

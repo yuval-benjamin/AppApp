@@ -13,6 +13,7 @@ async function GetChartsPage(req, res){
     res.render("charts", { customers })
 }
 
+
 async function GetFacebookPage(req, res){
     // res.render("facebook", {})
     res.sendFile("public/views/facebook.html", { root: path });
