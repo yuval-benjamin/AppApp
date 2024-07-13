@@ -29,36 +29,43 @@ async function GetSelectedWorkouts(req) {
   console.log("------------ selected workout - service -----------------");
   console.log(req);
   const { category, weather, duration } = req;
-  
+
   const selectedWorkouts = {
-      category: Array.isArray(category) ? category : [category].filter(Boolean),
-      weather: Array.isArray(weather) ? weather : [weather].filter(Boolean),
-      duration: Array.isArray(duration) ? duration : [duration].filter(Boolean)
+    category: Array.isArray(category) ? category : [category].filter(Boolean),
+    weather: Array.isArray(weather) ? weather : [weather].filter(Boolean),
+    duration: Array.isArray(duration) ? duration : [duration].filter(Boolean)
   };
-  
-  console.log("------------ selected workoutss - service -----------------");
+
+  console.log("------------ selected workouts - service -----------------");
   console.log(selectedWorkouts);
 
-  const query = {}; 
-    if (selectedWorkouts.category.length > 0) {
-        query.category = { $in: selectedWorkouts.category }; 
-    }
-    if (selectedWorkouts.weather.length > 0) {
-        query.weather = { $in: selectedWorkouts.weather }; 
-    }
-    if (selectedWorkouts.duration.length > 0) {
-        query.duration = { $in: selectedWorkouts.duration }; 
-    }
-  
-  console.log("------------ query - service -----------------");
-  console.log(query);
-  
-  const fetchedWorkouts = await Workout.find(query);
-  
+  const matchConditions = [];
+  if (selectedWorkouts.category.length > 0) {
+    matchConditions.push({ category: { $in: selectedWorkouts.category } });
+  }
+  if (selectedWorkouts.weather.length > 0) {
+    matchConditions.push({ weather: { $in: selectedWorkouts.weather } });
+  }
+  if (selectedWorkouts.duration.length > 0) {
+    matchConditions.push({ duration: { $in: selectedWorkouts.duration } });
+  }
+
+  console.log("------------ matchConditions - service -----------------");
+  console.log(matchConditions);
+
+  const pipeline = [
+    { $match: { $and: matchConditions } }
+  ];
+
+  console.log("------------ pipeline - service -----------------");
+  console.log(pipeline);
+
+  const fetchedWorkouts = await Workout.aggregate(pipeline).exec();
+
   console.log("------------ fetchedWorkouts - service -----------------");
   console.log(fetchedWorkouts);
-  
-  return fetchedWorkouts
+
+  return fetchedWorkouts;
 }
 
 
