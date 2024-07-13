@@ -7,6 +7,11 @@ async function GetAdminPage(req, res){
     res.render("adminPage", {})
 }
 
+async function GetWorkoutsPage(req, res){
+    const workouts = await workoutsService.getAllWorkouts()
+    res.render("adminWorkouts", {workouts})
+}
+
 async function GetChartsPage(req, res){
     const customers = await customersService.getAllCustomers()
     res.render("charts", { customers })

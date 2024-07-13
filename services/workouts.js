@@ -49,5 +49,7 @@ module.exports = {
     GetWorkoutIfContains,
     createWorkout,
     // updateWorkout,
-    // deleteWorkout
+    deleteWorkout
+    // Searchworkout
+    // listWorkouts
 }

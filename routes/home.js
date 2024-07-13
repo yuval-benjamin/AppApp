@@ -5,10 +5,6 @@ const workoutsController  = require("../controllers/workouts")
 const customersController  = require("../controllers/customers")
 
 router.get("/", workoutsController.GetHomePage)
-
-router.route('/:id')
-    .get(workoutsController.GetWorkout)
-    // .delete(workoutsController.deleteWorkout);
-    // .patch(workoutsController.updateWorkout)
+router.get("/nearme", workoutsController.GetNearMePage)
 
 module.exports = router;
