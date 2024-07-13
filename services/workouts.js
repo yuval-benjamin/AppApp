@@ -7,7 +7,10 @@ async function getAllWorkouts() {
 }
 
 async function getWorkoutById(id) {
+  console.log("get workout by id")
     if (!mongoose.Types.ObjectId.isValid(id)) {
+      console.log("not valid") 
+      console.log(id)
       return null
     }
 
@@ -35,21 +38,20 @@ async function createWorkout(workoutData) {
   }
 }
 
-// const deleteWorkout = async (id) => {
-//     const workouts = await getWorkoutById(id);
-//     if (!workouts)
-//         return null;
-//     await workouts.remove();
-//     return workouts;
-// };
+async function deleteWorkout(id) {
+  const workout = await getWorkoutById(id);
+  if (!workout)
+      return null;
+
+  await workout.remove();
+  return workout;
+}
 
 module.exports = {
     getWorkoutById,
     getAllWorkouts,
     GetWorkoutIfContains,
     createWorkout,
-    // updateWorkout,
     deleteWorkout
-    // Searchworkout
-    // listWorkouts
+    // updateWorkout,
 }

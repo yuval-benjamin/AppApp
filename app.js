@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser');
 const server = express()
 const login = require('./routes/login')
 const workouts = require('./routes/workouts')
@@ -10,6 +11,10 @@ const search = require('./routes/search') // search change
 
 server.use(express.static('public'))
 server.set("view engine", "ejs")
+
+// Body-parser middleware
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
 
 // Redirects to all route files
 

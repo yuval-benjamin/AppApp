@@ -6,4 +6,15 @@
 .workouts-container {
     flex-grow: 1;
     padding: 20px;
+    position: relative;
+}
+
+.add-workout-button-container {
+    text-align: end; /* Align button to the right */
+    margin-bottom: 20px; /* Add margin below the button */
+}
+
+.btn-success {
+    padding: 12px 24px; /* Adjust padding to make button larger */
+    font-size: 18px; /* Increase font size */
 }
