@@ -1,5 +1,5 @@
  /* Navbar */
-.navbar {
+ .navbar {
     background: linear-gradient(to right, #cf2f54, #ff6c8e);
     position: sticky;
     top: 0;
@@ -63,7 +63,6 @@
     }
 }
 
-
 .dropdown-menu .dropdown-item {
     font-size: 18px; 
     padding: 12px 20px; 
@@ -80,11 +79,9 @@
  /* Footer */
   footer {
     padding-top: 20px;
+    margin-top: 1%;
     background: linear-gradient(to right, #cf2f54, #ff6c8e);
-    bottom: 0;
-    width: 100%;
 }
-
-#second-footer {
-    background-color: #cf2f54;
-}
+  #second-footer {
+    background-color: #cf2f54
+  }

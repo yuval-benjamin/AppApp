@@ -29,13 +29,13 @@
                <!-- Left links -->
                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                     <a class="nav-link" href="/home">Home</a>
+                     <a class="nav-link" href="/">Home</a>
                   </li>
                   <li class="nav-item">
                      <a class="nav-link" href="/nearme">Near Me</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="#">Gal</a>
+                     <a class="nav-link" href="/adminPage">Admin Page</a>
                   </li>
                </ul>
             </div>
@@ -63,7 +63,7 @@
       </header>
 
       <!-- Welcome section -->
-      <div class="jumbotron text-center">
+      <div class="jumbotron text-center welcome">
          <h1>Welcome To Our AppApp Workouts Shop</h1>
          <p>
             Your go-to online shop for home fitness! Whether you're starting your
@@ -83,7 +83,7 @@
 
       <!-- Search -->
       <div class="search-container">
-         <form class="input-group" action="/search" method="post">
+         <form class="input-group">
              <input type="search" id="search-input" name="query" class="form-control" placeholder="Search"/>
              <button id="search-button" type="submit" class="btn">
                  <i class="fas fa-search"></i>   
@@ -120,8 +120,7 @@
                  </ul>
              </div>
          </form>
-      </div>
-     
+      </div>   
 
       <!-- Cards -->
       <div class="row row-cols-1 row-cols-md-5 g-4">

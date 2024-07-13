@@ -1,17 +1,11 @@
 const workoutsService = require('../services/workouts')
 const mongoose = require('mongoose')
 
-async function GetHomePage(req, res){
+async function GetAllWorkouts(req, res){
     const workouts = await workoutsService.getAllWorkouts()
-    res.render("home", {workouts})
+    res.json(workouts);
 }
 
-async function GetNearMePage(req, res){
-    const workouts = await workoutsService.getAllWorkouts()
-    res.render("nearme", {workouts})
-}
-
-// This function is only to show the use of the getWorkoutById function - CAN DELETE
 async function GetWorkout(req, res){
     const workout = await workoutsService.getWorkoutById(req.params.id)
     if (!workout) {
@@ -20,17 +14,25 @@ async function GetWorkout(req, res){
     res.render("test", {workout})
 }
 
+async function GetNearMePage(req, res){
+    const workouts = await workoutsService.getAllWorkouts()
+    res.render("nearme", {workouts})
+}
+
 async function SearchWorkout(req, res){
-    const workouts = await workoutsService.GetWorkoutIfContains(req.params.search)
-    if (!workouts) {
-        return res.status(404).json({ errors: ['Workouts not found'] })
-    }
-    res.render("home", {workouts})
+    const foundworkouts = await workoutsService.GetWorkoutIfContains(req.params.workout)
+    res.json(foundworkouts)
+}
+
+async function GetSelectedWorkouts(req, res){
+    const selectedWorkouts = await workoutsService.GetSelectedWorkouts(req.query)
+    res.json(selectedWorkouts)
 }
 
 module.exports = {
-    GetHomePage,
-    GetNearMePage,
     GetWorkout,
-    SearchWorkout
+    SearchWorkout,
+    GetNearMePage,
+    GetAllWorkouts,
+    GetSelectedWorkouts
 }

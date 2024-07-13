@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="/styles/cart.css">
+  <title>AppApp Cart</title>
+</head>
+
+<body>
+  <div class="shopping-cart">
+    
+    <div class="title"> <%= customer.firstName %>'s Shopping Cart </div>
+    
+    <!-- All cart items -->
+    <ul>
+      <% customer.cart.forEach(function(item) { 
+        const workout = workouts.find(workout => workout._id.toString() === item.id);
+    %>
+      <div class="item">
+        <span class="delete-btn">
+          <button><i class="bi bi-x-lg"></i></button>
+        </span>
+
+        <div class="image">
+          <img src="/images/<%= workout.image %>" alt="" />
+        </div>
+
+        <div class="description">
+          <span><%= workout.name %></span>
+          <span><%= workout.description %></span>
+        </div>
+
+        <div class="total-price"><%= workout.price %>₪</div>
+      </div>
+
+      <% }); %>
+    </ul>
+
+    <br>
+    <div class="text-center">
+      <button type="button" class="btn btn-light">Checkout</button>
+    </div>
+
+
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+</html>
