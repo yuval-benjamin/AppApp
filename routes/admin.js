@@ -7,6 +7,6 @@ router.get("/", adminController.GetAdminPage);
 router.get("/charts", adminController.GetChartsPage);
 router.get("/facebook", adminController.GetFacebookPage);
 router.get("/adminWorkouts", adminController.GetWorkoutsPage);
-router.post('/createworkout', adminController.CreateWorkout);
+router.post('/createWorkout', adminController.CreateWorkout);
 
 module.exports = router;
