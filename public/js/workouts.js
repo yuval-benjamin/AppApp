@@ -71,8 +71,6 @@ document.querySelectorAll('.sub-options input[type="checkbox"]').forEach(functio
             getAll()
         }
         else {
-            // const workoutResults = document.getElementById('workoutResults');
-            // workoutResults.innerHTML = data.map(workout => `<div>${workout.name}</div>`).join('');
             document.getElementsByClassName('workouts')[0].innerHTML = emptyWorkouts
 
             for (let i = 0; i < workoutsJs.length; i++) {

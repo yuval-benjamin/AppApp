@@ -25,38 +25,6 @@ async function GetWorkoutIfContains(searchString) {
     }
 }
 
-// async function GetSelectedWorkouts(req, res) {
-//   // Extract query parameters
-//   console.log("------------ selected workout - service -----------------")
-//   console.log(req)
-//   const { workouts } = req
-//   console.log(workouts)
-//   console.log("------------ selected workout - service -----------------")
-  
-//   // Parse query parameters
-//   const selectedWorkouts = Array.isArray(workouts) ? workouts : [workouts]
-//   console.log("------------ selected workoutss - service -----------------")
-//   console.log(selectedWorkouts)
-//   // Build the query object
-//   const query = {
-//       $or: [
-//           { category: { $in: selectedWorkouts } },
-//       ]
-//   }
-
-//   console.log("------------ query - service -----------------")
-//   console.log(query)
-//   console.log("------------ query - service -----------------")
-
-//   // Query the database
-//   const fetchedWorkouts = await Workout.find(query)
-//   console.log("------------ fetchedWorkouts - service -----------------")
-//   console.log(fetchedWorkouts)
-//   console.log("------------ fetchedWorkouts - service -----------------")
-//   // Return the results
-//   return fetchedWorkouts
-// }
-
 async function GetSelectedWorkouts(req) {
   console.log("------------ selected workout - service -----------------");
   console.log(req);
@@ -71,22 +39,15 @@ async function GetSelectedWorkouts(req) {
   console.log("------------ selected workoutss - service -----------------");
   console.log(selectedWorkouts);
 
-  // const query = {
-  //     $or: [
-  //         { category: { $in: selectedWorkouts.category } },
-  //         { whether: { $in: selectedWorkouts.weather } },
-  //         { duration: { $in: selectedWorkouts.duration } }
-  //     ]
-  // };
-  const query = {}; // Changed query construction to individual fields
+  const query = {}; 
     if (selectedWorkouts.category.length > 0) {
-        query.category = { $in: selectedWorkouts.category }; // Added category condition
+        query.category = { $in: selectedWorkouts.category }; 
     }
     if (selectedWorkouts.weather.length > 0) {
-        query.weather = { $in: selectedWorkouts.weather }; // Added weather condition
+        query.weather = { $in: selectedWorkouts.weather }; 
     }
     if (selectedWorkouts.duration.length > 0) {
-        query.duration = { $in: selectedWorkouts.duration }; // Added duration condition
+        query.duration = { $in: selectedWorkouts.duration }; 
     }
   
   console.log("------------ query - service -----------------");
@@ -100,15 +61,6 @@ async function GetSelectedWorkouts(req) {
   return fetchedWorkouts
 }
 
-
-
-// const deleteWorkout = async (id) => {
-//     const workouts = await getWorkoutById(id);
-//     if (!workouts)
-//         return null;
-//     await workouts.remove();
-//     return workouts;
-// };
 
 module.exports = {
     getWorkoutById,

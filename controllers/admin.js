@@ -20,7 +20,7 @@ async function GetFacebookPage(req, res){
 }
 
 async function GetFollowers(req, res){
-    const response = await fetch('https://graph.facebook.com/v12.0/335781382944543?fields=followers_count', {
+    const response = await fetch(process.env.FACEBOOK_GET_FOLLOWERS_URL, {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + process.env.FACEBOOK_TOKEN

@@ -6,7 +6,6 @@ async function GetAllWorkouts(req, res){
     res.json(workouts);
 }
 
-// This function is only to show the use of the getWorkoutById function - CAN DELETE
 async function GetWorkout(req, res){
     const workout = await workoutsService.getWorkoutById(req.params.id)
     if (!workout) {
