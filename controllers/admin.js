@@ -26,9 +26,6 @@ async function GetFollowers(req, res){
             'Authorization': 'Bearer ' + process.env.FACEBOOK_TOKEN
         }
     })
-    console.log("------ res --------------")
-    console.log(response.json)
-    console.log("------ res --------------")
     res.json(response.json)
 
 }

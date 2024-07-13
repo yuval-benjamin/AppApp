@@ -25,12 +25,7 @@ async function SearchWorkout(req, res){
 }
 
 async function GetSelectedWorkouts(req, res){
-    console.log("------------ selected workout -----------------")
-    console.log(req.query)
     const selectedWorkouts = await workoutsService.GetSelectedWorkouts(req.query)
-    console.log("------------ selected workout -----------------")
-    console.log(selectedWorkouts)
-    console.log("------------ selected workout -----------------")
     res.json(selectedWorkouts)
 }
 
