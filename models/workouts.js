@@ -43,6 +43,10 @@ const workoutSchema = new mongoose.Schema({
     weather: {
         type: String,
         required: true
+    },
+    duration: {
+        type: Number,
+        required: true
     }
 });
 
