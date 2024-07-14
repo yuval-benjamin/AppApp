@@ -35,9 +35,11 @@
                   <li class="nav-item">
                      <a class="nav-link" href="/home/nearme">Near Me</a>
                   </li>
-                  <li id="admin-button" class="nav-item">
-                     <a class="nav-link" href="/adminPage">Admin Page</a>
-                  </li>
+                  <% if (isAdmin) { %>
+                     <li class="nav-item">
+                        <a class="nav-link" href="/adminPage">Admin Page</a>
+                     </li>
+                 <% } %>
                </ul>
             </div>
             <!-- Right elements -->

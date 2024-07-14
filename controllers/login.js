@@ -1,5 +1,4 @@
 const loginService = require("../services/login")
-const workoutsService = require('../services/workouts')
 const customersService = require('../services/customers')
 const path = require('path').resolve(__dirname, '..')
 
@@ -11,7 +10,6 @@ function isLoggedIn(req, res, next) {
 }
 
 async function GetHomePage(req, res){
-  const isAdmin = await customersService.isAdmin(req.session.username);
   res.sendFile("public/views/home.html", { root: path});
 }
 
