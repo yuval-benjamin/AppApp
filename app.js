@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 const session = require('express-session');
 app.use(session({
-    secret: 'foo',    
+    secret: 'wusha',    
     saveUninitialized: false,
     resave: false
 }))
