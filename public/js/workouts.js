@@ -21,7 +21,7 @@ async function getAll() {
     async function getWorkouts(event) {
         event.preventDefault();
         const searchData = document.getElementById('search-input').value;
-        const res = await fetch('http://localhost/' + searchData)
+        const res = await fetch('http://localhost/workouts' + searchData)
         const workoutsJs = await res.json()
     
         document.getElementsByClassName('workouts')[0].innerHTML = emptyWorkouts
@@ -62,7 +62,7 @@ async function getAll() {
                 return selectedWorkouts[key].map(value => `${key}=${encodeURIComponent(value)}`).join('&');
             }).filter(query => query).join('&');
     
-            const response = await fetch(`/selectedWorkouts?${queryString}`);
+            const response = await fetch(`/workouts/selectedWorkouts?${queryString}`);
             const workoutsJs = await response.json();
             console.log(workoutsJs);
     
