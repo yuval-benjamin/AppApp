@@ -9,28 +9,36 @@
     <div class="wrapper">
             <img src="../images/workout-background.png" class="background-image" alt="background image">
             <div class="inner">
-                <form action="/register" method="post">
+                <form id="registerForm" action="/register" method="post">
                     <h3>Sign Up</h3>
-                    <input name="firstName" type="text" placeholder="First Name" class="form-control">
-                    <input name="lastName" type="text" placeholder="Last Name" class="form-control">
-                    <input name="username" type="text" placeholder="Username" class="form-control">
-                    <input name="email" type="text" placeholder="Email Address" class="form-control">
-                    <select name="gender" id="" class="form-control">
+                    <input name="firstName" type="text" placeholder="First Name" class="form-control" required>
+                    <input name="lastName" type="text" placeholder="Last Name" class="form-control" required>
+                    <input name="username" type="text" placeholder="Username" class="form-control" required>
+                    <input name="email" type="text" placeholder="Email Address" class="form-control" required>
+                    <span class="error-message" id="emailError"></span>
+                    <select name="gender" id="gender" class="form-control" required>
                         <option value="" disabled selected>Gender</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">Other</option>
                     </select>
                     <label for="birthday">Date of Birth</label>
-                    <input name="birthDate" type="date" id="birthday" class="form-control">
-                    <input name="password" type="password" placeholder="Password" class="form-control">
+                    <input name="birthDate" type="date" id="birthday" class="form-control" required>
+                    <span class="error-message" id="birthDateError"></span>
+                    <input name="password" type="password" placeholder="Password" class="form-control" required>
+
                     <% if (error) { %>
                         <h4 class="error-message"><%= error %></h4>
                       <% } %>
+
                     <button type="submit" class="button">Register</button>
                     <a href="/login" class="register-link login">Back To Login</a>
                 </form>
             </div>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="../js/validation.js"></script>
+
     </body>
 </html>
