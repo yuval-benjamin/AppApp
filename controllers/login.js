@@ -12,7 +12,6 @@ function isLoggedIn(req, res, next) {
 
 async function GetHomePage(req, res){
   const isAdmin = await customersService.isAdmin(req.session.username);
-  // res.render("home", {workouts , username: req.session.username, firstName: req.session.firstName, isAdmin})
   res.sendFile("public/views/home.html", { root: path});
 }
 
