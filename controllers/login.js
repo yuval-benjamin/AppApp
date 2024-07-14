@@ -1,6 +1,7 @@
 const loginService = require("../services/login")
 const workoutsService = require('../services/workouts')
 const customersService = require('../services/customers')
+const path = require('path').resolve(__dirname, '..')
 
 function isLoggedIn(req, res, next) {
   if (req.session.username != null)
@@ -10,10 +11,12 @@ function isLoggedIn(req, res, next) {
 }
 
 async function GetHomePage(req, res){
-  const workouts = await workoutsService.getAllWorkouts()
   const isAdmin = await customersService.isAdmin(req.session.username);
-  res.render("home", {workouts , username: req.session.username, firstName: req.session.firstName, isAdmin})
+  // res.render("home", {workouts , username: req.session.username, firstName: req.session.firstName, isAdmin})
+  res.sendFile("public/views/home.html", { root: path});
 }
+
+
 
 function loginForm(req, res) { res.render('login', { error: false }) }
 

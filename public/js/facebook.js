@@ -3,7 +3,7 @@ document.getElementById('postButton').addEventListener('click', function() {
     fetch('https://graph.facebook.com/v12.0/335781382944543/feed', {
         method: 'POST',
         headers: {
-            'Authorization': 'Bearer {ACCESS_TOKEN}'
+            'Authorization': 'Bearer FACEBOOK_TOKEN'
         },
         body: JSON.stringify({ message: message })
     })
@@ -16,27 +16,23 @@ document.getElementById('postButton').addEventListener('click', function() {
     });
 });
 
-document.getElementById('getInfoButton').addEventListener('click', function() {
-    fetch('https://graph.facebook.com/v12.0/335781382944543?fields=followers_count', {
-        method: 'GET',
-        headers: {
-            'Authorization': 'Bearer {ACCESS_TOKEN}'
-        }
-    })
-    .then(response => {
+
+
+document.getElementById('getInfoButton').addEventListener('click', async function() {
+
+    try {
+        const response = await fetch('http://localhost/adminPage/getFollowers');
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.json();
-    })
-    .then(data => {
+        const data = await response.json();
         if (data.error) {
             throw new Error(data.error.message);
         }
         document.getElementById('responseArea').innerHTML = 'Followers count: ' + data.followers_count;
-    })
-    .catch(error => {
+    } catch (error) {
         console.error('Error:', error);
         document.getElementById('responseArea').innerHTML = 'Error: ' + error.message;
-    });
+    }
+
 });
