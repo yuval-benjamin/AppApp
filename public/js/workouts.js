@@ -21,7 +21,7 @@ async function getAll() {
     async function getWorkouts(event) {
         event.preventDefault();
         const searchData = document.getElementById('search-input').value;
-        const res = await fetch('http://localhost/workouts' + searchData)
+        const res = await fetch('http://localhost/workouts/' + searchData)
         const workoutsJs = await res.json()
     
         document.getElementsByClassName('workouts')[0].innerHTML = emptyWorkouts
