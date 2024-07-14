@@ -16,7 +16,10 @@ async function GetHomePage(req, res){
   res.sendFile("public/views/home.html", { root: path});
 }
 
-
+async function isAdmin(req, res, next) {
+  const isAdmin = await customersService.isAdmin(req.session.username);
+  res.json({ isAdmin });
+}
 
 function loginForm(req, res) { res.render('login', { error: false }) }
 
@@ -47,7 +50,7 @@ async function register(req, res) {
   try {
     
     // If username exists, redirect back to register and show error
-    if(customersService.getCustomerByUsername(username)) {
+    if(await customersService.getCustomerByUsername(username)) {
       return res.render('register', { error: 'Username already taken' })
     }
 
@@ -69,5 +72,6 @@ module.exports = {
   registerForm,
   logout,
   GetHomePage,
-  isLoggedIn
+  isLoggedIn,
+  isAdmin
 }
