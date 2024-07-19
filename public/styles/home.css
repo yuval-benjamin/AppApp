@@ -6,7 +6,10 @@ body {
     font-size: 15px;
 }
 
-/* Search */
+#admin-button {
+    display: none;
+  }
+
 .search-container {
     display: flex; 
     justify-content: center;
