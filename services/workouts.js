@@ -7,10 +7,7 @@ async function getAllWorkouts() {
 }
 
 async function getWorkoutById(id) {
-  console.log("get workout by id")
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      console.log("not valid") 
-      console.log(id)
       return null
     }
 
@@ -43,7 +40,7 @@ async function deleteWorkout(id) {
   if (!workout)
       return null;
 
-  await workout.remove();
+  await workout.deleteOne();
   return workout;
 }
 

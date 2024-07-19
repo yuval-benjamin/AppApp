@@ -6,6 +6,13 @@ const customersController  = require("../controllers/customers")
 
 router.get("/", workoutsController.GetHomePage)
 
+// Create
+router.post('/', workoutsController.createWorkout);
+
+// Delete
+router.post('/:id', workoutsController.deleteWorkout);
+
+// Search
 router.route('/:id')
     .get(workoutsController.GetWorkout)
     // .delete(workoutsController.deleteWorkout);

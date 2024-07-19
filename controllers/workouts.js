@@ -57,8 +57,6 @@ async function createWorkout(req, res) {
 }
 
 async function deleteWorkout(req, res) {
-    console.log("delete workout controller")
-    console.log(req.params)
     try {
     const workout = await workoutsService.deleteWorkout(req.params.id);
     if (!workout) {
@@ -67,7 +65,7 @@ async function deleteWorkout(req, res) {
     res.redirect('/adminPage/adminWorkouts'); // Adjust the route as needed
     } catch (error) {
     console.error('Error deleting workout:', error);
-    res.status(500).send('Failed to delete workout');
+    res.status(500).send('Failed to delete workout:', error);
     }
 }
 

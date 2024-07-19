@@ -64,11 +64,11 @@
     <!-- Sidebar -->
     <aside class="sidebar">
         <ul>
-            <li><a href="/adminPage/adminWorkouts" onclick="openTab('workouts')"><i class="fas fa-dumbbell"></i> Workouts</a></li>
-            <li><a href="#" onclick="openTab('users')"><i class="fas fa-running"></i> Users</a></li>
-            <li><a href="#" onclick="openTab('suppliers')"><i class="fas fa-truck"></i> Suppliers</a></li>
-            <li><a href="/adminPage/charts" onclick="openTab('charts')"><i class="fas fa-chart-bar"></i> Statistics</a></li>
-            <li><a href="/adminPage/facebook" onclick="openTab('facebook')"><i class="fab fa-facebook fa-2x iconColor"></i> Facebook</a></li>
+            <li><a href="/adminPage/adminWorkouts" ><i class="fas fa-dumbbell"></i> Workouts</a></li>
+            <li><a href="#" ><i class="fas fa-running"></i> Users</a></li>
+            <li><a href="#" ><i class="fas fa-truck"></i> Suppliers</a></li>
+            <li><a href="/adminPage/charts" ><i class="fas fa-chart-bar"></i> Statistics</a></li>
+            <li><a href="/adminPage/facebook" ><i class="fab fa-facebook fa-2x iconColor"></i> Facebook</a></li>
         </ul>
     </aside>
 
@@ -85,8 +85,7 @@
                    <h4 class="card-title"><%= workout.name %></h4>
                    <h5 class="card-text"><%= workout.description %></h5>
                    <a href="#" class="btn btn-primary">Edit</a>
-                   <form action="/adminPage/deleteWorkout/<%= workout._id %>" method="POST" style="display: inline;">
-                        <input type="hidden" name="_method" value="DELETE">
+                   <form action="/workouts/<%= workout._id %>" method="POST" style="display: inline;">
                         <button type="submit" class="btn btn-danger delete-workout">Delete</button>
                     </form>
                </div>
@@ -130,7 +129,7 @@ $(document).ready(function() {
                 url: '/adminPage/deleteWorkout/' + workoutId,
                 type: 'DELETE',
                 success: function(result) {
-                    $('#workout-' + workoutId).remove();
+                    $('#workout-' + workoutId).deleteOne();
                 },
                 error: function(err) {
                     console.error('Error deleting workout:', err);
