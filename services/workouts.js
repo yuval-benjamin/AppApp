@@ -44,11 +44,39 @@ async function deleteWorkout(id) {
   return workout;
 }
 
+async function GetSelectedWorkouts(req) {
+  const { category, weather, duration } = req;
+  
+  const selectedWorkouts = {
+      category: Array.isArray(category) ? category : [category].filter(Boolean),
+      weather: Array.isArray(weather) ? weather : [weather].filter(Boolean),
+      duration: Array.isArray(duration) ? duration : [duration].filter(Boolean)
+  };
+
+  const query = {}; 
+    if (selectedWorkouts.category.length > 0) {
+        query.category = { $in: selectedWorkouts.category }; 
+    }
+    if (selectedWorkouts.weather.length > 0) {
+        query.weather = { $in: selectedWorkouts.weather }; 
+    }
+    if (selectedWorkouts.duration.length > 0) {
+        query.duration = { $in: selectedWorkouts.duration }; 
+    }
+  
+  const fetchedWorkouts = await Workout.find(query);
+
+  return fetchedWorkouts
+}
+
+
 module.exports = {
     getWorkoutById,
     getAllWorkouts,
     GetWorkoutIfContains,
     createWorkout,
-    deleteWorkout
+    deleteWorkout,
+    GetSelectedWorkouts
+    // createWorkout,
     // updateWorkout,
 }

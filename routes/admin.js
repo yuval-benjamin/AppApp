@@ -10,7 +10,6 @@ router.get("/workouts", adminController.GetWorkoutsPage);
 router.get("/facebook", adminController.GetFacebookPage);
 router.get("/adminWorkouts", adminController.GetWorkoutsPage);
 router.get('/createWorkout', adminController.GetCreateWorkoutPage);
-// router.post('/createWorkout', workoutsController.createWorkout);
-// router.post('/deleteWorkout/:id', workoutsController.deleteWorkout);
-// router.route('/deleteWorkout/:id').delete(workoutsController.deleteWorkout);
+router.get("/getFollowers", adminController.GetFollowers);
+
 module.exports = router;

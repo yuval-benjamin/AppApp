@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 const server = express()
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const login = require('./routes/login')
 const workouts = require('./routes/workouts')
 const customers = require('./routes/customers')
@@ -11,7 +13,11 @@ const search = require('./routes/search') // search change
 
 
 server.use(express.static('public'))
-server.set("view engine", "ejs")
+server.set('view engine', 'ejs');
+server.use(cors());
+server.use(bodyParser.urlencoded({extended : true}));
+server.use(express.json());
+
 
 // Body-parser middleware
 server.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +26,6 @@ server.use(bodyParser.json());
 // Redirects to all route files
 
 server.use('/login', login)
-server.use('/search', search)
 server.use('/cart', customers)
 server.use("/adminPage", admin);
 server.use("/workouts", workouts)
