@@ -1,62 +1,74 @@
 const loginService = require("../services/login")
+const customersService = require('../services/customers')
+const path = require('path').resolve(__dirname, '..')
 
-// function isLoggedIn(req, res, next) {
-//   if (req.session.username != null)
-//     return next()
-//   else
-//     res.redirect('/login')
-// }
-
-// function foo(req, res) {  
-//   res.render("foo", {username: req.session.username})
-// }
-
-function loginForm(req, res) {
-  res.render("signin", {}) 
+function isLoggedIn(req, res, next) {
+  if (req.session.username != null)
+    return next()
+  else
+  res.render('login', { error: false })
 }
 
-function registerForm(req, res) {
-  res.render("register", {}) 
+async function GetHomePage(req, res){
+  res.sendFile("public/views/home.html", { root: path});
 }
 
-// function logout(req, res) {
-//   req.session.destroy(() => {
-//     res.redirect('/login');
-//   });
-// }
+async function isAdmin(req, res, next) {
+  const isAdmin = await customersService.isAdmin(req.session.username);
+  res.json({ isAdmin });
+}
 
-// async function login(req, res) {
-//   const { username, password } = req.body
+function loginForm(req, res) { res.render('login', { error: false }) }
 
-//   const result = await loginService.login(username, password)
-//   if (result) {
-//     req.session.username = username
-//     res.redirect('/')
-//   }
-//   else
-//     res.redirect('/login?error=1')
-// }
+function registerForm(req, res) { res.render('register', { error: null }) }
 
-// async function register(req, res) {
-//   const { username, password } = req.body
+function logout(req, res) {
+  req.session.destroy(() => {
+    res.render('login', { error: false })
+  });
+}
 
+async function login(req, res) {
+  const { username, password } = req.body
 
-//   try {
-//     await loginService.register(username, password)    
-//     req.session.username = username
-//     res.redirect('/')
-//   }
-//   catch (e) { 
-//     res.redirect('/register?error=1')
-//   }    
-// }
+  const result = await loginService.login(username, password)
+  if (result) {
+    req.session.username = username
+    const customer = await customersService.getCustomerByUsername(username)
+    req.session.firstName = customer.firstName;
+    res.redirect('/')
+  }
+  else
+    res.render('login', { error: true })
+}
+
+async function register(req, res) {
+  const { firstName , lastName , username , email , gender , birthDate , password } = req.body
+  try {
+    
+    // If username exists, redirect back to register and show error
+    if(await customersService.getCustomerByUsername(username)) {
+      return res.render('register', { error: 'Username already taken' })
+    }
+
+    await loginService.register(firstName , lastName , username , email , gender , birthDate , password)    
+    req.session.username = username
+    const customer = await customersService.getCustomerByUsername(username)
+    req.session.firstName = customer.firstName
+    res.redirect('/')
+  }
+  catch (e) { 
+    res.redirect('/register?error=1')
+  }    
+}
 
 module.exports = {
-  // login,
+  login,
   loginForm,
-  // register,
-  registerForm //,
-  // logout,
-  // foo,
-  // isLoggedIn
+  register,
+  registerForm,
+  logout,
+  GetHomePage,
+  isLoggedIn,
+  isAdmin
 }

@@ -6,12 +6,12 @@ async function getAllCustomers() {
     return customers
 }
 
-async function getCustomerById(id) {
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        console.log("ObjectID is not valid")
+async function getCustomerByUsername(username) {
+    try{
+        return await Customer.findById(username)
+    } catch (error) {
         return null
     }
-    return await Customer.findById(id)
 }
 
 async function deleteFromCart(customerId, workoutId) {
@@ -25,8 +25,19 @@ async function deleteFromCart(customerId, workoutId) {
     }
 }
 
+async function isAdmin(username) {
+    const customer = await Customer.findById(username);
+    try {
+        return customer.isAdmin; // Return the value of isAdmin
+    } catch (error) {
+        return false
+    }
+}
+
+
 module.exports = {
     getAllCustomers,
-    getCustomerById,
-    deleteFromCart
+    deleteFromCart,
+    getCustomerByUsername,
+    isAdmin
 }

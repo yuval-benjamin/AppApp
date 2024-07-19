@@ -5,10 +5,15 @@ async function login(username, password) {
     return user != null
 }
 
-async function register(username, password) {
+async function register(firstName , lastName , username , email , gender , birthDate , password) {
 
     const user = new User({
         _id: username,
+        firstName,
+        lastName,
+        email,
+        gender,
+        birthDate,
         password
     });
 

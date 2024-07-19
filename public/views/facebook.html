@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/styles/facebook.css">
-    <link rel="stylesheet" href="/styles/homepage.css">
+    <link rel="stylesheet" href="/styles/home.css">
     <link rel="stylesheet" href="/styles/header-footer.css">
     <link rel="stylesheet" href="/styles/admin-page.css">
     <title>Facebook API Interaction</title>
@@ -33,7 +33,7 @@
                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="/nearme">Near Me</a>
+                   <a class="nav-link" href="/home/nearme">Near Me</a>
                 </li>
                 <li class="nav-item">
                    <a class="nav-link" href="/adminPage">Admin Page</a>
@@ -56,7 +56,7 @@
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar" style="position: absolute; top: 100%; left: 0;">
                    <li><a class="dropdown-item" href="#">My profile</a></li>
                    <li><a class="dropdown-item" href="#">My orders</a></li>
-                   <li><a class="dropdown-item" href="#">Logout</a></li>
+                   <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
              </div>
           </div>
@@ -65,13 +65,13 @@
     <div class="container-flex">
     <aside class="sidebar">
         <ul>
-           <li><a href="#" onclick="openTab('workouts')" ><i class="fas fa-dumbbell"></i> Workouts</a></li>
-           <li><a href="#" onclick="openTab('users')"><i class="fas fa-running"></i>Users</a></li>
-           <li><a href="#" onclick="openTab('suppliers')"><i class="fas fa-truck"></i> Suppliers</a></li>
-           <li><a href="#" onclick="openTab('statistics')"><i class="fas fa-chart-bar"></i> Statistics</a></li>
-           <li><a href="/adminPage/facebook" onclick="openTab('facebook')"><i class="fab fa-facebook fa-2x" style="color: rgb(99, 98, 98);"></i> Facebook</a></li>
-       </ul>
-     </aside class="sidebar">
+         <li><a href="/adminPage/adminWorkouts" onclick="openTab('workouts')" ><i class="fas fa-dumbbell"></i> Workouts</a></li>
+         <li><a href="#" onclick="openTab('users')"><i class="fas fa-running"></i>Users</a></li>
+         <li><a href="#" onclick="openTab('suppliers')"><i class="fas fa-truck"></i> Suppliers</a></li>
+         <li><a href="/adminPage/charts" onclick="openTab('charts')"><i class="fas fa-chart-bar"></i> Statistics</a></li>
+         <li><a href="/adminPage/facebook" onclick="openTab('facebook')"><i class="fab fa-facebook fa-2x iconColor"></i> Facebook</a></li>
+     </ul>
+     </aside>
         <div class="facebook-get">
             <textarea id="postContent" placeholder=" Write something to post..."></textarea>
             <button id="postButton">Post to Facebook</button>
@@ -113,4 +113,5 @@
     </footer>
  </body>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+ <script src="../js/home.js"></script>
 </html>
