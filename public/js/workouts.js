@@ -1,21 +1,10 @@
 
 // Fetch and display all workouts
 async function getAll() {
-const res = await fetch('http://localhost/workouts')
-const workoutsJs = await res.json()
+    const res = await fetch('http://localhost/workouts')
+    const workoutsJs = await res.json()
 
-document.getElementsByClassName('workouts')[0].innerHTML = emptyWorkouts
-
-for (let i = 0; i < workoutsJs.length; i++) {
-    const element = workoutsJs[i];
-  
-    let workout = document.getElementById('workoutTemplate').innerHTML
-    for (const key in element) {
-        workout = workout.replace('{' + key + '}', element[key])
-    }
-  
-    document.getElementsByClassName('workouts')[0].innerHTML += workout
-}
+    displayWorkouts(workoutsJs)
 }
 
 // Fetch and display specific workouts based on search input and selected filters
@@ -29,20 +18,8 @@ async function getWorkouts(event) {
     else {
         const res = await fetch('http://localhost/' + searchData)
         const workoutsJs = await res.json()
-    
-        document.getElementsByClassName('workouts')[0].innerHTML = emptyWorkouts
-    
-        for (let i = 0; i < workoutsJs.length; i++) {
-          const element = workoutsJs[i];
-          
-          let workout = document.getElementById('workoutTemplate').innerHTML
-          for (const key in element) {
-              workout = workout.replace('{' + key + '}', element[key])
-          }
-          
-          console.log(workout)
-          document.getElementsByClassName('workouts')[0].innerHTML += workout
-        }
+
+        displayWorkouts(workoutsJs)
     }
 }
 
@@ -67,45 +44,56 @@ function getSelectedWorkouts() {
     const queryString = Object.keys(selectedWorkouts).map(key => {
         return selectedWorkouts[key].map(value => `${key}=${encodeURIComponent(value)}`).join('&');
     }).filter(query => query).join('&');
-    
-    console.log("---------- getSelectedWorkouts ---------------")
-    console.log(queryString)
-    console.log("---------- getSelectedWorkouts ---------------")
 
     return queryString;
-
 }
 
 async function fetchSelectedWorkouts() {
     const queryString = getSelectedWorkouts();
-    // console.log("---------- fetchSelectedWorkouts ---------------")
-    // console.log(queryString)
 
     if (!queryString){
-        console.log("null")
         getAll()
     }
     else {
         const response = await fetch(`/selectedWorkouts?${queryString}`);
         const workoutsJs = await response.json();
+        
+        displayWorkouts(workoutsJs)
+    }
+}
 
-        document.getElementsByClassName('workouts')[0].innerHTML = emptyWorkouts
-            for (let i = 0; i < workoutsJs.length; i++) {
-            const element = workoutsJs[i];
-            
-            let workout = document.getElementById('workoutTemplate').innerHTML
-            for (const key in element) {
-                workout = workout.replace('{' + key + '}', element[key])
-            }
+function displayNoResults(){
+    var noResults = document.getElementById('noResults');
+    noResults.style.display = 'block';
+}
 
-            document.getElementsByClassName('workouts')[0].innerHTML += workout
-            }
+function removeNoResults(){
+    var noResults = document.getElementById('noResults');
+    noResults.style.display = 'none';
+}
+
+function displayWorkouts(workoutsJs) {
+
+    if (workoutsJs.length == 0) {
+        displayNoResults()
+    }
+    else {
+        removeNoResults()
     }
 
+    document.getElementsByClassName('workouts')[0].innerHTML = emptyWorkouts
     
-    console.log("---------- fetchSelectedWorkouts ---------------")
-    console.log(queryString)
-    console.log("---------- fetchSelectedWorkouts ---------------")
+    for (let i = 0; i < workoutsJs.length; i++) {
+      const element = workoutsJs[i];
+      
+      let workout = document.getElementById('workoutTemplate').innerHTML
+      for (const key in element) {
+          workout = workout.replace('{' + key + '}', element[key])
+      }
+      
+      console.log(workout)
+      document.getElementsByClassName('workouts')[0].innerHTML += workout
+    }
 }
 
 
@@ -126,52 +114,3 @@ document.querySelectorAll('.sub-options input[type="checkbox"]').forEach(functio
         await fetchSelectedWorkouts(); 
     });
 });
-
-
-
-
-// document.querySelectorAll('.sub-options input[type="checkbox"]').forEach(function(checkbox) {
-//     checkbox.addEventListener('change', async function() {
-//         const selectedWorkouts = {
-//             category: [],
-//             weather: [],
-//             duration: []
-//         };
-
-//         document.querySelectorAll('#categoryOptions input[type="checkbox"]:checked').forEach(function(checkbox) {
-//             selectedWorkouts.category.push(checkbox.value);
-//         });
-//         document.querySelectorAll('#weatherOptions input[type="checkbox"]:checked').forEach(function(checkbox) {
-//             selectedWorkouts.weather.push(checkbox.value);
-//         });
-//         document.querySelectorAll('#durationOptions input[type="checkbox"]:checked').forEach(function(checkbox) {
-//             selectedWorkouts.duration.push(checkbox.value);
-//         });
-
-//         const queryString = Object.keys(selectedWorkouts).map(key => {
-//             return selectedWorkouts[key].map(value => `${key}=${encodeURIComponent(value)}`).join('&');
-//         }).filter(query => query).join('&');
-
-//         const response = await fetch(`/selectedWorkouts?${queryString}`);
-//         const workoutsJs = await response.json();
-
-//         if (workoutsJs.length == 0){
-//             getAll()
-//         }
-//         else {
-//             document.getElementsByClassName('workouts')[0].innerHTML = emptyWorkouts
-
-//             for (let i = 0; i < workoutsJs.length; i++) {
-//             const element = workoutsJs[i];
-            
-//             let workout = document.getElementById('workoutTemplate').innerHTML
-//             for (const key in element) {
-//                 workout = workout.replace('{' + key + '}', element[key])
-//             }
-            
-//             document.getElementsByClassName('workouts')[0].innerHTML += workout
-//             }
-//         }
-        
-//     });
-// });
