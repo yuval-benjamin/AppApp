@@ -34,10 +34,27 @@ async function isAdmin(username) {
     }
 }
 
+async function addWorkoutToCart(username, workoutId) {
+    const customer = await Customer.findById(username);
+    console.log("-------- addWorkoutToCart - service -----------")
+    console.log(customer)
+    try {
+        if (!customer) {
+            throw new Error('User not found');
+        }
+        customer.cart.push({ id: workoutId });
+        await customer.save();
+        return { message: 'Workout added to cart successfully' };
+    } catch (error) {
+        throw new Error('Failed to add workout to cart');
+    }
+}
+
 
 module.exports = {
     getAllCustomers,
     deleteFromCart,
     getCustomerByUsername,
-    isAdmin
+    isAdmin,
+    addWorkoutToCart
 }

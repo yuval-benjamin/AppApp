@@ -16,9 +16,25 @@ async function isAdmin(req, res, next) {
       return next()
     else
       res.redirect('/')
+}
+
+async function addWorkoutToCart(req, res){
+  const { workoutId } = req.body;
+  const username = req.session.username;
+  console.log("-------------- addWorkoutToCart ---------------")
+  console.log(workoutId + " " + username)
+  try {
+    const result = await customersService.addWorkoutToCart(username, workoutId);
+    res.status(200).json(result);
+  } catch (error) {
+      res.status(500).json({ error: 'Failed to add workout to cart' });
   }
+}
+
+
 
 module.exports = {
     GetCartPage,
-    isAdmin
+    isAdmin,
+    addWorkoutToCart
 }
