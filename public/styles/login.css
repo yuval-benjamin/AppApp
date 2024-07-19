@@ -104,3 +104,12 @@ h3 {
 .button:hover {
   background-color: #f7b1d6;
 }
+
+.error-message {
+  margin-top: 10px;
+  color: #e47eb5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
