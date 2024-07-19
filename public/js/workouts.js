@@ -16,7 +16,7 @@ async function getWorkouts(event) {
         await fetchSelectedWorkouts(); 
     }
     else {
-        const res = await fetch('http://localhost/' + searchData)
+        const res = await fetch('http://localhost/workouts/' + searchData)
         const workoutsJs = await res.json()
 
         displayWorkouts(workoutsJs)
@@ -55,7 +55,7 @@ async function fetchSelectedWorkouts() {
         getAll()
     }
     else {
-        const response = await fetch(`/selectedWorkouts?${queryString}`);
+        const response = await fetch(`/workouts/selectedWorkouts?${queryString}`);
         const workoutsJs = await response.json();
         
         displayWorkouts(workoutsJs)
