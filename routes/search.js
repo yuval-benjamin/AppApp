@@ -15,6 +15,6 @@ router.post("/", (req, res) => {
     }
 });
 
-router.get("/:search", workoutsController.SearchWorkout);
+router.get("/:workout", workoutsController.SearchWorkout);
 
 module.exports = router;

@@ -7,13 +7,6 @@ async function GetAllWorkouts(req, res){
     res.json(workouts);
 }
 
-async function GetWorkout(req, res){
-    const workout = await workoutsService.getWorkoutById(req.params.id)
-    if (!workout) {
-        return res.status(404).json({ errors: ['Workout not found'] })
-    }
-    res.render("test", {workout})
-}
 
 async function GetNearMePage(req, res){
     const workouts = await workoutsService.getAllWorkouts()
@@ -32,7 +25,6 @@ async function GetSelectedWorkouts(req, res){
 }
 
 module.exports = {
-    GetWorkout,
     SearchWorkout,
     GetNearMePage,
     GetAllWorkouts,
