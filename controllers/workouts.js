@@ -92,7 +92,8 @@ async function deleteWorkout(req, res) {
     if (!workout) {
       return res.status(404).json({ errors: ['workout not found'] });
     }
-    res.redirect('/adminPage/adminWorkouts');
+
+    res.status(200).json({ message: 'Workout deleted successfully' });
     } catch (error) {
     console.error('Error deleting workout:', error);
     res.status(500).send('Failed to delete workout:', error);

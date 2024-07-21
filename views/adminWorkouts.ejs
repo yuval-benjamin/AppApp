@@ -87,7 +87,7 @@
                     <form action="/adminPage/updateWorkout/<%= workout._id %>" method="GET" style="display: inline;">
                         <button type="submit" class="btn btn-primary">Edit</button>
                     </form>
-                    <form id="delete-workout-form-<%= workout._id %>" action="/workouts/<%= workout._id %>" method="POST" class="delete-workout-form" style="display: inline;">
+                    <form style="display: inline;">
                         <button type="button" class="btn btn-danger delete-workout-btn" data-workout-id="<%= workout._id %>">Delete</button>
                     </form>
                </div>

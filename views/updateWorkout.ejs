@@ -75,6 +75,7 @@
     <div class="container">
         <h1 class="my-4">Edit Workout</h1>
         <form id="update-workout-form">
+            <input type="hidden" id="workout-id" value="<%= workout._id %>">
             <div class="mb-3">
                 <label for="name" class="form-label">Workout Name</label>
                 <input type="text" class="form-control" id="name" name="name" value="<%= workout.name %>" required>
@@ -126,40 +127,6 @@
             <button type="submit" class="btn btn-primary">Update Workout</button>
         </form>
     </div>
-    
-    <script>
-        document.getElementById('update-workout-form').addEventListener('submit', async function(event) {
-            event.preventDefault();
-    
-            const form = event.target;
-            const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => data[key] = value);
-    
-            try {
-                console.log("try")
-                const response = await fetch(`/workouts/<%= workout._id %>`, {
-                    method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-    
-                if (response.ok) {
-                    window.location.href = '/adminPage/adminworkouts';
-                } else {
-                    console.log('error', error)
-                    console.error('Failed to update workout' + error);
-                    alert('Failed to update workout');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('An error occurred while updating the workout');
-            }
-        });
-    </script>
-    
 </div>
 <script src="/js/adminWorkouts.js"></script>
 

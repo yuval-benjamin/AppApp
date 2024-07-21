@@ -10,18 +10,18 @@ router.get("/", workoutsController.GetAllWorkouts)
 router.post('/', workoutsController.createWorkout);
 
 // Delete
-router.post('/:id', workoutsController.deleteWorkout);
+router.delete('/:id', workoutsController.deleteWorkout);
 
 // Search
 router.get("/:workout", workoutsController.SearchWorkout)
+
+// Update
+router.put('/:id', workoutsController.updateWorkout);
 
 // Filter
 router.get("/selectedWorkouts", workoutsController.GetSelectedWorkouts)
 
 // is this in use?????
 // router.route('/:id').get(workoutsController.GetWorkout) 
-
-// Update
-router.put('/:id', workoutsController.updateWorkout);
 
 module.exports = router;
