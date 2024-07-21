@@ -26,8 +26,6 @@ async function GetWorkoutIfContains(searchString) {
 }
 
 async function GetSelectedWorkouts(req) {
-  console.log("------------ selected workout - service -----------------");
-  console.log(req);
   const { category, weather, duration } = req;
 
   const selectedWorkouts = {
@@ -36,8 +34,6 @@ async function GetSelectedWorkouts(req) {
     duration: Array.isArray(duration) ? duration : [duration].filter(Boolean)
   };
 
-  console.log("------------ selected workouts - service -----------------");
-  console.log(selectedWorkouts);
 
   const matchConditions = [];
   if (selectedWorkouts.category.length > 0) {
@@ -50,20 +46,11 @@ async function GetSelectedWorkouts(req) {
     matchConditions.push({ duration: { $in: selectedWorkouts.duration } });
   }
 
-  console.log("------------ matchConditions - service -----------------");
-  console.log(matchConditions);
-
   const pipeline = [
     { $match: { $and: matchConditions } }
   ];
 
-  console.log("------------ pipeline - service -----------------");
-  console.log(pipeline);
-
   const fetchedWorkouts = await Workout.aggregate(pipeline).exec();
-
-  console.log("------------ fetchedWorkouts - service -----------------");
-  console.log(fetchedWorkouts);
 
   return fetchedWorkouts;
 }

@@ -91,7 +91,6 @@ function displayWorkouts(workoutsJs) {
           workout = workout.replace('{' + key + '}', element[key])
       }
       
-      console.log(workout)
       document.getElementsByClassName('workouts')[0].innerHTML += workout
     }
 }
