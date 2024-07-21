@@ -8,16 +8,10 @@ async function GetAdminPage(req, res){
     res.sendFile("public/views/adminPage.html", { root: path });
 }
 
-async function GetWorkoutsPage(req, res){
-    const workouts = await workoutsService.getAllWorkouts()
-    res.render("adminWorkouts", {workouts})
-}
-
 async function GetChartsPage(req, res){
     const customers = await customersService.getAllCustomers()
     res.render("charts", { customers })
 }
-
 
 async function GetFacebookPage(req, res){
     // res.render("facebook", {})
@@ -39,6 +33,21 @@ async function GetCreateWorkoutPage(req, res){
     res.render("createWorkout", {})
 }
 
+async function GetUpdateWorkoutPage(req, res) {
+    try {
+        const workout = await workoutsService.getWorkoutById(req.params.id);
+
+        if (!workout) {
+            return res.status(404).render('404', { message: 'Workout not found' });
+        }
+
+        res.render('updateWorkout', {workout});
+    } catch (error) {
+        console.error('Error fetching workout for edit:', error);
+        res.status(500).send('Failed to load workout for editing');
+    }
+}
+
 async function GetWorkoutsPage(req, res){
     const workouts = await workoutsService.getAllWorkouts()
     res.render("adminWorkouts", {workouts})
@@ -50,5 +59,6 @@ module.exports = {
     GetFacebookPage,
     GetWorkoutsPage,
     GetCreateWorkoutPage,
+    GetUpdateWorkoutPage,
     GetFollowers
 }

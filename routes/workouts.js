@@ -22,6 +22,6 @@ router.get("/selectedWorkouts", workoutsController.GetSelectedWorkouts)
 // router.route('/:id').get(workoutsController.GetWorkout) 
 
 // Update
-
+router.put('/:id', workoutsController.updateWorkout);
 
 module.exports = router;

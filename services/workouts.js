@@ -69,6 +69,20 @@ async function GetSelectedWorkouts(req) {
   return fetchedWorkouts
 }
 
+async function updateWorkout(id, workoutData) {
+  const workout = await getWorkoutById(id);
+  if (!workout)
+      return null;
+
+  Object.assign(workout, workoutData);
+  try {
+      await workout.save();
+      return workout;
+  } catch (error) {
+      throw new Error('Error updating workout: ' + error.message);
+  }
+}
+
 
 module.exports = {
     getWorkoutById,
@@ -76,7 +90,6 @@ module.exports = {
     GetWorkoutIfContains,
     createWorkout,
     deleteWorkout,
-    GetSelectedWorkouts
-    // createWorkout,
-    // updateWorkout,
+    GetSelectedWorkouts,
+    updateWorkout
 }

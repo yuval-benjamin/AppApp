@@ -11,5 +11,6 @@ router.get("/facebook", customersController.isAdmin ,adminController.GetFacebook
 router.get("/getFollowers", customersController.isAdmin, adminController.GetFollowers);
 router.get("/adminWorkouts", customersController.isAdmin, adminController.GetWorkoutsPage);
 router.get('/createWorkout', customersController.isAdmin, adminController.GetCreateWorkoutPage);
+router.get('/updateWorkout/:id', customersController.isAdmin, adminController.GetUpdateWorkoutPage);
 
 module.exports = router;

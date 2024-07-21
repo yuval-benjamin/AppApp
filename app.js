@@ -11,6 +11,7 @@ const customers = require('./routes/customers')
 const admin = require('./routes/admin')
 const search = require('./routes/search')
 
+
 // Connecting to the mongoDB
 mongoose.connect(process.env.MONGO_URL, { 
     useUnifiedTopology: true, 

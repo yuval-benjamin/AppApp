@@ -33,7 +33,7 @@ async function GetSelectedWorkouts(req, res){
 
 async function createWorkout(req, res) {
     try {
-        const { name, description, time, location, price, category, supplier, calories, coordinates, image, weather } = req.body;
+        const { name, description, time, location, price, category, supplier, calories, coordinates, duration, image, weather } = req.body;
         const newWorkout = await workoutsService.createWorkout({
             name,
             description,
@@ -44,6 +44,7 @@ async function createWorkout(req, res) {
             supplier,
             calories,
             coordinates,
+            duration,
             image,
             weather
         });
@@ -54,13 +55,44 @@ async function createWorkout(req, res) {
     }
 }
 
+async function updateWorkout(req, res) {
+    try {
+        const workoutId = req.params.id;
+        const { name, description, time, location, price, category, supplier, calories, coordinates, duration, image, weather } = req.body;
+
+        const updatedWorkout = await workoutsService.updateWorkout(workoutId, {
+            name,
+            description,
+            time,
+            location,
+            price,
+            category,
+            supplier,
+            calories,
+            coordinates,
+            duration,
+            image,
+            weather
+        });
+
+        if (!updatedWorkout) {
+            return res.status(404).json({ errors: ['Workout not found'] });
+        }
+
+        res.status(200).json({ message: 'Workout updated successfully' });
+    } catch (error) {
+        console.error('Error updating workout:', error);
+        res.status(500).send('Failed to update workout');
+    }
+}
+
 async function deleteWorkout(req, res) {
     try {
     const workout = await workoutsService.deleteWorkout(req.params.id);
     if (!workout) {
       return res.status(404).json({ errors: ['workout not found'] });
     }
-    res.redirect('/adminPage/adminWorkouts'); // Adjust the route as needed
+    res.redirect('/adminPage/adminWorkouts');
     } catch (error) {
     console.error('Error deleting workout:', error);
     res.status(500).send('Failed to delete workout:', error);
@@ -68,12 +100,13 @@ async function deleteWorkout(req, res) {
 }
 
 module.exports = {
-    GetWorkout,
+    // GetWorkout
     SearchWorkout,
     GetAllWorkouts,
     createWorkout,
     deleteWorkout,
     GetNearMePage,
     GetAllWorkouts,
-    GetSelectedWorkouts
+    GetSelectedWorkouts,
+    updateWorkout
 }
