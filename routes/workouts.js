@@ -21,7 +21,4 @@ router.put('/:id', workoutsController.updateWorkout);
 // Filter
 router.get("/selectedWorkouts", workoutsController.GetSelectedWorkouts)
 
-// is this in use?????
-// router.route('/:id').get(workoutsController.GetWorkout) 
-
 module.exports = router;
