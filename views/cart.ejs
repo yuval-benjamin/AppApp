@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="/styles/cart.css">
   <title>AppApp Cart</title>
 </head>
-
 <body>
   <!-- Navbar -->
   <header class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
@@ -48,7 +47,7 @@
        <!-- Right elements -->
        <div class="d-flex align-items-center position-relative">
           <!-- Cart -->
-          <a id="cart-link" class="link-secondary me-3" href="#">
+          <a id="cart-link" class="link-secondary me-3 " href="#">
           <i class="fas fa-shopping-cart fa-2x"></i>
           </a>
           <!-- Avatar -->
@@ -68,7 +67,7 @@
     </nav>
  </header>
  <!-- Cart -->
-  <div class="shopping-cart">
+  <div class="shopping-cart cart-class">
     <div class="title"> <%= customer.firstName %>'s Shopping Cart </div>
     <!-- All cart items -->
     <ul>
@@ -96,7 +95,7 @@
     </ul>
     <br>
     <div class="text-center">
-      <button type="button" class="btn btn-light">Checkout</button>
+      <button id="checkout-button" type="submit" class="btn btn-light">Checkout</button>
     </div>
   </div>
   <!-- Footer -->
@@ -131,46 +130,6 @@
  </footer>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-<!-- <script src="js/cart.js"></script> -->
- <script>
-  async function deleteFromCart(workoutId) {
-    try {
-        const response = await fetch('/getSessionUsername');
-        const data = await response.json();
-        const username = data.username;
-        console.log("delete");
-        console.log(workoutId);
-
-        // Send API request to remove workout from cart
-        // const deleteResponse = await fetch('/api/removeFromCart', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ username: username, workoutId: workoutId })
-        // });
-
-        // if (deleteResponse.ok) {
-        //     console.log('Workout removed from cart successfully');
-        //     // Optionally, remove the item from the DOM
-        //     document.querySelector(`.cart-item[data-id="${workoutId}"]`).remove();
-        // } else {
-        //     console.error('Failed to remove workout from cart');
-        // }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-
-// Delete Listener
-document.querySelectorAll('.delete-icon').forEach(icon => {
-    icon.addEventListener('click', function(event) {
-        event.preventDefault(); 
-        const workoutId = event.target.closest('.delete-btn').getAttribute('data-id');
-        deleteFromCart(workoutId);
-    });
-});
- </script>
+<script src="/js/cart.js"></script>
 
 </html>

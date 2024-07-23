@@ -83,14 +83,23 @@ function displayWorkouts(workoutsJs) {
     document.getElementsByClassName('workouts')[0].innerHTML = emptyWorkouts
     
     for (let i = 0; i < workoutsJs.length; i++) {
-      const element = workoutsJs[i];
+        const element = workoutsJs[i];
+        
+        if (typeof element.time === 'string' && !isNaN(Date.parse(element.time))) {
+            const date = new Date(element.time);
+            const day = date.getDate();
+            const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based
+            const year = date.getFullYear();
+            const hours = date.getHours();
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            element.time = `${hours}:${minutes} ${day}/${month}/${year}`;
+        }
       
       let workout = document.getElementById('workoutTemplate').innerHTML
       for (const key in element) {
           workout = workout.replace('{' + key + '}', element[key])
       }
       
-      console.log(workout)
       document.getElementsByClassName('workouts')[0].innerHTML += workout
     }
 }
@@ -98,14 +107,6 @@ function displayWorkouts(workoutsJs) {
 async function buyWorkout(event) {
     const workoutId = event.target.closest('.col').getAttribute('data-id');
     console.log(workoutId);
-    // try {
-    //     const response = await fetch('/getSessionUsername');
-    //     const data = await response.json();
-    //     const username = data.username;
-    //     console.log(username);
-    // } catch (error) {
-    //     console.error('Error fetching username:', error);
-    // }
     try {
         const addToCartResponse = await fetch('/cart/addWorkoutToCart', {
             method: 'POST',

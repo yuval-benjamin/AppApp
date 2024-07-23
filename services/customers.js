@@ -50,11 +50,51 @@ async function addWorkoutToCart(username, workoutId) {
     }
 }
 
+async function deleteWorkoutFromCart(username, workoutId) {
+    const customer = await Customer.findById(username);
+    console.log("-------- deleteWorkoutFromCart - service -----------")
+    console.log(username)
+    console.log(workoutId)
+    try {
+        if (!customer) {
+            throw new Error('User not found');
+        }
+
+        customer.cart = customer.cart.filter(item => item.id !== workoutId);       
+        await customer.save();
+
+        return { message: 'Workout removed from cart successfully' };
+    } catch (error) {
+        throw new Error('Failed to remove workout from cart');
+    }
+}
+
+async function deleteWorkoutsFromCart(username, workoutId) {
+    const customer = await Customer.findById(username);
+    console.log("-------- deleteWorkoutFromCart - service -----------")
+    console.log(username)
+    console.log(workoutId)
+    try {
+        if (!customer) {
+            throw new Error('User not found');
+        }
+
+        customer.cart = customer.cart.filter(item => item.id !== workoutId);       
+        await customer.save();
+        
+        return { message: 'Workout removed from cart successfully' };
+    } catch (error) {
+        throw new Error('Failed to remove workout from cart');
+    }
+}
+
 
 module.exports = {
     getAllCustomers,
     deleteFromCart,
     getCustomerByUsername,
     isAdmin,
-    addWorkoutToCart
+    addWorkoutToCart,
+    deleteWorkoutFromCart,
+    deleteWorkoutsFromCart
 }
