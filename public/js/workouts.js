@@ -106,7 +106,6 @@ function displayWorkouts(workoutsJs) {
 
 async function buyWorkout(event) {
     const workoutId = event.target.closest('.col').getAttribute('data-id');
-    console.log(workoutId);
     try {
         const addToCartResponse = await fetch('/cart/addWorkoutToCart', {
             method: 'POST',
@@ -124,19 +123,6 @@ async function buyWorkout(event) {
         console.error('Error:', error);
     }
 
-}
-
-async function redirectToCart() {
-    try {
-        const response = await fetch('/getSessionUsername');
-        const data = await response.json();
-        const username = data.username;
-        console.log(username);
-
-        window.location.href = `http://localhost/cart/${username}`;
-    } catch (error) {
-        console.error('Error fetching username:', error);
-    }
 }
 
 
@@ -164,9 +150,4 @@ document.querySelector('.workouts').addEventListener('click', function(event) {
     }
 });
 
-// Cart listener
-document.getElementById('cart-link').addEventListener('click', function(event) {
-    event.preventDefault(); 
-    redirectToCart();
-});
 

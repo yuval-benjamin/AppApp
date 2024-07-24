@@ -28,7 +28,7 @@ async function deleteFromCart(customerId, workoutId) {
 async function isAdmin(username) {
     const customer = await Customer.findById(username);
     try {
-        return customer.isAdmin; // Return the value of isAdmin
+        return customer.isAdmin; 
     } catch (error) {
         return false
     }
@@ -36,8 +36,7 @@ async function isAdmin(username) {
 
 async function addWorkoutToCart(username, workoutId) {
     const customer = await Customer.findById(username);
-    console.log("-------- addWorkoutToCart - service -----------")
-    console.log(customer)
+
     try {
         if (!customer) {
             throw new Error('User not found');
@@ -52,9 +51,7 @@ async function addWorkoutToCart(username, workoutId) {
 
 async function deleteWorkoutFromCart(username, workoutId) {
     const customer = await Customer.findById(username);
-    console.log("-------- deleteWorkoutFromCart - service -----------")
-    console.log(username)
-    console.log(workoutId)
+
     try {
         if (!customer) {
             throw new Error('User not found');
@@ -69,17 +66,14 @@ async function deleteWorkoutFromCart(username, workoutId) {
     }
 }
 
-async function deleteWorkoutsFromCart(username, workoutId) {
+async function deleteAllWorkoutsFromCart(username) {
     const customer = await Customer.findById(username);
-    console.log("-------- deleteWorkoutFromCart - service -----------")
-    console.log(username)
-    console.log(workoutId)
+
     try {
         if (!customer) {
             throw new Error('User not found');
-        }
-
-        customer.cart = customer.cart.filter(item => item.id !== workoutId);       
+        } 
+        customer.cart = [];      
         await customer.save();
         
         return { message: 'Workout removed from cart successfully' };
@@ -88,6 +82,13 @@ async function deleteWorkoutsFromCart(username, workoutId) {
     }
 }
 
+async function getUserWorkoutsFromCart(username){
+    const customer = await Customer.findById(username);
+
+    const workoutIds = customer.cart.map(item => item.id);
+
+    return workoutIds
+}
 
 module.exports = {
     getAllCustomers,
@@ -96,5 +97,6 @@ module.exports = {
     isAdmin,
     addWorkoutToCart,
     deleteWorkoutFromCart,
-    deleteWorkoutsFromCart
+    deleteAllWorkoutsFromCart,
+    getUserWorkoutsFromCart
 }

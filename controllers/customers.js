@@ -21,7 +21,6 @@ async function isAdmin(req, res, next) {
 async function isUsername(req, res, next) {
   const currentSessionUsername = req.session.username;
   const requestedUsername = req.params.username;
-  console.log("currentSessionUsername - " + currentSessionUsername + " requestedUsername - " + requestedUsername)
   if (currentSessionUsername == requestedUsername)
     return next()
   else
@@ -31,8 +30,7 @@ async function isUsername(req, res, next) {
 async function addWorkoutToCart(req, res){
   const { workoutId } = req.body;
   const username = req.session.username;
-  console.log("-------------- addWorkoutToCart ---------------")
-  console.log(workoutId + " " + username)
+
   try {
     const result = await customersService.addWorkoutToCart(username, workoutId);
     res.status(200).json(result);
@@ -52,16 +50,27 @@ async function deleteWorkoutFromCart(req, res){
   }
 }
 
-async function deleteWorkoutsFromCart(req, res){
-  const { workoutId } = req.body;
+async function deleteAllWorkoutsFromCart(req, res){
   const username = req.session.username;
+  const workoutIdList = await getUserWorkoutsFromCart(username)
+
   try {
-    const result = await customersService.deleteWorkoutsFromCart(username, workoutId);
+    const result = await customersService.deleteAllWorkoutsFromCart(username);
     res.status(200).json(result);
   } catch (error) {
       res.status(500).json({ error: 'Failed to delete workout from cart' });
   }
 }
+
+async function getUserWorkoutsFromCart(username){
+  const workoutIds = await customersService.getUserWorkoutsFromCart(username);
+
+  return workoutIds
+
+}
+
+
+
 
 
 
@@ -70,6 +79,6 @@ module.exports = {
     isAdmin,
     addWorkoutToCart,
     deleteWorkoutFromCart,
-    deleteWorkoutsFromCart,
+    deleteAllWorkoutsFromCart,
     isUsername
 }

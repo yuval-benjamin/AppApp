@@ -45,7 +45,7 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center position-relative">
                <!-- Cart -->
-               <a class="link-secondary me-3" href="#">
+               <a id="cart-link" class="link-secondary me-3" href="#">
                <i class="fas fa-shopping-cart fa-2x"></i>
                </a>
                <!-- Avatar -->
@@ -73,8 +73,6 @@
         window.coordinates = workouts;
     </script>
 
-    <script src="../js/maps.js"></script>
-
     <script loading=async src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_MAPS_API_KEY %>&callback=generateMap"></script>
 
       <!-- Footer -->
@@ -85,29 +83,29 @@
                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
                   <h5 class="text-uppercase">Talk To Us</h5>
                   <p>
-                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
-                     atque ea quis molestias. Fugiat pariatur maxime quis culpa
-                     corporis vitae repudiandae aliquam voluptatem veniam, est atque
-                     cumque eum delectus sint!
+                     Got questions or need support? We're here to help! Reach out to us anytime at
+                     https://github.com/yuval-benjamin/AppApp . Your fitness journey is our
+                     priority, and we’re committed to providing you with the best service possible.
                   </p>
                </div>
                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
                   <h5 class="text-uppercase">About Us</h5>
                   <p>
-                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste
-                     atque ea quis molestias. Fugiat pariatur maxime quis culpa
-                     corporis vitae repudiandae aliquam voluptatem veniam, est atque
-                     cumque eum delectus sint!
+                     At AppApp, we're passionate about fitness and wellness. Our mission is to provide
+                     you with the best workout routines, designed to fit your unique lifestyle and
+                     fitness goals. Join our community and transform your health, one workout at a time.
                   </p>
                </div>
             </div>
          </div>
          <!-- Copyright -->
          <div id="second-footer" class="text-center p-3">
-            © 2024 Copyright: Us
+            © 2024 Copyright: Yuval Benjamin, Gili Yaacobi, Maayan Meir and Gal Shirizli
          </div>
       </footer>
 
    </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="../js/maps.js"></script>
+<script src="/js/navbar.js"></script>
 </html>
