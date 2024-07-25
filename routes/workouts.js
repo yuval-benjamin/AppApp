@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path').resolve(__dirname, '..')
 const router = express.Router();
 
 const workoutsController  = require("../controllers/workouts")
