@@ -1,0 +1,20 @@
+.head {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.workouts-container {
+    flex-grow: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.add-workout-button-container {
+    text-align: end;
+    margin-bottom: 20px;
+}
+
+.btn-success {
+    padding: 12px 24px;
+    font-size: 18px;
+}

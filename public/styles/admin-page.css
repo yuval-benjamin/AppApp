@@ -6,6 +6,24 @@ body {
     color: rgb(99, 98, 98);
 }
 
+.custom-btn {
+    padding: 10px 15px;
+    font-size: 12px;
+}
+
+.small-img {
+    height: 100px; 
+    object-fit: cover; 
+}
+
+.workout-img {
+    width: 90%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    max-height: 90px;
+}
+
 .sidebar {
     height: 100%;
     width: 250px;
@@ -66,4 +84,23 @@ body {
 .main-content {
     flex: 1;
     padding: 20px;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.content-wrapper {
+    margin-left: 250px;
+    padding: 20px;
+    position: relative;
+}
+
+.create-workout-btn {
+    display: none; 
+    position: absolute;
+    top: 20px; 
+    right: 20px; 
+    z-index: 1000;
 }
