@@ -1,5 +1,4 @@
 
-const AdminService = require("../services/admin")
 const customersService = require('../services/customers')
 const workoutsService = require('../services/workouts')
 const path = require('path').resolve(__dirname, '..')
@@ -29,6 +28,12 @@ async function GetFollowers(req, res){
 
 }
 
+// All admin workout funtions
+async function GetWorkoutsPage(req, res){
+    const workouts = await workoutsService.getAllWorkouts()
+    res.render("adminWorkouts", {workouts})
+}
+
 async function GetCreateWorkoutPage(req, res){
     res.render("createWorkout", {})
 }
@@ -48,10 +53,17 @@ async function GetUpdateWorkoutPage(req, res) {
     }
 }
 
-async function GetWorkoutsPage(req, res){
-    const workouts = await workoutsService.getAllWorkouts()
-    res.render("adminWorkouts", {workouts})
+
+// All admin customer funtions
+async function GetCustomersPage(req, res){
+    const customers = await customersService.getAllCustomers()
+    res.render("adminCustomers", {customers})
 }
+
+async function GetCreateCustomerPage(req, res){
+    res.render("createCustomer", {})
+}
+
 
 module.exports = {
     GetAdminPage,
@@ -60,5 +72,7 @@ module.exports = {
     GetWorkoutsPage,
     GetCreateWorkoutPage,
     GetUpdateWorkoutPage,
-    GetFollowers
+    GetFollowers,
+    GetCustomersPage,
+    GetCreateCustomerPage
 }
