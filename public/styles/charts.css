@@ -76,3 +76,7 @@
     height: 55vh;
     margin: 20px 0;
 }
+
+.sidebar {
+    position: sticky;
+}
