@@ -19,9 +19,11 @@ AppApp is a web-based fitness application that enables users to book workouts, v
 - [MongoDB](https://www.mongodb.com/)
 - API keys for Google Maps and Facebook
 
-### Acknowledgements
-Bootstrap for styling
-MongoDB for database management
-Google Maps API for location services
-Facebook Graph API for Facebook integration
+## Acknowledgements
+
+- [Bootstrap](https://getbootstrap.com) for styling
+- [MongoDB](https://www.mongodb.com) for database management
+- [Google Maps API](https://developers.google.com/maps) for location services
+- [Facebook Graph API](https://developers.facebook.com/docs/graph-api) for Facebook integration
+
 
