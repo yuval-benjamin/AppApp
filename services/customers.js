@@ -41,12 +41,27 @@ async function deleteCustomer(id) {
   
     await customer.deleteOne();
     return customer;
-  }
+}
+
+async function updateCustomer(id, customerData) {
+    const customer = await getCustomerByUsername(id);
+    if (!customer)
+        return null;
+  
+    Object.assign(customer, customerData);
+    try {
+        await customer.save();
+        return customer;
+    } catch (error) {
+        throw new Error('Error updating customer: ' + error.message);
+    }
+}
 
 module.exports = {
     getAllCustomers,
     deleteFromCart,
     getCustomerByUsername,
     isAdmin,
-    deleteCustomer
+    deleteCustomer,
+    updateCustomer
 }

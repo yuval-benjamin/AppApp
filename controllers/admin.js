@@ -64,6 +64,20 @@ async function GetCreateCustomerPage(req, res){
     res.render("createCustomer", {})
 }
 
+async function GetUpdateCustomerPage(req, res) {
+    try {
+        const customer = await customersService.getCustomerByUsername(req.params.id);
+
+        if (!customer) {
+            return res.status(404).render('404', { message: 'Customer not found' });
+        }
+
+        res.render('updateCustomer', {customer});
+    } catch (error) {
+        console.error('Error fetching customer for edit:', error);
+        res.status(500).send('Failed to load customer for editing');
+    }
+}
 
 module.exports = {
     GetAdminPage,
@@ -74,5 +88,6 @@ module.exports = {
     GetUpdateWorkoutPage,
     GetFollowers,
     GetCustomersPage,
-    GetCreateCustomerPage
+    GetCreateCustomerPage,
+    GetUpdateCustomerPage
 }

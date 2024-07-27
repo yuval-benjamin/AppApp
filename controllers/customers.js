@@ -32,8 +32,35 @@ async function deleteCustomer(req, res) {
   }
 }
 
+async function updateCustomer(req, res) {
+  try {
+      const customerId = req.params.id;
+      const { firstName, lastName, email, gender, birthDate, password, isAdmin } = req.body;
+
+      const updatedCustomer = await customersService.updateCustomer(customerId, {
+          firstName,
+          lastName,
+          email,
+          gender,
+          birthDate,
+          password,
+          isAdmin
+      });
+
+      if (!updatedCustomer) {
+          return res.status(404).json({ errors: ['Customer not found'] });
+      }
+
+      res.status(200).json({ message: 'Customer updated successfully' });
+  } catch (error) {
+      console.error('Error updating customer:', error);
+      res.status(500).send('Failed to update customer');
+  }
+}
+
 module.exports = {
     GetCartPage,
     isAdmin,
-    deleteCustomer
+    deleteCustomer,
+    updateCustomer
 }

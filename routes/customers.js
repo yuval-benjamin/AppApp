@@ -8,3 +8,6 @@ module.exports = router;
 
 // Delete
 router.delete('/:id', customersController.deleteCustomer);
+
+// Update
+router.put('/:id', customersController.updateCustomer);

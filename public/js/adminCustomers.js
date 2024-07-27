@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-    const updateForm = document.getElementById('update-workout-form');
+    const updateForm = document.getElementById('update-customer-form');
     if (updateForm) {
         updateForm.addEventListener('submit', async function(event) {
             event.preventDefault();
@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
             const data = {};
             formData.forEach((value, key) => data[key] = value);
 
-            const workoutId = document.getElementById('workout-id').value; // Get the workout ID from the hidden input field
+            const customerId = document.getElementById('customer-id').value; // Get the customer ID from the hidden input field
 
             try {
-                const response = await fetch(`/workouts/${workoutId}`, {
+                const response = await fetch(`/customers/${customerId}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -48,14 +48,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 });
 
                 if (response.ok) {
-                    window.location.href = '/adminPage/adminWorkouts';
+                    window.location.href = '/adminPage/adminCustomers';
                 } else {
-                    console.error('Failed to update workout');
-                    alert('Failed to update workout');
+                    console.error('Failed to update customer');
+                    alert('Failed to update customer');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('An error occurred while updating the workout');
+                alert('An error occurred while updating the customer');
             }
         });
     }

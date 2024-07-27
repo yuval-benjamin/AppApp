@@ -18,6 +18,6 @@ router.get('/updateWorkout/:id', customersController.isAdmin, adminController.Ge
 // Admin - customers
 router.get("/adminCustomers", customersController.isAdmin, adminController.GetCustomersPage);
 router.get('/createCustomer', customersController.isAdmin, adminController.GetCreateCustomerPage);
-router.get('/updateCustomer/:id', customersController.isAdmin, adminController.GetUpdateWorkoutPage);
+router.get('/updateCustomer/:id', customersController.isAdmin, adminController.GetUpdateCustomerPage);
 
 module.exports = router;
