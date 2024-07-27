@@ -58,7 +58,7 @@ async function updateWorkout(req, res) {
             location,
             price,
             category,
-            suppliers,
+            supplier,
             calories,
             coordinates,
             duration,
