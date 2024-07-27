@@ -50,23 +50,3 @@
 .sidebar {
     position: sticky;
 }
-
-/* Ensure proper layout and spacing */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.col-md-6 {
-    flex: 1;
-    padding: 0 15px;
-}
-
-.text-start {
-    text-align: start; /* Aligns the button to the left */
-}
-
-/* Adjust spacing */
-.mt-4 {
-    margin-top: 1.5rem; /* Space above the button */
-}

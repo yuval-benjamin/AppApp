@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const dateInput = document.getElementById('time');
         const dateValue = dateInput.value;
 
-        // Regular expression to validate the date format yyyy-mm-ddThh:mm
         const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
 
         if (!dateRegex.test(dateValue)) {
