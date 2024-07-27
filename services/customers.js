@@ -34,10 +34,19 @@ async function isAdmin(username) {
     }
 }
 
+async function deleteCustomer(id) {
+    const customer = await getCustomerByUsername(id);
+    if (!customer)
+        return null;
+  
+    await customer.deleteOne();
+    return customer;
+  }
 
 module.exports = {
     getAllCustomers,
     deleteFromCart,
     getCustomerByUsername,
-    isAdmin
+    isAdmin,
+    deleteCustomer
 }

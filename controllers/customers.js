@@ -16,9 +16,24 @@ async function isAdmin(req, res, next) {
       return next()
     else
       res.redirect('/')
+}
+
+async function deleteCustomer(req, res) {
+  try {
+    const customer = await customersService.deleteCustomer(req.params.id);
+    if (!customer) {
+      return res.status(404).json({ errors: ['customer not found'] });
+    }
+
+    res.status(200).json({ message: 'Customer deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting customer:', error);
+    res.status(500).send('Failed to delete customer:', error);
   }
+}
 
 module.exports = {
     GetCartPage,
-    isAdmin
+    isAdmin,
+    deleteCustomer
 }
