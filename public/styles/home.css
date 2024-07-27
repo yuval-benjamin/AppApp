@@ -110,6 +110,9 @@ body {
     margin: 0;
     cursor: pointer;
 }
+.card-text{
+    font-size: small;
+}
 
 /* Button for Serach and Buy */
 .btn, #filterDropdown{
@@ -146,8 +149,8 @@ body {
     flex-wrap: wrap;
     margin-top: calc(var(--mdb-gutter-y)* -1);
     margin-bottom: calc(var(--mdb-gutter-y)* 1);
-    margin-right: calc(var(--mdb-gutter-x)* 5);
-    margin-left: calc(var(--mdb-gutter-x)* 5);
+    margin-right: calc(var(--mdb-gutter-x)* 11);
+    margin-left: calc(var(--mdb-gutter-x)* 11);
 }
 
 .no-results {
