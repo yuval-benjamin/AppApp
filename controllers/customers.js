@@ -1,5 +1,6 @@
 const customersService = require('../services/customers')
 const workoutsService = require('../services/workouts')
+const loginService = require('../services/login')
 
 async function GetCartPage(req, res){
     const workouts = await workoutsService.getAllWorkouts()
@@ -29,6 +30,24 @@ async function deleteCustomer(req, res) {
   } catch (error) {
     console.error('Error deleting customer:', error);
     res.status(500).send('Failed to delete customer:', error);
+  }
+}
+
+async function createCustomer(req, res) {
+  const { firstName , lastName , username , email , gender , birthDate , password , isAdmin } = req.body
+  try {
+    
+    // If username exists, redirect back to createCustomer and show error
+    if(await customersService.getCustomerByUsername(username)) {
+      return res.render('createCustomer', { error: 'Username already taken' })
+    }
+
+    await loginService.register(firstName , lastName , username , email , gender , birthDate , password , isAdmin)    
+    res.redirect('/adminPage/adminCustomers');
+  }
+  catch (e) { 
+    console.error('Error creating customer:', error);
+    res.status(500).send('Failed to create customer');
   }
 }
 
@@ -62,5 +81,6 @@ module.exports = {
     GetCartPage,
     isAdmin,
     deleteCustomer,
-    updateCustomer
+    updateCustomer,
+    createCustomer
 }

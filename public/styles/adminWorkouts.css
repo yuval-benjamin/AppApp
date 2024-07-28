@@ -18,3 +18,12 @@
     padding: 12px 24px;
     font-size: 18px;
 }
+
+.error-message {
+    margin-top: 10px;
+    color: #e47eb5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }

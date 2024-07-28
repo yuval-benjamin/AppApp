@@ -74,7 +74,7 @@
 
     <div class="container">
         <h1 class="my-4">Add New Customer</h1>
-        <form id="registerForm" action="/register" method="post">
+        <form id="registerForm" action="/customers" method="post">
             <div class="mb-3">
                 <label class="form-label">Username</label>
                 <input name="username" type="text" placeholder="Username" class="form-control" required>
@@ -124,7 +124,9 @@
                 </select>
             </div>
 
-            <!-- Add error here -->
+            <% if (error) { %>
+                <h4 class="error-message"><%= error %></h4>
+            <% } %>
 
             <button type="submit" class="btn btn-primary custom-btn">Submit</button>
         </form>

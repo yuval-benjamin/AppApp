@@ -61,7 +61,7 @@ async function GetCustomersPage(req, res){
 }
 
 async function GetCreateCustomerPage(req, res){
-    res.render("createCustomer", {})
+    res.render("createCustomer", { error: null })
 }
 
 async function GetUpdateCustomerPage(req, res) {
