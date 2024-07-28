@@ -76,81 +76,107 @@
         <h1 class="my-4">Edit Workout</h1>
         <form id="update-workout-form">
             <input type="hidden" id="workout-id" value="<%= workout._id %>">
-            <div class="mb-3">
-                <label for="name" class="form-label">Workout Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="<%= workout.name %>" required>
+            <div class="row">
+                <!-- Left Column -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Workout Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="<%= workout.name %>" required pattern="[A-Za-z\s]+" title="Workout name must contain only letters and spaces">
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">Time</label>
+                        <input type="datetime-local" class="form-control" id="time" name="time" value="<%= workout.time ? workout.time.toISOString().slice(0, 16) : '' %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="location" value="<%= workout.location %>" required pattern="[A-Za-z\s]+" title="Location must contain only letters and spaces">
+                    </div>   
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" name="description" rows="3"><%= workout.description %></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="price" name="price" value="<%= workout.price %>" min="0" required>
+                    </div>
+                    <div class="mb-3 custom-select-container">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-control" id="category" name="category" required>
+                            <option value="Tennis" <%= workout.category === 'Court' ? 'selected' : '' %>>Tennis</option>
+                            <option value="Wimbledon" <%= workout.category === 'Water' ? 'selected' : '' %>>Wimbledon</option>
+                            <option value="Soccer" <%= workout.category === 'Soccer' ? 'selected' : '' %>>Soccer</option>
+                            <option value="Yoga" <%= workout.category === 'Yoga' ? 'selected' : '' %>>Yoga</option>
+                            <option value="Pilates" <%= workout.category === 'Pilates' ? 'selected' : '' %>>Pilates</option>
+                            <option value="Running" <%= workout.category === 'Running' ? 'selected' : '' %>>Running</option>
+                            <option value="Cycling" <%= workout.category === 'Cycling' ? 'selected' : '' %>>Cycling</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Right Column -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="supplier" class="form-label">Supplier</label>
+                        <input type="text" class="form-control" id="supplier" name="supplier" value="<%= workout.supplier %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="calories" class="form-label">Calories</label>
+                        <input type="number" class="form-control" id="calories" name="calories" value="<%= workout.calories %>" min="1" max="3000" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="coordinates" class="form-label">Coordinates</label>
+                        <input type="text" class="form-control" id="coordinates" name="coordinates" value="<%= workout.coordinates %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="duration" class="form-label">Duration in minutes</label>
+                        <input type="number" class="form-control" id="duration" name="duration" value="<%= workout.duration %>" min="20" max="180" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="text" class="form-control" id="image" name="image" value="<%= workout.image %>" required>
+                    </div>
+                    <div class="mb-3 custom-select-container">
+                        <label for="weather" class="form-label">Weather</label>
+                        <select class="form-control" id="weather" name="weather" required>
+                            <option value="Indoor" <%= workout.weather === 'Indoor' ? 'selected' : '' %>>Indoor</option>
+                            <option value="Outdoor" <%= workout.weather === 'Outdoor' ? 'selected' : '' %>>Outdoor</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3"><%= workout.description %></textarea>
+            <!-- Submit Button -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-start mt-4">
+                        <button type="submit" class="btn btn-primary custom-btn">Update Workout</button>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="time" class="form-label">Time</label>
-                <input type="datetime-local" class="form-control" id="time" name="time" value="<%= workout.time ? workout.time.toISOString().slice(0, 16) : '' %>" required>
-            </div>
-            <div class="mb-3">
-                <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" name="location" value="<%= workout.location %>" required>
-            </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" id="price" name="price" value="<%= workout.price %>" required>
-            </div>
-            <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
-                <input type="text" class="form-control" id="category" name="category" value="<%= workout.category %>" required>
-            </div>
-            <div class="mb-3">
-                <label for="supplier" class="form-label">Supplier</label>
-                <input type="text" class="form-control" id="supplier" name="supplier" value="<%= workout.supplier %>" required>
-            </div>
-            <div class="mb-3">
-                <label for="calories" class="form-label">Calories</label>
-                <input type="number" class="form-control" id="calories" name="calories" value="<%= workout.calories %>" required>
-            </div>
-            <div class="mb-3">
-                <label for="coordinates" class="form-label">Coordinates</label>
-                <input type="text" class="form-control" id="coordinates" name="coordinates" value="<%= workout.coordinates %>" required>
-            </div>
-            <div class="mb-3">
-                <label for="duration" class="form-label">Duration</label>
-                <input type="text" class="form-control" id="duration" name="duration" value="<%= workout.duration %>" required>
-            </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Image URL</label>
-                <input type="text" class="form-control" id="image" name="image" value="<%= workout.image %>" required>
-            </div>
-            <div class="mb-3">
-                <label for="weather" class="form-label">Weather</label>
-                <input type="text" class="form-control" id="weather" name="weather" value="<%= workout.weather %>" required>
-            </div>
-            <button type="submit" class="btn btn-primary custom-btn">Update Workout</button>
-            <div class="pb-4"></div>
-        </form>
+        </form>        
     </div>
 </div>
 <script src="/js/adminWorkouts.js"></script>
 
-<!-- Footer -->
 <footer class="text-white text-center text-lg-start">
-    <!-- Info -->
     <div id="first-footer" class="container p-4">
-        <div class="row">
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Talk To Us</h5>
-                <p>Hi! talk to me</p>
-            </div>
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 class="text-uppercase">About Us</h5>
-                <p>Hi! This is so hard</p>
-            </div>
-        </div>
+       <div class="row">
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+             <h5 class="text-uppercase">Talk To Us</h5>
+             <p>
+               Have questions or feedback? Reach out to us at support@appapp.com or follow us on social media for the latest updates and tips. We're here to help!
+             </p>
+          </div>
+          <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+             <h5 class="text-uppercase">About Us</h5>
+             <p>
+               At AppApp, we're all about making fitness easy and enjoyable. Our app lets you book personalized workouts, track your progress, and stay motivated—all in one place. Whether you're a fitness pro or just starting out, AppApp connects you with the right workouts to help you reach your goals. Join us and make your fitness journey simpler and more fun!
+             </p>
+          </div>
+       </div>
     </div>
-    <!-- Copyright -->
     <div id="second-footer" class="text-center p-3">
-        © 2024 Copyright: Us
+       © 2024 Copyright: Gal, Gili, Yuval, Maayan
     </div>
-</footer>
+ </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
