@@ -73,7 +73,7 @@
 
     <div class="container">
         <h1 class="my-4">Edit Customer</h1>
-        <form id="update-customer-form">
+        <form id="update-customer-form" >
             <input type="hidden" id="customer-id" value="<%= customer._id %>">
             <div class="mb-3">
                 <label class="form-label">First Name</label>
@@ -102,7 +102,7 @@
             </div>
             
             <div class="mb-3">
-                <label for="password" class="form-label">Passowrd</label>
+                <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" value="<%= customer.password %>" required>
             </div>
             <div class="mb-3">
@@ -140,8 +140,9 @@
     </div>
 </footer>
 
-<script src="/js/adminCustomers.js"></script>
-<script src="../js/validation.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="module" src="/js/validation.js"></script>
+<script type="module" src="/js/adminCustomers.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

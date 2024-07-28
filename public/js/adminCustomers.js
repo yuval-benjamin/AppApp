@@ -1,3 +1,5 @@
+import { validateUpdateForm } from './validation.js';
+
 document.addEventListener('DOMContentLoaded', (event) => {
     document.querySelectorAll('.delete-customer-btn').forEach(button => {
         button.addEventListener('click', async (event) => {
@@ -31,12 +33,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
         updateForm.addEventListener('submit', async function(event) {
             event.preventDefault();
 
+            if (!validateUpdateForm('#update-customer-form')) {
+                return; // Prevent submission if validation fails
+            }
+
             const form = event.target;
             const formData = new FormData(form);
             const data = {};
             formData.forEach((value, key) => data[key] = value);
 
-            const customerId = document.getElementById('customer-id').value; // Get the customer ID from the hidden input field
+            const customerId = document.getElementById('customer-id').value;
 
             try {
                 const response = await fetch(`/customers/${customerId}`, {
