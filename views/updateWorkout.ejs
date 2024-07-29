@@ -102,13 +102,12 @@
                     <div class="mb-3 custom-select-container">
                         <label for="category" class="form-label">Category</label>
                         <select class="form-control" id="category" name="category" required>
-                            <option value="Tennis" <%= workout.category === 'Tennis' ? 'selected' : '' %>>Tennis</option>
-                            <option value="Wimbledon" <%= workout.category === 'Wimbledon' ? 'selected' : '' %>>Wimbledon</option>
+                            <option value="Tennis" <%= workout.category === 'Court' ? 'selected' : '' %>>Tennis</option>
+                            <option value="Wimbledon" <%= workout.category === 'Water' ? 'selected' : '' %>>Wimbledon</option>
                             <option value="Soccer" <%= workout.category === 'Soccer' ? 'selected' : '' %>>Soccer</option>
                             <option value="Yoga" <%= workout.category === 'Yoga' ? 'selected' : '' %>>Yoga</option>
                             <option value="Pilates" <%= workout.category === 'Pilates' ? 'selected' : '' %>>Pilates</option>
                             <option value="Running" <%= workout.category === 'Running' ? 'selected' : '' %>>Running</option>
-                            <option value="Swimming" <%= workout.category === 'Swimming' ? 'selected' : '' %>>Swimming</option>
                             <option value="Cycling" <%= workout.category === 'Cycling' ? 'selected' : '' %>>Cycling</option>
                         </select>
                     </div>
