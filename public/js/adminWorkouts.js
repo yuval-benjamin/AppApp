@@ -59,4 +59,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
     }
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        const dateInput = document.getElementById('time');
+        const dateValue = dateInput.value;
+
+        const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/;
+
+        if (!dateRegex.test(dateValue)) {
+            alert('Invalid date format. Please enter a valid date and time.');
+            event.preventDefault();
+        }
+    });
 });
