@@ -1,0 +1,52 @@
+.head {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.form-label {
+    font-size: 1.25rem;
+}
+
+.workouts-container {
+    flex-grow: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.add-workout-button-container {
+    text-align: end;
+    margin-bottom: 20px;
+}
+
+.btn-success {
+    padding: 12px 24px;
+    font-size: 18px;
+}
+
+.custom-select-container {
+    position: relative;
+}
+
+.custom-select-container select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 30px;
+    height: calc(1.5em + .75rem + 2px);
+    line-height: 1.5;
+}
+
+.custom-select-container::after {
+    content: "\f078";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.sidebar {
+    position: sticky;
+}

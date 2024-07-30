@@ -25,6 +25,26 @@ async function GetWorkoutIfContains(searchString) {
     }
 }
 
+
+async function createWorkout(workoutData) {
+  const workout = new Workout(workoutData);
+  try {
+      await workout.save();
+      return workout;
+  } catch (error) {
+      throw new Error('Error creating workout: ' + error.message);
+  }
+}
+
+async function deleteWorkout(id) {
+  const workout = await getWorkoutById(id);
+  if (!workout)
+      return null;
+
+  await workout.deleteOne();
+  return workout;
+}
+
 async function GetSelectedWorkouts(req) {
   const { category, weather, duration } = req;
 
@@ -54,13 +74,27 @@ async function GetSelectedWorkouts(req) {
   return fetchedWorkouts;
 }
 
+async function updateWorkout(id, workoutData) {
+  const workout = await getWorkoutById(id);
+  if (!workout)
+      return null;
+
+  Object.assign(workout, workoutData);
+  try {
+      await workout.save();
+      return workout;
+  } catch (error) {
+      throw new Error('Error updating workout: ' + error.message);
+  }
+}
+
 
 module.exports = {
     getWorkoutById,
     getAllWorkouts,
     GetWorkoutIfContains,
-    GetSelectedWorkouts
-    // createWorkout,
-    // updateWorkout,
-    // deleteWorkout
+    createWorkout,
+    deleteWorkout,
+    GetSelectedWorkouts,
+    updateWorkout
 }

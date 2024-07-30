@@ -1,18 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Admin Page</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
       <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
       <link rel="stylesheet" href="/styles/home.css">
       <link rel="stylesheet" href="/styles/header-footer.css">
       <link rel="stylesheet" href="/styles/admin-page.css">
-      <title>Admin Page</title>
    </head>
    <body>
+
       <!-- Navbar -->
       <header class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
          <nav class="container-fluid">
@@ -20,11 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                <!-- Logo -->
                <a class="navbar-brand mt-2 mt-lg-0" href="#">
-               <img
-                  src="/images/logo.png"
-                  height="50"
-                  alt="MDB Logo"
-                  />
+               <img src="/images/logo.png" height="50" alt="MDB Logo" />
                </a>
                <!-- Left links -->
                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -64,38 +60,31 @@
 
       <aside class="sidebar">
          <ul>
-            <li><a href="#" onclick="openTab('workouts')" ><i class="fas fa-dumbbell"></i> Workouts</a></li>
-            <li><a href="#" onclick="openTab('users')"><i class="fas fa-running"></i>Users</a></li>
-            <li><a href="#" onclick="openTab('suppliers')"><i class="fas fa-truck"></i> Suppliers</a></li>
-            <li><a href="/adminPage/charts" onclick="openTab('charts')"><i class="fas fa-chart-bar"></i> Statistics</a></li>
-            <li><a href="/adminPage/facebook" onclick="openTab('facebook')"><i class="fab fa-facebook fa-2x" style="color: rgb(99, 98, 98);"></i> Facebook</a></li>
-        </ul>
-      </aside class="sidebar">
+            <li><a href="/adminPage/adminWorkouts"><i class="fas fa-dumbbell"></i> Workouts</a></li>
+            <li><a href="#"><i class="fas fa-running"></i>Users</a></li>
+            <li><a href="#"><i class="fas fa-truck"></i> Orders</a></li>
+            <li><a href="/adminPage/charts"><i class="fas fa-chart-bar"></i> Statistics</a></li>
+            <li><a href="/adminPage/facebook"><i class="fab fa-facebook fa-2x" style="color: rgb(99, 98, 98);"></i> Facebook</a></li>
+         </ul>
+      </aside>
 
-      <!-- Footer -->
       <footer class="text-white text-center text-lg-start">
-         <!-- Info -->
          <div id="first-footer" class="container p-4">
             <div class="row">
                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
                   <h5 class="text-uppercase">Talk To Us</h5>
                   <p>
-                     Got questions or need support? We're here to help! Reach out to us anytime at
-                     https://github.com/yuval-benjamin/AppApp . Your fitness journey is our
-                     priority, and we’re committed to providing you with the best service possible.
+                    Have questions or feedback? Reach out to us at support@appapp.com or follow us on social media for the latest updates and tips. We're here to help!
                   </p>
                </div>
                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
                   <h5 class="text-uppercase">About Us</h5>
                   <p>
-                     At AppApp, we're passionate about fitness and wellness. Our mission is to provide
-                     you with the best workout routines, designed to fit your unique lifestyle and
-                     fitness goals. Join our community and transform your health, one workout at a time.
+                    At AppApp, we're all about making fitness easy and enjoyable. Our app lets you book personalized workouts, track your progress, and stay motivated—all in one place. Whether you're a fitness pro or just starting out, AppApp connects you with the right workouts to help you reach your goals. Join us and make your fitness journey simpler and more fun!
                   </p>
                </div>
             </div>
          </div>
-         <!-- Copyright -->
          <div id="second-footer" class="text-center p-3">
             © 2024 Copyright: Yuval Benjamin, Gili Yaacobi, Maayan Meir and Gal Shirizli
          </div>

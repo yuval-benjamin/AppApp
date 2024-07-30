@@ -90,7 +90,7 @@ function displayWorkouts(workoutsJs) {
         if (typeof element.time === 'string' && !isNaN(Date.parse(element.time))) {
             const date = new Date(element.time);
             const day = date.getDate();
-            const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
             const year = date.getFullYear();
             const hours = date.getHours();
             const minutes = date.getMinutes().toString().padStart(2, '0');
