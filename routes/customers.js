@@ -5,3 +5,12 @@ const customersController  = require("../controllers/customers");
 router.route('/:id')
     .get(customersController.GetCartPage)
 module.exports = router;
+
+// Delete
+router.delete('/:id', customersController.deleteCustomer);
+
+// Update
+router.put('/:id', customersController.updateCustomer);
+
+// Create
+router.post('/', customersController.createCustomer);

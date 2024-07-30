@@ -23,6 +23,15 @@
     font-size: 18px;
 }
 
+.error-message {
+    margin-top: 10px;
+    color: #e47eb5;
+    font-size: medium;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 .custom-select-container {
     position: relative;
 }
