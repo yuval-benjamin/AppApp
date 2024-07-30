@@ -11,6 +11,8 @@ async function getWorkouts(event) {
     event.preventDefault();
     const searchData = document.getElementById('search-input').value;
 
+    uncheckCheckboxes()
+
     if (!searchData){
         await fetchSelectedWorkouts(); 
     }
@@ -125,6 +127,16 @@ async function buyWorkout(event) {
 
 }
 
+function uncheckCheckboxes() {
+    // Get all checkboxes within the dropdown
+    var checkboxes = document.querySelectorAll('.dropdown input[type="checkbox"]');
+
+    // Loop through each checkbox and uncheck it
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+    });
+}
+
 
 // Initialize by fetching all workouts
 getAll()
@@ -134,7 +146,8 @@ const emptyWorkouts = document.getElementsByClassName('workouts')[0].innerHTML
 
 // Search button listener
 const submitButton = document.querySelector('#search-button');
-submitButton.addEventListener('click', getWorkouts);    
+submitButton.addEventListener('click', getWorkouts);
+
 
 // Checkbox listener
 document.querySelectorAll('.sub-options input[type="checkbox"]').forEach(function(checkbox) {
