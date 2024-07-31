@@ -161,3 +161,27 @@ body {
     font-size: 2rem;
     text-align: center;
 }
+
+.video-section {
+    padding: 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.video-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    display: inline-block;
+    margin: 10px;
+}
+
+.video-container video {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
