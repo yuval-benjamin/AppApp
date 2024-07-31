@@ -101,7 +101,7 @@ body {
     color: #333;
     display: block;
     padding: 10px;
-    transition: background-color 0.3s;
+    transition: 0.3s;
 }
 .dropdown-item a:hover {
     background-color: #f1f1f1;
