@@ -132,6 +132,10 @@ body {
     box-shadow: 0 0 0 2px rgba(220, 76, 100, 0.5); 
 }
 
+.btn-lg {
+    margin-bottom: 20px;
+ }
+
 
 /* Cards */
 .card-img-top {
@@ -185,3 +189,13 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.multi-column {
+    column-count: 2;
+    column-gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.multi-column .video-container {
+    width: calc(50% - 10px);
+}

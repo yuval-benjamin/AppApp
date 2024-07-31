@@ -7,6 +7,10 @@ async function GetAllWorkouts(req, res){
     res.json(workouts);
 }
 
+async function GetFeaturedWorkoutsPage(req, res){
+    res.render("featuredworkouts", {})
+}
+
 async function GetNearMePage(req, res){
     const workouts = await workoutsService.getAllWorkouts()
     const isAdmin = await customersService.isAdmin(req.session.username);
@@ -100,5 +104,6 @@ module.exports = {
     GetNearMePage,
     GetAllWorkouts,
     GetSelectedWorkouts,
-    updateWorkout
+    updateWorkout,
+    GetFeaturedWorkoutsPage
 }
