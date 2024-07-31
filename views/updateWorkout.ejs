@@ -122,9 +122,12 @@
                         <label for="coordinates" class="form-label">Coordinates</label>
                         <input type="text" class="form-control" id="coordinates" name="coordinates" value="<%= workout.coordinates %>" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 custom-select-container">
                         <label for="duration" class="form-label">Duration in minutes</label>
-                        <input type="number" class="form-control" id="duration" name="duration" value="<%= workout.duration %>" min="20" max="180" required>
+                        <select class="form-control" id="duration" name="duration" required>
+                            <option value="46" <%= workout.duration === '45' ? 'selected' : '' %>>45</option>
+                            <option value="60" <%= workout.weather === '60' ? 'selected' : '' %>>60</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
