@@ -58,7 +58,7 @@ async function fetchSelectedWorkouts() {
     else {
         const response = await fetch(`/workouts/selectedWorkouts?${queryString}`);
         const workoutsJs = await response.json();
-        
+
         displayWorkouts(workoutsJs)
     }
 }

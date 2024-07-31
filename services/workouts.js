@@ -70,7 +70,6 @@ async function GetSelectedWorkouts(req) {
   ];
 
   const fetchedWorkouts = await Workout.aggregate(pipeline).exec();
-
   return fetchedWorkouts;
 }
 

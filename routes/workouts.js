@@ -4,6 +4,9 @@ const router = express.Router();
 
 const workoutsController  = require("../controllers/workouts")
 
+// Filter
+router.get("/selectedWorkouts", workoutsController.GetSelectedWorkouts)
+
 // List
 router.get("/", workoutsController.GetAllWorkouts)
 
@@ -18,8 +21,5 @@ router.get("/:workout", workoutsController.SearchWorkout)
 
 // Update
 router.put('/:id', workoutsController.updateWorkout);
-
-// Filter
-router.get("/selectedWorkouts", workoutsController.GetSelectedWorkouts)
 
 module.exports = router;
