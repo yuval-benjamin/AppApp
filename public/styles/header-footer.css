@@ -83,6 +83,7 @@
     background: linear-gradient(to right, #cf2f54, #ff6c8e);
     bottom: 0;
     width: 100%;
+    /* position: absolute; */
 }
 
 #second-footer {

@@ -43,7 +43,7 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center position-relative">
                <!-- Cart -->
-               <a class="link-secondary me-3" href="#">
+               <a id="cart-link" class="link-secondary me-3" href="#">
                <i class="fas fa-shopping-cart fa-2x"></i>
                </a>
                <!-- Avatar -->
@@ -54,7 +54,6 @@
                   <i class="fas fa-user-circle fa-2x"></i>
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar">
-                     <li><a class="dropdown-item" href="#">My profile</a></li>
                      <li><a class="dropdown-item" href="#">My orders</a></li>
                      <li><a class="dropdown-item" href="/logout">Logout</a></li>
                   </ul>
@@ -80,8 +79,6 @@
          <p id="weather-info">Fetching weather information...</p>
       </div>
 
-      <script src="js/weather.js"></script>
-
       <!-- Search -->
       <div class="search-container">
          <form class="input-group">
@@ -100,17 +97,21 @@
                        <a href="#">Category</a>
                        <ul class="sub-options" id="categoryOptions">
                            <li>
-                               <input type="checkbox" class="form-check-input" id="courtCheck" value="Court">
-                               <label class="form-check-label" for="courtCheck">Court</label>
+                               <input type="checkbox" class="form-check-input" id="racketCheck" value="Racket">
+                               <label class="form-check-label" for="racketCheck">Racket</label>
                            </li>
                            <li>
                                <input type="checkbox" class="form-check-input" id="waterCheck" value="Water">
                                <label class="form-check-label" for="waterCheck">Water</label>
                            </li>
                            <li>
-                               <input type="checkbox" class="form-check-input" id="yogaCheck" value="Yoga">
-                               <label class="form-check-label" for="yogaCheck">Yoga</label>
+                               <input type="checkbox" class="form-check-input" id="studioCheck" value="Studio">
+                               <label class="form-check-label" for="studioCheck">Studio</label>
                            </li>
+                           <li>
+                              <input type="checkbox" class="form-check-input" id="cardioCheck" value="Cardio">
+                              <label class="form-check-label" for="cardioCheck">Cardio</label>
+                          </li>
                        </ul>
                    </li>
                    <li class="dropdown-item">
@@ -147,27 +148,38 @@
     
       <!-- Cards -->
       <div class="row row-cols-1 row-cols-md-5 g-4 workouts">
-            <script type="text/html" id="workoutTemplate">
-                <div class="col">
+         <script type="text/html" id="workoutTemplate">
+               <div class="col" data-id="{_id}">
                   <div class="card h-100">
-                    <img src="/images/{image}" class="card-img-top img-fluid" alt="Sports" />
-                    <div class="card-body">
-                      <h5 class="card-title">{name}</h5>
-                      <p class="card-text">{description}</p>
-                    </div>
-                    <div class="card-footer">
-                      <small class="text-muted"> <a href="#" class="btn">Buy</a></small>
-                    </div>
+                     <img src="/images/{image}" class="card-img-top img-fluid" alt="Sports" />
+                     <div class="card-body">
+                        <h5 class="card-title">{name}</h5>
+                        <p class="card-text">{description}</p>
+                        <h6 class="card-text">Location: {location}</h6>
+                        <h6 class="card-text">Time: {time}</h6>
+                        <h6 class="card-text">Duration: {duration} min</h6>
+                        <h6 class="card-text">Calories: {calories}</h6>
+                        <h6 class="card-text">Price: {price}₪</h6>
+                     </div>
+                     <div class="card-footer">
+                        <small class="text-muted">
+                           <button class="btn buy-button" type="submit">Buy</button>
+                        </small>
+                     </div>
                   </div>
-                </div>
-            </script>
-    </div>
+               </div>
+         </script>
+      </div>
 
       <!-- No Results -->
       <div class="no-results" id="noResults" style="display: none;">
          <p> No Results </p>
       </div>
 
+      <!-- No Results -->
+      <div class="no-results" id="noResults" style="display: none;">
+         <p> No Results </p>
+      </div>
       <footer class="text-white text-center text-lg-start">
          <div id="first-footer" class="container p-4">
             <div class="row">
@@ -186,11 +198,12 @@
             </div>
          </div>
          <div id="second-footer" class="text-center p-3">
-            © 2024 Copyright: Gal, Gili, Yuval, Maayan
+            © 2024 Copyright: Yuval Benjamin, Gili Yaacobi, Maayan Meir and Gal Shirizli
          </div>
       </footer>
    </body>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
    <script src="../js/workouts.js"></script>
-   <script src="../js/home.js"></script>
+   <script src="js/weather.js"></script>
+   <script src="../js/navbar.js"></script>
 </html>

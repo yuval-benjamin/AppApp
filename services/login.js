@@ -5,7 +5,7 @@ async function login(username, password) {
     return user != null
 }
 
-async function register(firstName , lastName , username , email , gender , birthDate , password) {
+async function register(firstName , lastName , username , email , gender , birthDate , password, isAdmin) {
 
     const user = new User({
         _id: username,
@@ -14,7 +14,8 @@ async function register(firstName , lastName , username , email , gender , birth
         email,
         gender,
         birthDate,
-        password
+        password,
+        isAdmin
     });
 
     await user.save()        
