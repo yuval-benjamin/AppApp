@@ -32,6 +32,7 @@ app.use(express.json());
 
 // Redirects to all route files
 app.use('/search', search)
+app.use('/customers', customers)
 app.use('/cart', customers)
 app.use("/adminPage", admin)
 app.use("/", login)

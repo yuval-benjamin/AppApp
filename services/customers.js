@@ -89,6 +89,28 @@ async function getUserWorkoutsFromCart(username){
 
     return workoutIds
 }
+async function deleteCustomer(id) {
+    const customer = await getCustomerByUsername(id);
+    if (!customer)
+        return null;
+  
+    await customer.deleteOne();
+    return customer;
+}
+
+async function updateCustomer(id, customerData) {
+    const customer = await getCustomerByUsername(id);
+    if (!customer)
+        return null;
+  
+    Object.assign(customer, customerData);
+    try {
+        await customer.save();
+        return customer;
+    } catch (error) {
+        throw new Error('Error updating customer: ' + error.message);
+    }
+}
 
 module.exports = {
     getAllCustomers,
@@ -98,5 +120,7 @@ module.exports = {
     addWorkoutToCart,
     deleteWorkoutFromCart,
     deleteAllWorkoutsFromCart,
-    getUserWorkoutsFromCart
+    getUserWorkoutsFromCart,
+    deleteCustomer,
+    updateCustomer
 }
