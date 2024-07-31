@@ -39,7 +39,7 @@
         <!-- Right elements -->
         <div class="d-flex align-items-center position-relative">
             <!-- Cart -->
-            <a class="link-secondary me-3" href="#">
+            <a id="cart-link" class="link-secondary me-3" href="#">
                 <i class="fas fa-shopping-cart fa-2x"></i>
             </a>
             <!-- Avatar -->
@@ -101,13 +101,10 @@
                     <div class="mb-3 custom-select-container">
                         <label for="category" class="form-label">Category</label>
                         <select class="form-control" id="category" name="category" required>
-                            <option value="Tennis" <%= workout.category === 'Court' ? 'selected' : '' %>>Tennis</option>
-                            <option value="Wimbledon" <%= workout.category === 'Water' ? 'selected' : '' %>>Wimbledon</option>
-                            <option value="Soccer" <%= workout.category === 'Soccer' ? 'selected' : '' %>>Soccer</option>
-                            <option value="Yoga" <%= workout.category === 'Yoga' ? 'selected' : '' %>>Yoga</option>
-                            <option value="Pilates" <%= workout.category === 'Pilates' ? 'selected' : '' %>>Pilates</option>
-                            <option value="Running" <%= workout.category === 'Running' ? 'selected' : '' %>>Running</option>
-                            <option value="Cycling" <%= workout.category === 'Cycling' ? 'selected' : '' %>>Cycling</option>
+                            <option value="Racket" <%= workout.category === 'Racket' ? 'selected' : '' %>>Racket</option>
+                            <option value="Water" <%= workout.category === 'Water' ? 'selected' : '' %>>Water</option>
+                            <option value="Studio" <%= workout.category === 'Studio' ? 'selected' : '' %>>Studio</option>
+                            <option value="Cardio" <%= workout.category === 'Cardio' ? 'selected' : '' %>>Cardio</option>
                         </select>
                     </div>
                 </div>
@@ -178,5 +175,6 @@
  </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="/js/navbar.js"></script>
 </body>
 </html>

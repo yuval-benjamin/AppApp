@@ -25,6 +25,7 @@ async function GetWorkoutIfContains(searchString) {
     }
 }
 
+
 async function createWorkout(workoutData) {
   const workout = new Workout(workoutData);
   try {
@@ -53,7 +54,6 @@ async function GetSelectedWorkouts(req) {
     duration: Array.isArray(duration) ? duration : [duration].filter(Boolean)
   };
 
-
   const matchConditions = [];
   if (selectedWorkouts.category.length > 0) {
     matchConditions.push({ category: { $in: selectedWorkouts.category } });
@@ -70,7 +70,6 @@ async function GetSelectedWorkouts(req) {
   ];
 
   const fetchedWorkouts = await Workout.aggregate(pipeline).exec();
-
   return fetchedWorkouts;
 }
 
