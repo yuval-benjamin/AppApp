@@ -84,7 +84,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="time" class="form-label">Time</label>
-                        <input type="datetime-local" class="form-control" id="time" name="time" value="<%= workout.time ? workout.time.toISOString().slice(0, 16) : '' %>" required>
+                        <input type="datetime-local" class="form-control" id="time" name="time" value="<%= workout.time ? new Date(new Date(workout.time).getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().slice(0, 16) : '' %>" required>
                     </div>
                     <div class="mb-3">
                         <label for="location" class="form-label">Location</label>

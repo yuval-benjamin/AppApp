@@ -26,7 +26,7 @@ async function GetSelectedWorkouts(req, res){
 async function createWorkout(req, res) {
     try {
         const { name, description, time, location, price, category, supplier, calories, coordinates, duration, image, weather } = req.body;
-        const newWorkout = await workoutsService.createWorkout({
+        await workoutsService.createWorkout({
             name,
             description,
             time: new Date(time),
