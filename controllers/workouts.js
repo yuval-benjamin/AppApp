@@ -7,6 +7,10 @@ async function GetAllWorkouts(req, res){
     res.json(workouts);
 }
 
+async function GetFeaturedWorkoutsPage(req, res){
+    res.render("featuredworkouts", {})
+}
+
 async function GetNearMePage(req, res){
     const workouts = await workoutsService.getAllWorkouts()
     const isAdmin = await customersService.isAdmin(req.session.username);
@@ -26,7 +30,7 @@ async function GetSelectedWorkouts(req, res){
 async function createWorkout(req, res) {
     try {
         const { name, description, time, location, price, category, supplier, calories, coordinates, duration, image, weather } = req.body;
-        const newWorkout = await workoutsService.createWorkout({
+        await workoutsService.createWorkout({
             name,
             description,
             time: new Date(time),
@@ -100,5 +104,6 @@ module.exports = {
     GetNearMePage,
     GetAllWorkouts,
     GetSelectedWorkouts,
-    updateWorkout
+    updateWorkout,
+    GetFeaturedWorkoutsPage
 }
