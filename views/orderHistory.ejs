@@ -16,7 +16,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
+    <link rel="stylesheet" href="/styles/orderHistory.css">
     <link rel="stylesheet" href="/styles/home.css" />
     <link rel="stylesheet" href="/styles/header-footer.css" />
     <link rel="stylesheet" href="/styles/admin-page.css" />
@@ -88,15 +88,37 @@
             <h2 class="head">This is your order history:</h2>
           </div>
         </div>
-        <% orders.forEach(function(order) { %>
+        <% orders.forEach(function(order) { 
+          let totalPrice = 0;
+          %>
+          
         <div class="card">
           <div class="card-body">
             <div class="row text-left">
               <div class="col-md-6">
-                <h4 class="card-title"><%= order._id %></h4>
-                <h4 class="card-title"><%= order.createdAt %></h4>
-                <h4 class="card-title"><%= order.workouts %></h4>
-                <h5 class="card-text"><%= order.price %></h5>
+                <h4 class="card-title">Order ID: <%= order._id %></h4>
+                <h4 class="card-title"><%= new Date(order.createdAt).toLocaleString() %></h4>
+                <ul>
+                  <% order.workouts.forEach(function(item) { 
+                    const workout = workouts.find(workout => workout._id.toString() === item);
+                    totalPrice += workout.price
+                %>
+                  <div class="item">
+            
+                    <div class="image">
+                      <img src="/images/<%= workout.image %>" alt="" />
+                    </div>
+            
+                    <div class="description">
+                      <span><%= workout.name %></span>
+                      <span><%= workout.description %></span>
+                    </div>
+            
+                    <div class="total-price"><%= workout.price %>₪</div>
+                  </div>
+            
+                  <% }); %>
+                <h4 class="card-text">Total price: <%= totalPrice %>₪</h4>
               </div>
             </div>
           </div>

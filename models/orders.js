@@ -11,11 +11,6 @@ const orderSchema = new mongoose.Schema(
       type: [String],
       required: true,
     },
-    price: {
-      type: Number,
-      min: 0,
-      required: false,
-    },
     arrived: {
       type: Boolean,
       default: false,

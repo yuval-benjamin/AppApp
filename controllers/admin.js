@@ -81,7 +81,8 @@ async function GetUpdateCustomerPage(req, res) {
 
 async function getOrders(req, res) {
   const orders = await orderService.getOrders();
-  res.render("adminOrders", { orders });
+  const workouts = await workoutsService.getAllWorkouts()
+  res.render("adminOrders", { orders, workouts });
 }
 
 module.exports = {

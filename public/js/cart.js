@@ -33,6 +33,19 @@ async function redirectToCart() {
 
 async function confirmOrder() {
     try {
+
+        const createOrder = await fetch('/orders/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (!createOrder.ok) {
+            console.error('Failed to create order');
+            return
+        }
+
         // Send API request to remove workout from cart
         const deleteResponse = await fetch('/cart/deleteAllWorkoutsFromCart', {
             method: 'POST',
@@ -40,6 +53,7 @@ async function confirmOrder() {
                 'Content-Type': 'application/json'
             },
         });
+
 
         if (deleteResponse.ok) {
             redirectToCart()

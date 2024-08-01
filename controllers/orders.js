@@ -1,10 +1,12 @@
 const orderService = require("../services/orders");
+const customerService = require("../services/customers");
+const workoutService = require("../services/workouts")
 
 async function submitOrder(req, res) {
-  const { workouts, price } = req.body;
+  const customer = await customerService.getCustomerByUsername(req.session.username);
   const newOrder = await orderService.createOrder(
     req.session.username,
-    workouts,
+    customer.cart,
     price
   );
   res.json(newOrder._id);
@@ -42,7 +44,8 @@ async function deleteOrder(req, res) {
 
 async function getOrderHistory(req, res) {
   const orders = await orderService.getUserOrders(req.session.username);
-  res.render("orderHistory", { orders });
+  const workouts = await workoutService.getAllWorkouts()
+  res.render("orderHistory", { orders , workouts });
 }
 
 async function isUsername(req, res, next) {
