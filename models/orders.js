@@ -11,7 +11,7 @@ const orderSchema = new mongoose.Schema(
       type: [String],
       required: true,
     },
-    arrived: {
+    confirmed: {
       type: Boolean,
       default: false,
     }

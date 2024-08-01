@@ -15,7 +15,7 @@ async function submitOrder(req, res) {
 async function setArrived(req, res) {
   try {
     const orderId = req.params.id;
-    const updatedOrder = await orderService.updateOrder(orderId, { arrived: true });
+    const updatedOrder = await orderService.updateOrder(orderId, { confirmed: true });
     if (!updatedOrder) {
       return res.status(404).json({ errors: ["Order not found"] });
     }

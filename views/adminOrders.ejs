@@ -121,7 +121,7 @@
         <% orders.forEach(function(order) { 
           let totalPrice = 0;
           %>
-        <div class="card <%= order.arrived ? 'order-arrived' : '' %>">
+        <div class="card <%= order.confirmed ? 'order-arrived' : '' %>">
           <div class="card-body">
             <div class="row text-left">
               <div class="col-md-8">
@@ -155,8 +155,8 @@
                   data-order-id="<%= order._id %>" 
                   style="display: inline"
                 >
-                  <button type="submit" <%= order.arrived ? 'disabled' : '' %> class="btn custom-btn">
-                    Mark as arrived
+                  <button type="submit" <%= order.confirmed ? 'disabled' : '' %> class="btn custom-btn">
+                    Confirm order
                   </button>
                 </form>
                 <form style="display: inline">
