@@ -17,14 +17,16 @@ async function GetFacebookPage(req, res) {
   res.sendFile("public/views/facebook.html", { root: path });
 }
 
-async function GetFollowers(req, res) {
-  const response = await fetch(process.env.FACEBOOK_GET_FOLLOWERS_URL, {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + process.env.FACEBOOK_TOKEN,
-    },
-  });
-  res.json(response.json);
+async function GetFollowers(req, res){
+    const response = await fetch(process.env.FACEBOOK_GET_FOLLOWERS_URL, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + process.env.FACEBOOK_TOKEN
+        }
+    })
+    const resData = await response.text(); 
+    const data = JSON.parse(resData); 
+    res.json(data); 
 }
 
 // All admin workout funtions
