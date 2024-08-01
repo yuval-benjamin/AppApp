@@ -25,7 +25,7 @@ async function redirectToCart() {
         const data = await response.json();
         const username = data.username;
 
-        window.location.href = `http://localhost/cart/${username}`;
+        window.location.href = `/cart/${username}`;
     } catch (error) {
         console.error('Error fetching username:', error);
     }
@@ -33,6 +33,17 @@ async function redirectToCart() {
 
 async function confirmOrder() {
     try {
+        const createOrder = await fetch('/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (!createOrder.ok) {
+            console.error('Failed to create order');
+            return
+        }
         // Send API request to remove workout from cart
         const deleteResponse = await fetch('/cart/deleteAllWorkoutsFromCart', {
             method: 'POST',

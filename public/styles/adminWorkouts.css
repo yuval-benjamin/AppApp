@@ -32,6 +32,7 @@
     align-items: center;
     position: relative;
   }
+
 .custom-select-container {
     position: relative;
 }
@@ -59,3 +60,4 @@
 .sidebar {
     position: sticky;
 }
+

@@ -1,3 +1,8 @@
+@font-face {
+    font-family: nicefont;
+    src: url(/fonts/Champagne.ttf);
+}
+
 body {
     font-family: Verdana;
 }
@@ -101,7 +106,7 @@ body {
     color: #333;
     display: block;
     padding: 10px;
-    transition: background-color 0.3s;
+    transition: 0.3s;
 }
 .dropdown-item a:hover {
     background-color: #f1f1f1;
@@ -132,6 +137,14 @@ body {
     box-shadow: 0 0 0 2px rgba(220, 76, 100, 0.5); 
 }
 
+.btn-lg {
+    margin-bottom: 20px;
+ }
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'nicefont'
+}
 
 /* Cards */
 .card-img-top {
@@ -160,4 +173,46 @@ body {
 .no-results p {
     font-size: 2rem;
     text-align: center;
+}
+
+#order-history-container {
+    min-height: 450px;
+}
+
+.order-arrived {
+    background-color: #bdecc1;
+}
+
+.video-section {
+    padding: 20px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.video-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    display: inline-block;
+    margin: 10px;
+}
+
+.video-container video {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.multi-column {
+    column-count: 2;
+    column-gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.multi-column .video-container {
+    width: calc(50% - 10px);
 }

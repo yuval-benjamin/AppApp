@@ -50,7 +50,7 @@
                     <i class="fas fa-user-circle fa-2x"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar" style="position: absolute; top: 100%; left: 0;">
-                    <li><a class="dropdown-item" href="#">My orders</a></li>
+                    <li><a class="dropdown-item" href="/home/orders/my">My orders</a></li>
                     <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
             </div>
@@ -65,7 +65,7 @@
         <ul>
             <li><a href="/adminPage/adminWorkouts"><i class="fas fa-dumbbell"></i> Workouts</a></li>
             <li><a href="/adminPage/adminCustomers"><i class="fas fa-running"></i> Customers</a></li>
-            <li><a href="#"><i class="fas fa-truck"></i> Orders</a></li>
+            <li><a href="/adminPage/orders"><i class="fas fa-truck"></i> Orders</a></li>
             <li><a href="/adminPage/charts"><i class="fas fa-chart-bar"></i> Statistics</a></li>
             <li><a href="/adminPage/facebook"><i class="fab fa-facebook fa-2x iconColor"></i> Facebook</a></li>
         </ul>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="time" class="form-label">Time</label>
-                        <input type="datetime-local" class="form-control" id="time" name="time" value="<%= workout.time ? workout.time.toISOString().slice(0, 16) : '' %>" required>
+                        <input type="datetime-local" class="form-control" id="time" name="time" value="<%= workout.time ? new Date(new Date(workout.time).getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().slice(0, 16) : '' %>" required>
                     </div>
                     <div class="mb-3">
                         <label for="location" class="form-label">Location</label>
@@ -122,9 +122,12 @@
                         <label for="coordinates" class="form-label">Coordinates</label>
                         <input type="text" class="form-control" id="coordinates" name="coordinates" value="<%= workout.coordinates %>" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 custom-select-container">
                         <label for="duration" class="form-label">Duration in minutes</label>
-                        <input type="number" class="form-control" id="duration" name="duration" value="<%= workout.duration %>" min="20" max="180" required>
+                        <select class="form-control" id="duration" name="duration" required>
+                            <option value="46" <%= workout.duration === '45' ? 'selected' : '' %>>45</option>
+                            <option value="60" <%= workout.weather === '60' ? 'selected' : '' %>>60</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>
