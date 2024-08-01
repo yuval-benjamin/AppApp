@@ -17,6 +17,57 @@ async function isAdmin(req, res, next) {
   else res.redirect("/");
 }
 
+async function isUsername(req, res, next) {
+  const currentSessionUsername = req.session.username;
+  const requestedUsername = req.params.id;
+  if (currentSessionUsername == requestedUsername)
+    return next()
+  else
+    res.redirect('/')
+}
+
+async function addWorkoutToCart(req, res){
+  const { workoutId } = req.body;
+  const username = req.session.username;
+
+  try {
+    const result = await customersService.addWorkoutToCart(username, workoutId);
+    res.status(200).json(result);
+  } catch (error) {
+      res.status(500).json({ error: 'Failed to add workout to cart' });
+  }
+}
+
+async function deleteWorkoutFromCart(req, res){
+  const { workoutId } = req.body;
+  const username = req.session.username;
+  try {
+    const result = await customersService.deleteWorkoutFromCart(username, workoutId);
+    res.status(200).json(result);
+  } catch (error) {
+      res.status(500).json({ error: 'Failed to delete workout from cart' });
+  }
+}
+
+async function deleteAllWorkoutsFromCart(req, res){
+  const username = req.session.username;
+  const workoutIdList = await getUserWorkoutsFromCart(username)
+
+  try {
+    const result = await customersService.deleteAllWorkoutsFromCart(username);
+    res.status(200).json(result);
+  } catch (error) {
+      res.status(500).json({ error: 'Failed to delete workout from cart' });
+  }
+}
+
+async function getUserWorkoutsFromCart(username){
+  const workoutIds = await customersService.getUserWorkoutsFromCart(username);
+
+  return workoutIds
+
+}
+
 async function deleteCustomer(req, res) {
   try {
     const customer = await customersService.deleteCustomer(req.params.id);
@@ -93,9 +144,14 @@ async function updateCustomer(req, res) {
 }
 
 module.exports = {
-  GetCartPage,
-  isAdmin,
-  deleteCustomer,
-  updateCustomer,
-  createCustomer,
-};
+
+    GetCartPage,
+    isAdmin,
+    addWorkoutToCart,
+    deleteWorkoutFromCart,
+    deleteAllWorkoutsFromCart,
+    isUsername,
+    deleteCustomer,
+    updateCustomer,
+    createCustomer
+}

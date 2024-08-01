@@ -2,7 +2,13 @@ const express = require("express");
 const router = express.Router();
 const customersController = require("../controllers/customers");
 
-router.route("/:id").get(customersController.GetCartPage);
+// Cart
+router.post('/addWorkoutToCart', customersController.addWorkoutToCart)
+router.post('/deleteWorkoutFromCart', customersController.deleteWorkoutFromCart)
+router.post('/deleteAllWorkoutsFromCart', customersController.deleteAllWorkoutsFromCart)
+
+router.route('/:id')
+    .get(customersController.isUsername, customersController.GetCartPage)
 
 // Delete
 router.delete("/:id", customersController.deleteCustomer);
