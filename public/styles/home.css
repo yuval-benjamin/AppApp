@@ -165,11 +165,14 @@ body {
     font-size: 2rem;
     text-align: center;
 }
+
 #order-history-container {
     min-height: 450px;
 }
+
 .order-arrived {
     background-color: #bdecc1;
+}
 
 .video-section {
     padding: 20px;
