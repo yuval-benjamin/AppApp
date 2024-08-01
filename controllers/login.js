@@ -69,6 +69,12 @@ async function register(req, res) {
   }
 }
 
+async function getSessionUsername(req, res) {
+  const username = req.session.username
+  res.json({ username });
+
+}
+
 module.exports = {
   login,
   loginForm,
@@ -78,4 +84,5 @@ module.exports = {
   GetHomePage,
   isLoggedIn,
   isAdmin,
-};
+  getSessionUsername
+}
