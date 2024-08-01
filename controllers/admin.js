@@ -1,5 +1,6 @@
 const customersService = require("../services/customers");
 const workoutsService = require("../services/workouts");
+const orderService = require("../services/orders");
 const path = require("path").resolve(__dirname, "..");
 
 async function GetAdminPage(req, res) {
@@ -78,6 +79,26 @@ async function GetUpdateCustomerPage(req, res) {
   }
 }
 
+async function getOrders(req, res) {
+  const orders = await orderService.getOrders();
+  res.render("adminOrders", { orders });
+}
+
+async function GetUpdateOrderPage(req, res) {
+  try {
+    const order = await orderService.getOrderById(req.params.id);
+
+    if (!order) {
+      return res.status(404).send("Order not found");
+    }
+
+    res.render("updateOrder", { order });
+  } catch (error) {
+    console.error("Error fetching order for edit:", error);
+    res.status(500).send("Failed to load order for editing");
+  }
+}
+
 module.exports = {
   GetAdminPage,
   GetChartsPage,
@@ -89,4 +110,6 @@ module.exports = {
   GetCustomersPage,
   GetCreateCustomerPage,
   GetUpdateCustomerPage,
+  getOrders,
+  GetUpdateOrderPage,
 };

@@ -1,22 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const customersController = require("../controllers/customers");
 const orderController = require("../controllers/orders");
+const loginController = require("../controllers/login");
+const customersController = require("../controllers/customers");
 
-router.use(loginController.isLoggedIn);
+// Get
+router.get("/my", loginController.isLoggedIn, orderController.getMyOrders);
 
-router.route(
-  "/:username",
-  customersController.isUsername,
-  orderController.getUserOrders
-);
+// List
+router.get("/", customersController.isAdmin, orderController.getOrders);
 
-router.get("/", orderController.getOrders);
-
+// Create
 router.post("/", orderController.submitOrder);
 
+// Update
 router.put("/:id", orderController.updateOrder);
 
+// Delete
 router.delete("/:id", orderController.deleteOrder);
 
 module.exports = router;

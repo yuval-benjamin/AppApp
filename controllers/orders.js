@@ -1,8 +1,12 @@
 const orderService = require("../services/orders");
 
 async function submitOrder(req, res) {
-  const { customer, workouts, price } = req.body;
-  const newOrder = await orderService.createOrder(customer, workouts, price);
+  const { workouts, price } = req.body;
+  const newOrder = await orderService.createOrder(
+    req.session.username,
+    workouts,
+    price
+  );
   res.json(newOrder._id);
 }
 
@@ -15,6 +19,7 @@ async function updateOrder(req, res) {
       workouts,
       price,
     });
+    console.log("update function");
     if (!updatedOrder) {
       return res.status(404).json({ errors: ["Order not found"] });
     }
@@ -29,7 +34,7 @@ async function updateOrder(req, res) {
 async function deleteOrder(req, res) {
   try {
     const orderId = req.params.id;
-    const order = await workoutsService.deleteOrder(orderId);
+    const order = await orderService.deleteOrder(orderId);
     if (!order) {
       return res.status(404).json({ errors: ["Order not found"] });
     }
@@ -41,20 +46,34 @@ async function deleteOrder(req, res) {
   }
 }
 
+async function getOrderHistory(req, res) {
+  const orders = await orderService.getUserOrders(req.session.username);
+  res.render("orderHistory", { orders });
+}
+
+async function isUsername(req, res, next) {
+  const currentSessionUsername = req.session.username;
+  const requestedUsername = req.params.username;
+  if (currentSessionUsername == requestedUsername) return next();
+  else res.redirect("/");
+}
+
 async function getOrders(req, res) {
-  const orders = await workoutsService.getOrders();
+  const orders = await orderService.getOrders();
   res.json(orders);
 }
 
-async function getUserOrders(req, res) {
-  const userOrders = await orderService.getUserOrders(req.params.username);
-  res.json(userOrders);
+async function getMyOrders(req, res) {
+  const orders = await orderService.getUserOrders(req.session.username);
+  res.json(orders);
 }
 
 module.exports = {
   submitOrder,
   updateOrder,
   deleteOrder,
+  getOrderHistory,
+  isUsername,
   getOrders,
-  getUserOrders,
+  getMyOrders,
 };

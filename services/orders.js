@@ -1,4 +1,5 @@
 const Order = require("../models/orders");
+const mongoose = require("mongoose");
 
 async function createOrder(customer, workouts, price) {
   try {
@@ -20,6 +21,10 @@ async function updateOrder(orderId, updateData) {
   } catch (error) {
     throw new Error("Error updating order: " + error.message);
   }
+}
+
+async function getOrderById(orderId) {
+  return await Order.findById(orderId);
 }
 
 async function deleteOrder(orderId) {
@@ -51,4 +56,5 @@ module.exports = {
   deleteOrder,
   getOrders,
   getUserOrders,
+  getOrderById,
 };
