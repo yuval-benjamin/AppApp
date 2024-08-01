@@ -1,3 +1,8 @@
+@font-face {
+    font-family: nicefont;
+    src: url(/fonts/Champagne.ttf);
+}
+
 body {
     font-family: Verdana;
 }
@@ -136,6 +141,10 @@ body {
     margin-bottom: 20px;
  }
 
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'nicefont'
+}
 
 /* Cards */
 .card-img-top {
