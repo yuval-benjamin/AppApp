@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
   document.querySelectorAll(".update-order-form").forEach((form) => {
     form.addEventListener("submit", async (event) => {
-      event.preventDefault(); // Prevent the default form submission
+      event.preventDefault();
       const orderId = event.target.getAttribute("data-order-id");
 
       try {
