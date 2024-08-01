@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Charts Display</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" text="text/css" href="/styles/charts.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet">
@@ -93,6 +94,18 @@
                 <h2>Customer Age Distribution</h2>
                 <div class="chart-container" id="bar-chart-container"></div>
             </div>
+
+            <!-- Workout Duration by Category -->
+            <div class="chart-container">
+                <h2>Workout Duration by Category</h2>
+                <canvas id="durationChart"></canvas>
+            </div>
+
+            <!-- Calories Burned by Category -->
+            <div class="chart-container">
+                <h2>Calories Burned by Category</h2>
+                <canvas id="caloriesChart"></canvas>
+            </div>
         </div>
     </div>
 
@@ -122,6 +135,7 @@
     <!-- Javascript files for the charts -->
     <script src="/js/pieChart.js"></script>
     <script src="/js/barChart.js"></script>
+    <script src="/js/caloriesChart.js"></script>
     <script src="/js/navbar.js"></script>
 
 </body>

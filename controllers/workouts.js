@@ -7,10 +7,15 @@ async function GetAllWorkouts(req, res) {
   res.json(workouts);
 }
 
-async function GetNearMePage(req, res) {
-  const workouts = await workoutsService.getAllWorkouts();
-  const isAdmin = await customersService.isAdmin(req.session.username);
-  res.render("nearme", { workouts, isAdmin });
+
+async function GetFeaturedWorkoutsPage(req, res){
+    res.render("featuredworkouts", {})
+}
+
+async function GetNearMePage(req, res){
+    const workouts = await workoutsService.getAllWorkouts()
+    const isAdmin = await customersService.isAdmin(req.session.username);
+    res.render("nearme", {workouts , isAdmin})
 }
 
 async function SearchWorkout(req, res) {
@@ -26,40 +31,27 @@ async function GetSelectedWorkouts(req, res) {
 }
 
 async function createWorkout(req, res) {
-  try {
-    const {
-      name,
-      description,
-      time,
-      location,
-      price,
-      category,
-      supplier,
-      calories,
-      coordinates,
-      duration,
-      image,
-      weather,
-    } = req.body;
-    const newWorkout = await workoutsService.createWorkout({
-      name,
-      description,
-      time: new Date(time),
-      location,
-      price,
-      category,
-      supplier,
-      calories,
-      coordinates,
-      duration,
-      image,
-      weather,
-    });
-    res.redirect("/adminPage/adminWorkouts");
-  } catch (error) {
-    console.error("Error creating workout:", error);
-    res.status(500).send("Failed to create workout");
-  }
+    try {
+        const { name, description, time, location, price, category, supplier, calories, coordinates, duration, image, weather } = req.body;
+        await workoutsService.createWorkout({
+            name,
+            description,
+            time: new Date(time),
+            location,
+            price,
+            category,
+            supplier,
+            calories,
+            coordinates,
+            duration,
+            image,
+            weather
+        });
+        res.redirect('/adminPage/adminWorkouts');
+    } catch (error) {
+        console.error('Error creating workout:', error);
+        res.status(500).send('Failed to create workout');
+    }
 }
 
 async function updateWorkout(req, res) {
@@ -121,12 +113,13 @@ async function deleteWorkout(req, res) {
 }
 
 module.exports = {
-  SearchWorkout,
-  GetAllWorkouts,
-  createWorkout,
-  deleteWorkout,
-  GetNearMePage,
-  GetAllWorkouts,
-  GetSelectedWorkouts,
-  updateWorkout,
-};
+    SearchWorkout,
+    GetAllWorkouts,
+    createWorkout,
+    deleteWorkout,
+    GetNearMePage,
+    GetAllWorkouts,
+    GetSelectedWorkouts,
+    updateWorkout,
+    GetFeaturedWorkoutsPage
+}
