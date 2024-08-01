@@ -164,3 +164,6 @@ body {
 #order-history-container {
     min-height: 450px;
 }
+.order-arrived {
+    background-color: #bdecc1;
+}

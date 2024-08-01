@@ -93,7 +93,7 @@
             >
           </li>
           <li>
-            <a href="/adminPage/adminOrders"
+            <a href="/adminPage/orders"
               ><i class="fas fa-truck"></i> Orders</a
             >
           </li>
@@ -118,23 +118,23 @@
           </div>
         </div>
         <% orders.forEach(function(order) { %>
-        <div class="card">
+        <div class="card <%= order.arrived ? 'order-arrived' : '' %>">
           <div class="card-body">
             <div class="row text-left">
-              <div class="col-md-6">
-                <h4 class="card-title"><%= order._id %></h4>
-                <h4 class="card-title"><%= order.createdAt %></h4>
-                <h4 class="card-title"><%= order.workouts %></h4>
-                <h5 class="card-text"><%= order.price %></h5>
+              <div class="col-md-8">
+                <h4 class="card-title">Order ID: <%= order._id %></h4>
+                <h4 class="card-title">Created at: <%= new Date(order.createdAt).toLocaleString() %></h4>
+                <h4 class="card-title">Items: <%= order.workouts %></h4>
+                <h4 class="card-title">Price: <%= order.price || '-' %></h4>
               </div>
               <div class="col-md-4 text-right">
                 <form
-                  action="/adminPage/orders/<%= order._id %>"
-                  method="GET"
+                  id="update-order-form"
+                  data-order-id="<%= order._id %>" 
                   style="display: inline"
                 >
-                  <button type="submit" class="btn btn-primary custom-btn">
-                    Edit
+                  <button type="submit" <%= order.arrived ? 'disabled' : '' %> class="btn custom-btn">
+                    Mark as arrived
                   </button>
                 </form>
                 <form style="display: inline">

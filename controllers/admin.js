@@ -84,21 +84,6 @@ async function getOrders(req, res) {
   res.render("adminOrders", { orders });
 }
 
-async function GetUpdateOrderPage(req, res) {
-  try {
-    const order = await orderService.getOrderById(req.params.id);
-
-    if (!order) {
-      return res.status(404).send("Order not found");
-    }
-
-    res.render("updateOrder", { order });
-  } catch (error) {
-    console.error("Error fetching order for edit:", error);
-    res.status(500).send("Failed to load order for editing");
-  }
-}
-
 module.exports = {
   GetAdminPage,
   GetChartsPage,
@@ -111,5 +96,4 @@ module.exports = {
   GetCreateCustomerPage,
   GetUpdateCustomerPage,
   getOrders,
-  GetUpdateOrderPage,
 };

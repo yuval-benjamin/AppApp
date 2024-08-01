@@ -31,24 +31,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
     updateForm.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      const form = event.target;
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => (data[key] = value));
-
-      const orderId = document.getElementById("order-id").value; // Get the workout ID from the hidden input field
-
+      const orderId = event.target.getAttribute("data-order-id");
+      console.log(orderId)
       try {
         const response = await fetch(`/orders/${orderId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        });
+          }});
 
         if (response.ok) {
-          window.location.href = "/adminPage/adminOrders";
+          window.location.href = "/adminPage/orders";
         } else {
           console.error("Failed to update order");
           alert("Failed to update order");

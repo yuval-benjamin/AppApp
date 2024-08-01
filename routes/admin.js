@@ -58,8 +58,3 @@ router.get(
 // Admin - orders
 router.get("/orders", customersController.isAdmin, adminController.getOrders);
 module.exports = router;
-router.get(
-  "/orders/:id",
-  customersController.isAdmin,
-  adminController.GetUpdateOrderPage
-);

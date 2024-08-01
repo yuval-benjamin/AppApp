@@ -10,16 +10,10 @@ async function submitOrder(req, res) {
   res.json(newOrder._id);
 }
 
-async function updateOrder(req, res) {
+async function setArrived(req, res) {
   try {
     const orderId = req.params.id;
-    const { customer, workouts, price } = req.body;
-    const updatedOrder = await orderService.updateOrder(orderId, {
-      customer,
-      workouts,
-      price,
-    });
-    console.log("update function");
+    const updatedOrder = await orderService.updateOrder(orderId, { arrived: true });
     if (!updatedOrder) {
       return res.status(404).json({ errors: ["Order not found"] });
     }
@@ -70,7 +64,7 @@ async function getMyOrders(req, res) {
 
 module.exports = {
   submitOrder,
-  updateOrder,
+  setArrived,
   deleteOrder,
   getOrderHistory,
   isUsername,
