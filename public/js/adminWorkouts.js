@@ -38,6 +38,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             const workoutId = document.getElementById('workout-id').value; // Get the workout ID from the hidden input field
 
+            // Convert local time to UTC
+            if (data.time) {
+                const localTime = new Date(data.time);
+                data.time = localTime.toISOString();
+            }
+
             try {
                 const response = await fetch(`/workouts/${workoutId}`, {
                     method: 'PUT',
@@ -69,6 +75,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (!dateRegex.test(dateValue)) {
             alert('Invalid date format. Please enter a valid date and time.');
             event.preventDefault();
+        }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        const timeInput = document.getElementById('time');
+        if (timeInput) {
+            const now = new Date();
+            const offset = now.getTimezoneOffset() * 60000;
+            const localISOTime = (new Date(now - offset)).toISOString().slice(0, 16);
+            timeInput.value = localISOTime;
         }
     });
 });

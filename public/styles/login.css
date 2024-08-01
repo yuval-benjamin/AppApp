@@ -10,7 +10,7 @@ input, select, label, a {
   width: 280px;
   color: rgb(126, 115, 115);
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: 0.3s ease;
   margin: auto;
   margin-top: 15px;
   cursor: pointer;

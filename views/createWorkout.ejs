@@ -51,7 +51,8 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuAvatar" style="position: absolute; top: 100%; left: 0;">
                     <li><a class="dropdown-item" href="/home/orders/my">My orders</a></li>
-                    <li><a class="dropdown-item" href="#">Logout</a></li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+
                 </ul>
             </div>
         </div>
@@ -85,7 +86,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="time" class="form-label">Time</label>
-                        <input type="datetime-local" class="form-control" id="time" name="time" value="<%= new Date().toISOString().slice(0, 16) %>" required>
+                        <input type="datetime-local" class="form-control" id="time" name="time" value="<%= new Date(new Date().getTime() - (new Date().getTimezoneOffset() * 60000)).toISOString().slice(0, 16) %>" required>
                     </div>
                     <div class="mb-3">
                         <label for="location" class="form-label">Location</label>
@@ -114,15 +115,19 @@
                     </div>
                     <div class="mb-3">
                         <label for="calories" class="form-label">Calories</label>
-                        <input type="number" class="form-control" id="calories" name="calories" min="1" max="300" required>
+                        <input type="number" class="form-control" id="calories" name="calories" min="1" max="3000" required>
                     </div>
                     <div class="mb-3">
                         <label for="coordinates" class="form-label">Coordinates</label>
                         <input type="text" class="form-control" id="coordinates" name="coordinates" value="32.0853, 34.7818" required>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-3 custom-select-container">
                         <label for="duration" class="form-label">Duration in minutes</label>
-                        <input type="number" class="form-control" id="duration" name="duration" min="45" max="60" step="15" required title="A workout is either 45 or 60 minutes">
+                        <select class="form-control" id="duration" name="duration" required>
+                            <option value="" disabled selected>Choose</option>
+                            <option value="45">45</option>
+                            <option value="60">60</option>
+                        </select>      
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Image</label>

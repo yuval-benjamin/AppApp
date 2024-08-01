@@ -71,7 +71,7 @@
         const workouts = <%- JSON.stringify(workouts) %>;
         window.coordinates = workouts;
     </script>
-    <script loading=async src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_MAPS_API_KEY %>&callback=generateMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= process.env.GOOGLE_MAPS_API_KEY %>&loading=async&callback=generateMap"></script>
     <footer class="text-white text-center text-lg-start">
       <div id="first-footer" class="container p-4">
          <div class="row">
