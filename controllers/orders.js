@@ -12,7 +12,7 @@ async function submitOrder(req, res) {
   res.json(newOrder._id);
 }
 
-async function setArrived(req, res) {
+async function setConfirmed(req, res) {
   try {
     const orderId = req.params.id;
     const updatedOrder = await orderService.updateOrder(orderId, { confirmed: true });
@@ -67,7 +67,7 @@ async function getMyOrders(req, res) {
 
 module.exports = {
   submitOrder,
-  setArrived,
+  setConfirmed,
   deleteOrder,
   getOrderHistory,
   isUsername,

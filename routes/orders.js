@@ -14,7 +14,7 @@ router.get("/", customersController.isAdmin, orderController.getOrders);
 router.post("/", orderController.submitOrder);
 
 // Update
-router.put("/:id", orderController.setArrived);
+router.put("/:id", orderController.setConfirmed);
 
 // Delete
 router.delete("/:id", orderController.deleteOrder);

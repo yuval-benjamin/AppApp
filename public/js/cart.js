@@ -34,7 +34,7 @@ async function redirectToCart() {
 async function confirmOrder() {
     try {
 
-        const createOrder = await fetch('/orders/', {
+        const createOrder = await fetch('/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

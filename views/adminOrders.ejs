@@ -126,7 +126,8 @@
             <div class="row text-left">
               <div class="col-md-8">
                 <h4 class="card-title">Order ID: <%= order._id %></h4>
-                <h4 class="card-title"><%= new Date(order.createdAt).toLocaleString() %></h4>
+                <h4 class="card-title">Created at: <%= new Date(order.createdAt).toLocaleString() %></h4>
+                <h4 class="card-title">Confirmed at: <%= new Date(order.updatedAt).toLocaleString() %></h4>
                 <ul>
                   <% order.workouts.forEach(function(item) { 
                     const workout = workouts.find(workout => workout._id.toString() === item);
