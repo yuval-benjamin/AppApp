@@ -25,7 +25,7 @@ async function redirectToCart() {
         const data = await response.json();
         const username = data.username;
 
-        window.location.href = `http://localhost/cart/${username}`;
+        window.location.href = `/cart/${username}`;
     } catch (error) {
         console.error('Error fetching username:', error);
     }
