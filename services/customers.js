@@ -89,6 +89,15 @@ async function getUserWorkoutsFromCart(username){
 
     return workoutIds
 }
+
+async function getWorkoutsFromCart(username){
+    const customer = await Customer.findById(username);
+
+    const workoutIds = customer.cart;
+
+    return workoutIds
+}
+
 async function deleteCustomer(id) {
     const customer = await getCustomerByUsername(id);
     if (!customer)
@@ -122,5 +131,6 @@ module.exports = {
     deleteAllWorkoutsFromCart,
     getUserWorkoutsFromCart,
     deleteCustomer,
-    updateCustomer
+    updateCustomer,
+    getWorkoutsFromCart
 }

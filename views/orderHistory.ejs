@@ -100,7 +100,7 @@
                 <h4 class="card-title">Created at: <%= new Date(order.createdAt).toLocaleString() %></h4>
                 <ul>
                   <% order.workouts.forEach(function(item) { 
-                    const workout = workouts.find(workout => workout._id.toString() === item);
+                    const workout = workouts.find(workout => workout._id.toString() === item.id);
                     totalPrice += workout.price
                 %>
                   <div class="item">
