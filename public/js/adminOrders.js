@@ -26,19 +26,18 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
   });
 
-  const updateForm = document.getElementById("update-order-form");
-  if (updateForm) {
-    updateForm.addEventListener("submit", async function (event) {
+  document.querySelectorAll(".update-order-form").forEach((form) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
-
       const orderId = event.target.getAttribute("data-order-id");
-      console.log(orderId)
+
       try {
         const response = await fetch(`/orders/${orderId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-          }});
+          },
+        });
 
         if (response.ok) {
           window.location.href = "/adminPage/orders";
@@ -51,5 +50,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
         alert("An error occurred while updating the order");
       }
     });
-  }
+  });
 });

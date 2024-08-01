@@ -1,11 +1,10 @@
 const Order = require("../models/orders");
 const mongoose = require("mongoose");
 
-async function createOrder(customer, workouts, price) {
+async function createOrder(customer, workouts) {
   try {
-    const order = new Order({ customer, workouts, price });
+    const order = new Order({ customer, workouts });
     await order.save();
-    return order;
   } catch (error) {
     throw new Error("Error creating order: " + error.message);
   }

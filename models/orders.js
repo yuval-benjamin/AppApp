@@ -2,13 +2,11 @@ const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
   {
-    _id: String,
     customer: {
       type: String,
-      required: true,
     },
     workouts: {
-      type: [String],
+      type: Array,
       required: true,
     },
     confirmed: {
