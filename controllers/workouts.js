@@ -1,11 +1,12 @@
-const workoutsService = require('../services/workouts')
-const customersService = require('../services/customers')
-const mongoose = require('mongoose')
+const workoutsService = require("../services/workouts");
+const customersService = require("../services/customers");
+const mongoose = require("mongoose");
 
-async function GetAllWorkouts(req, res){
-    const workouts = await workoutsService.getAllWorkouts()
-    res.json(workouts);
+async function GetAllWorkouts(req, res) {
+  const workouts = await workoutsService.getAllWorkouts();
+  res.json(workouts);
 }
+
 
 async function GetFeaturedWorkoutsPage(req, res){
     res.render("featuredworkouts", {})
@@ -17,14 +18,16 @@ async function GetNearMePage(req, res){
     res.render("nearme", {workouts , isAdmin})
 }
 
-async function SearchWorkout(req, res){
-    const foundworkouts = await workoutsService.GetWorkoutIfContains(req.params.workout)
-    res.json(foundworkouts)
+async function SearchWorkout(req, res) {
+  const foundworkouts = await workoutsService.GetWorkoutIfContains(
+    req.params.workout
+  );
+  res.json(foundworkouts);
 }
 
-async function GetSelectedWorkouts(req, res){
-    const selectedWorkouts = await workoutsService.GetSelectedWorkouts(req.query)
-    res.json(selectedWorkouts)
+async function GetSelectedWorkouts(req, res) {
+  const selectedWorkouts = await workoutsService.GetSelectedWorkouts(req.query);
+  res.json(selectedWorkouts);
 }
 
 async function createWorkout(req, res) {
@@ -52,48 +55,61 @@ async function createWorkout(req, res) {
 }
 
 async function updateWorkout(req, res) {
-    try {
-        const workoutId = req.params.id;
-        const { name, description, time, location, price, category, supplier, calories, coordinates, duration, image, weather } = req.body;
+  try {
+    const workoutId = req.params.id;
+    const {
+      name,
+      description,
+      time,
+      location,
+      price,
+      category,
+      supplier,
+      calories,
+      coordinates,
+      duration,
+      image,
+      weather,
+    } = req.body;
 
-        const updatedWorkout = await workoutsService.updateWorkout(workoutId, {
-            name,
-            description,
-            time,
-            location,
-            price,
-            category,
-            supplier,
-            calories,
-            coordinates,
-            duration,
-            image,
-            weather
-        });
+    const updatedWorkout = await workoutsService.updateWorkout(workoutId, {
+      name,
+      description,
+      time,
+      location,
+      price,
+      category,
+      supplier,
+      calories,
+      coordinates,
+      duration,
+      image,
+      weather,
+    });
 
-        if (!updatedWorkout) {
-            return res.status(404).json({ errors: ['Workout not found'] });
-        }
-
-        res.status(200).json({ message: 'Workout updated successfully' });
-    } catch (error) {
-        console.error('Error updating workout:', error);
-        res.status(500).send('Failed to update workout');
+    if (!updatedWorkout) {
+      return res.status(404).json({ errors: ["Workout not found"] });
     }
+
+    res.status(200).json({ message: "Workout updated successfully" });
+  } catch (error) {
+    console.error("Error updating workout:", error);
+    res.status(500).send("Failed to update workout");
+  }
 }
 
 async function deleteWorkout(req, res) {
-    try {
+  try {
     const workout = await workoutsService.deleteWorkout(req.params.id);
     if (!workout) {
-      return res.status(404).json({ errors: ['workout not found'] });
+      return res.status(404).json({ errors: ["workout not found"] });
     }
 
-    res.status(200).json({ message: 'Workout deleted successfully' });
-    } catch (error) {
-    console.error('Error deleting workout:', error);
-    res.status(500).send('Failed to delete workout:', error);
-    }
+    res.status(200).json({ message: "Workout deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting workout:", error);
+    res.status(500).send("Failed to delete workout:", error);
+  }
 }
 
 module.exports = {
