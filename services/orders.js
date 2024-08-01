@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 
 async function createOrder(customer, workouts) {
   try {
-    console.log(workouts)
     const order = new Order({ customer, workouts });
     await order.save();
   } catch (error) {
