@@ -4,11 +4,12 @@ const workoutService = require("../services/workouts")
 
 async function submitOrder(req, res) {
   const workoutIds = await customerService.getWorkoutsFromCart(req.session.username);
-  const newOrder = await orderService.createOrder(
-    req.session.username,
-    workoutIds
-  );
-  res.json(newOrder)
+  if (Array.isArray(workoutIds) && workoutIds.length > 0){
+    const newOrder = await orderService.createOrder(
+      req.session.username,
+      workoutIds
+  )}
+  res.json(workoutIds)
 }
 
 async function setConfirmed(req, res) {
