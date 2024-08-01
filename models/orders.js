@@ -16,6 +16,10 @@ const orderSchema = new mongoose.Schema(
       min: 0,
       required: false,
     },
+    arrived: {
+      type: Boolean,
+      default: false,
+    }
   },
   { timestamps: true } // Adds `createdAt` and `updatedAt` timestamps automatically
 );

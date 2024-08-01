@@ -161,3 +161,6 @@ body {
     font-size: 2rem;
     text-align: center;
 }
+#order-history-container {
+    min-height: 450px;
+}
