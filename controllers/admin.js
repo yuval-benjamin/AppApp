@@ -1,6 +1,7 @@
 
 const customersService = require('../services/customers')
 const workoutsService = require('../services/workouts')
+
 const path = require('path').resolve(__dirname, '..')
 
 async function GetAdminPage(req, res){
@@ -24,8 +25,9 @@ async function GetFollowers(req, res){
             'Authorization': 'Bearer ' + process.env.FACEBOOK_TOKEN
         }
     })
-    res.json(response.json)
-
+    const resData = await response.text(); 
+    const data = JSON.parse(resData); 
+    res.json(data); 
 }
 
 // All admin workout funtions
